@@ -5,11 +5,14 @@
     font-family: sans-serif;
 }
 
+html {
+    height: 500%
+}
+
 body {
     background-image: url(/VIdeos/Black.png);
     background-size: cover;
 }
-
 
 .header {
     position: fixed;
@@ -58,7 +61,7 @@ body {
 .content {
     position: absolute;
     width: 40%;
-    top: 75%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: left;
@@ -67,9 +70,10 @@ body {
 
 .content #header {
     font-size: 50px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .content p {
     font-size: 20px;
+    font-weight: 400;
 }
