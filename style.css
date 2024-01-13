@@ -15,33 +15,49 @@
 .header {
     position: fixed;
     width: 100%;
-    padding: 20px 30px 20px 60px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    margin: 20px;
 }
 
 .logo {
     width: 120px;
     cursor: pointer;
+    margin: 0px 30px 0px 0px;
 }
 
-.navbar ul li {
+.navbar {
+    width: 100%;
+}
+
+.pageTraversal {
     list-style: none;
     display: inline-block;
-    margin: 0 20px;
     position: relative;
+    margin: 0px 20px;
 }
 
-.navbar ul li a {
+.pageTraversal {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.pageTraversal a {
     text-decoration: none;
     color: white;
     text-transform: capitalize;
-    font-size: larger;
+    font-size: 1.5em;
+    font-weight: bolder;
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
 }
 
-.navbar ul li::after {
+#login {
+    margin: 0px 0px 0px 700px;
+}
+
+.pageTraversal::after {
     content: '';
     height: 3px;
     width: 0;
@@ -52,11 +68,11 @@
     transition: 0.1s;
 }
 
-.navbar ul li:hover::after {
+.pageTraversal:hover::after {
     width: 100%;
 }
 
-.content {
+.homePageContent {
     position: absolute;
     width: 40%;
     top: 80%;
@@ -64,19 +80,17 @@
     transform: translate(-50%, -50%);
     text-align: left;
     color: white;
-}
-
-.content p {
     font-size: 20px;
     font-weight: 400;
 }
 
-.content #header {
-    font-size: 50px;
+.homePageTitle {
+    font-size: 40px;
     font-weight: 400;
+    margin: 0px -2px;
 }
 
-.content #button {
+.homePageContent #button {
     background-color: #009688;
     border-style: solid;
     border-width: 1px;
@@ -88,8 +102,15 @@
     font-size: 16px;
     cursor: pointer;
     margin: 30px 0px;
+    border-radius: 5px;
 }
 
-.content #button:hover {
+.homePageContent #button:hover {
     background-color: #00b1a0;
+}
+
+#backGroundPic {
+    height: 100vh;
+    position: absolute;
+    right: 0;
 }
