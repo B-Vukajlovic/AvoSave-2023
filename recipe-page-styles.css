@@ -1,0 +1,67 @@
+*{
+    margin: 10px;
+    padding: 1;
+    font-family: sans-serif;
+    color: var(--txt-clr);
+}
+
+#back-button{
+    grid-area: 1/1/1/1;
+}
+
+.button{
+    text-decoration: underline;
+    color: var(--background-clr);
+    padding: 10px;
+    margin: 10px;
+    border: ridge var(--high-light);
+    /*border-radius: need some;*/
+    background-color: var(--high-light);
+}
+
+.button img{
+    /*styling an image I don't have yet, inside an element that could be anything, whoooo*/
+}
+
+.details{
+    grid-area: 4/1/4/3;
+}
+
+.main-page{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.recipe-card{
+    width: 65%;
+    padding: 10px;
+    margin-left: 20px;
+    color: var(--txt-clr);
+    background-color: var(--light-accent);
+    /* how tf do I make the bullets and numbers in lists coloured but keep the text just normal text colour?? */
+}
+
+.recipe-grid{
+    display: grid;
+    grid-template-columns: 88% 12%;
+}
+
+.side-block{
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    color: var(--dark-accent);
+    background-color: var(--light-accent);
+}
+
+.title-bar{
+}
+
+.title-image{
+    width: 80%;
+    max-width:100%;
+    height: auto;
+    display: block;
+    margin-right: auto;
+    border: var(--light-accent) outset;
+}
