@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ingredientpage-style.css">
-    <script src="ingredientpage-script.js"></script>
     <title>Pick Ingredients</title>
 </head>
 <body class="body">
@@ -32,39 +31,43 @@
         </div>
         <div class="dropdown">
             <button class="dropbtn">Category</button>
-            <div class="dropdown-content">
-                <a href="#">Fruits</a>
-                <a href="#">Vegetables</a>
-            </div>
+            <select class="dropdown-content" id="category-dropdown">
+                <option value="fruits">Fruits</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="meatAndFish">Meat and Fish</option>
+                <option value="seasoning">Seasoning</option>
+                <option value="dairy">Dairy</option>
+            </select>
         </div>
     </section>
 
     <section>
         <div class="labels">
-            <button class="label-available">Apple</button>
-            <button class="label-available">Avocado</button>
-            <button class="label-available">Banana</button>
-            <button class="label-available">Grape</button>
-            <button class="label-available">Kiwi</button>
-            <button class="label-available">Peach</button>
-            <button class="label-available">Orange</button>
-            <button class="label-available">Pineapple</button>
-            <button class="label-available">Pear</button>
-            <button class="label-available">Watermelon</button>
-            <button class="label-available">Cherry</button>
-            <button class="label-available">Mango</button>
-            <button class="label-available">Blueberry</button>
-            <button class="label-available">Pomegranate</button>
-            <button class="label-available">Raspberry</button>
-            <button class="label-available">Lemon</button>
-            <button class="label-available">Grapefruit</button>
-            <button class="label-available">Passion fruit</button>
-            <button class="label-available">Lime</button>
-            <button class="label-available">Fig</button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
+            <button class="label-available"></button>
         </div>
         <div>
             <button class="next">Next</button>
         </div>
     </section>
+    <script src="ingredientpage-script.js"></script>
 </body>
 </html>
