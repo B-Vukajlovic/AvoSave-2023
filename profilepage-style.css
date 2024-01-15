@@ -1,0 +1,63 @@
+:root{
+    --background-clr: hsl(0, 100%, 100%);
+    --txt-clr: hsl(110, 45%, 12%);
+    --light-accent: hsl(130, 45%, 75%);
+    --dark-accent: hsl(35, 50%, 20%);
+    --high-light: hsl(117, 100%, 40%);
+}
+
+.logoCombo {
+    display: flex;
+    align-items: center;
+    margin: 0px 20px 0px 0px;
+    background-color: var(--txt-clr);
+}
+
+.logo {
+    width: 120px;
+    cursor: pointer;
+}
+
+.navbar {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageTraversal {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.pageTraversal {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.pageTraversal a {
+    text-decoration: none;
+    color: white;
+    text-transform: capitalize;
+    font-size: 1.5em;
+    font-weight: bolder;
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+}
+
+.pageTraversal::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: 0.5s;
+}
+
+.pageTraversal:hover::after {
+    width: 100%;
+}
