@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ingredientpage-style.css">
+    <script src="ingredientpage-script.js"></script>
     <title>Pick Ingredients</title>
 </head>
-<body>
+<body class="body">
+    <div class="logoCombo">
+        <img src="/Webtechnologie-Website-2023-UvA/VIdeos/avosave_logo-removebg-preview.png" class="logo">
+        <img src="/Webtechnologie-Website-2023-UvA/VIdeos/Logo-PhotoRoom(3).png" class="logo">
+        <nav class="navbar">
+            <ul id="pageNav">
+                <li class="pageTraversal" id="home"><a href="#">Home</a></li>
+                <li class="pageTraversal" id="search"><a href="#">Search</a></li>
+            </ul>
+            <ul id="accountNav">
+                <li class="pageTraversal" id="login"><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <div class="center">
         <h1>Choose ingredients to include</h1>
     </div>
+
     <section class="tools">
         <div class="search-bar">
             <input type="text" placeholder="Search..." class="input-search-bar">
@@ -17,11 +33,12 @@
         <div class="dropdown">
             <button class="dropbtn">Category</button>
             <div class="dropdown-content">
-              <a href="#">Fruits</a>
-              <a href="#">Vegetables</a>
+                <a href="#">Fruits</a>
+                <a href="#">Vegetables</a>
             </div>
         </div>
     </section>
+
     <section>
         <div class="labels">
             <button class="label-available">Apple</button>
@@ -32,18 +49,18 @@
             <button class="label-available">Peach</button>
             <button class="label-available">Orange</button>
             <button class="label-available">Pineapple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
-            <button class="label-available">Apple</button>
+            <button class="label-available">Pear</button>
+            <button class="label-available">Watermelon</button>
+            <button class="label-available">Cherry</button>
+            <button class="label-available">Mango</button>
+            <button class="label-available">Blueberry</button>
+            <button class="label-available">Pomegranate</button>
+            <button class="label-available">Raspberry</button>
+            <button class="label-available">Lemon</button>
+            <button class="label-available">Grapefruit</button>
+            <button class="label-available">Passion fruit</button>
+            <button class="label-available">Lime</button>
+            <button class="label-available">Fig</button>
         </div>
         <div>
             <button class="next">Next</button>

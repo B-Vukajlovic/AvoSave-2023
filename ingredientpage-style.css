@@ -1,3 +1,11 @@
+:root{
+    --background-clr: hsl(0, 100%, 100%);
+    --txt-clr: hsl(110, 45%, 12%);
+    --light-accent: hsl(130, 45%, 75%);
+    --dark-accent: hsl(35, 50%, 20%);
+    --high-light: hsl(117, 100%, 40%);
+}
+
 .search-bar {
     width: 450px;
     height: 100px;
@@ -27,7 +35,14 @@
     text-align: center;
     margin: 5px;
     font-size: medium;
+    background-color: white;
 }
+
+
+.label-available:hover {background-color: greenyellow;}
+
+.label-available.active {background-color: var(--high-light);}
+
 
 .labels{
     display: grid;
@@ -36,7 +51,10 @@
     width: 70%;
     margin-left: 10%;
     border-style: ridge;
-    border-color: #3e8e41;
+    border-radius: 20px;
+    border-width: 10px;
+    border-color: var(--dark-accent);
+    background-color: var(--light-accent);
 }
 
 .tools{
@@ -48,8 +66,9 @@
 
 .center{
     width: 50%;
-    margin: 115px;
+    margin: 60px;
     margin-left: 33%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .next{
@@ -101,3 +120,63 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.body{
+    background-image: url(/Webtechnologie-Website-2023-UvA/VIdeos/background\(ingredients\).webp);
+}
+
+.logoCombo {
+    display: flex;
+    align-items: center;
+    margin: 0px 20px 0px 0px;
+    background-color: var(--txt-clr);
+}
+
+.logo {
+    width: 120px;
+    cursor: pointer;
+}
+
+.navbar {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageTraversal {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.pageTraversal {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.pageTraversal a {
+    text-decoration: none;
+    color: white;
+    text-transform: capitalize;
+    font-size: 1.5em;
+    font-weight: bolder;
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+}
+
+.pageTraversal::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: 0.5s;
+}
+
+.pageTraversal:hover::after {
+    width: 100%;
+}
