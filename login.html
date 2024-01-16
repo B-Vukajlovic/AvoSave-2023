@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="loginStyle.css">
     <title>Document</title>
 </head>
 <body>
+    <div id="loginContainer">
+        <form action="action_page.php" method="post">
+            <div class="tekstContainer">
+                <h1>Welcome</h1>
+            </div>
+            <div class="inputContainer">
+                <label for="uName">Username</label>
+                <input type="text" placeholder="Enter Username" name="uName" required>
 
+                <label for="psw">Password</label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+            </div>
+            <div class="buttonContainer">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+    <div class="gridContainer">
+        <img src="/pictures/colorfullFruit.png" class="image" id="img1">
+        <img src="/pictures/greenFruit.png" class="image" id="img2">
+        <img src="/pictures/blackFruit.png" class="image" id="img3">
+        <img src="/pictures/blueFruit.png" class="image" id="img4">
+        <img src="/pictures/redFruit.png" class="image" id="img5">
+        <img src="/pictures/orangeFruit.png" class="image" id="img6">
+    </div>
 </body>
 </html>

@@ -15,81 +15,9 @@
     animation: fadeIn .5s;
 }
 
-/*Grid and Image dimensions*/
-
-.gridContainer {
-    display: grid;
-    grid-template-columns: repeat(32, 1fr);
-    grid-template-rows: repeat(18, 1fr);
-    width: 100vw;
-    height: 100vh;
-    gap: 5px;
-}
-
-.image {
-    height: 100%;
-    width: 100%;
-    border-width: 1px;
-    border-color: hsl(110, 45%, 12%);
-    border-style: solid;
-    border-radius: 0px;
-    object-fit: cover;
-}
-
-#img1 {
-    grid-column-start: -1;
-    grid-column-end: -11;
-    grid-row-start: -1;
-    grid-row-end: -12;
-}
-
-#img2 {
-    grid-column-start: -17;
-    grid-column-end: -11;
-    grid-row-start: -8;
-    grid-row-end: -1;
-}
-
-#img3 {
-    grid-column-start: -17;
-    grid-column-end: -11;
-    grid-row-start: -19;
-    grid-row-end: -15;
-}
-
-#img4 {
-    grid-column-start: -17;
-    grid-column-end: -11;
-    grid-row-start: -15;
-    grid-row-end: -8;
-}
-
-#img5 {
-    grid-column-start: -11;
-    grid-column-end: -6;
-    grid-row-start: -19;
-    grid-row-end: -12;
-}
-
-#img6 {
-    grid-column-start: -6;
-    grid-column-end: -1;
-    grid-row-start: -19;
-    grid-row-end: -12;
-}
-
-#background {
-    position: absolute;
-    width: 50vw;
-    height: 100vh;
-    background-color: hsl(45, 3%, 76%);
-    display: flex;
-    justify-content: center;
-}
-
 header {
     position: fixed;
-    width: 50%;
+    width: 100vw;
     display: flex;
     align-items: center;
     padding: 20px;
