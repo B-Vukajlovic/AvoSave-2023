@@ -1,6 +1,6 @@
 *{
-    margin: 10px;
-    padding: 1;
+    margin: 0px;
+    /* padding: 1; */
     font-family: sans-serif;
     color: var(--txt-clr);
 }
@@ -12,27 +12,25 @@
 
 .button{
     text-decoration: underline;
-    color: var(--background-clr);
+    color: var(--high-light);
     padding: 10px;
     margin: 10px;
-    border: ridge var(--high-light);
-    /*border-radius: need some;*/
-    background-color: var(--high-light);
-}
-
-.button img{
-    /*styling an image I don't have yet, inside an element that could be anything, whoooo*/
+    border: solid var(--high-light);
+    border-radius: 50px;
+    width: 5%;
+    max-width: 100%;
 }
 
 .column1{
-    margin-top: 200px;
+    margin: 20px;
 }
 
 .column2{
-    margin-top: 200px;
+    margin: 20px;
 }
 
 .details{
+    margin: 20px;
     grid-area: 4/1/4/3;
 }
 
@@ -44,7 +42,8 @@
 .recipe-card{
     width: 65%;
     padding: 10px;
-    margin-left: 20px;
+    align-self: center;
+    border-radius: 10px;
     color: var(--txt-clr);
     background-color: var(--light-accent);
     /* how tf do I make the bullets and numbers in lists coloured but keep the text just normal text colour?? */
@@ -58,21 +57,25 @@
 .side-block{
     width: 90%;
     padding: 10px;
-    margin: 10px;
+    margin: 20px;
+    border-radius: 10px;
     color: var(--dark-accent);
     background-color: var(--light-accent);
 }
 
 .title-bar{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .title-image{
-    width: 60%;
+    width: 66%;
     max-width:100%;
     height: auto;
     display: block;
     margin-right: auto;
     border: var(--light-accent) outset;
+    background-color: var(--light-accent);
 }
 
 .frontPage {
@@ -83,12 +86,13 @@
 }
 
 header {
-    position: fixed;
+    /* position: fixed; */
+    background-color: var(--txt-clr);
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 20px;
-    z-index: 3;
+    /* padding: 20px; */
+    /* z-index: 3; */
 }
 
 .logoCombo {
@@ -117,7 +121,7 @@ header {
 
 .pageTraversal a {
     text-decoration: none;
-    color: var(--txt-clr);
+    color: white;
     text-transform: capitalize;
     font-size: 1.5em;
     font-weight: bolder;
@@ -128,7 +132,7 @@ header {
     content: '';
     height: 3px;
     width: 0;
-    background: #009688;
+    background: var(--light-accent);
     position: absolute;
     left: 0;
     bottom: -5px;
