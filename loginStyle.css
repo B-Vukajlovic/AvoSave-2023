@@ -16,6 +16,52 @@
     gap: 15px;
 }
 
+header {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border: 15px solid #f1f1f1;
+    background: white;
+    grid-column: 1 / 20;
+    grid-row: 1 / 3;
+}
+
+.navBar {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageTraversal {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.pageTraversal a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+}
+
+.pageTraversal::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: 0.5s;
+}
+
+.pageTraversal:hover::after {
+    width: 100%;
+}
+
 form {
     position: absolute;
     width: 100%;
@@ -24,8 +70,11 @@ form {
     border-radius: 5px;
     padding: 20px;
     border-radius: 5px;
-    grid-row: 1 / 12;
+    grid-row: 3 / 19;
     grid-column: -11/ -23;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tekstContainer {
@@ -35,7 +84,7 @@ form {
 
 .tekstContainer h1 {
     font-size: 60px;
-    font-weight: 400;
+    font-weight: 200;
 }
 
 .inputContainer {
@@ -88,55 +137,41 @@ button:hover {
     grid-column-start: -1;
     grid-column-end: -11;
     grid-row-start: -1;
-    grid-row-end: -12;
-}
-
-#img2 {
-    grid-column-start: -17;
-    grid-column-end: -11;
-    grid-row-start: -8;
-    grid-row-end: -1;
+    grid-row-end: -11;
 }
 
 #img3 {
     grid-column-start: 1;
     grid-column-end: 6;
-    grid-row-start: 12;
+    grid-row-start: 13;
     grid-row-end: 19;
-}
-
-#img4 {
-    grid-column-start: -23;
-    grid-column-end: -17;
-    grid-row-start: -8;
-    grid-row-end: -1;
 }
 
 #img5 {
     grid-column-start: -11;
     grid-column-end: -6;
-    grid-row-start: -19;
-    grid-row-end: -12;
+    grid-row-start: -17;
+    grid-row-end: -11;
 }
 
 #img6 {
     grid-column-start: -6;
     grid-column-end: -1;
-    grid-row-start: -19;
-    grid-row-end: -12;
+    grid-row-start: -17;
+    grid-row-end: -11;
 }
 
 #img7 {
     grid-column-start: 1;
     grid-column-end: 11;
-    grid-row-start: 1;
-    grid-row-end: 12;
+    grid-row-start: 3;
+    grid-row-end: 13;
 }
 
 #img8 {
     grid-column-start: 6;
     grid-column-end: 11;
-    grid-row-start: 12;
+    grid-row-start: 13;
     grid-row-end: 19;
 }
 
