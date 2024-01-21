@@ -2,7 +2,6 @@
 require_once('pdo-connect.php');
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +11,6 @@ require_once('pdo-connect.php');
   <link rel="stylesheet" href="recipe-overview-styles.css">
   <title>Recipe overview</title>
 </head>
-
 
 <body>
   <h1 class="title-page"> Recipes</h1>
@@ -84,8 +82,8 @@ require_once('pdo-connect.php');
         }
         echo '</div>';
         echo '</div>';
-    }
-    ?>
+      }
+      ?>
 
         <div class="column1">
           <img class="images" src="image1.jpg" alt="Recept 1">
