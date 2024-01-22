@@ -37,7 +37,7 @@
                 $query = "SELECT R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients
                     FROM Recipe R, UserRecipe UR
                     JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
-                    WHERE R.RecipeID = $id AND UR.RecipeID AND SavedStatus
+                    WHERE R.RecipeID = $id AND UR.RecipeID AND UR.SavedStatus = 1
                     GROUP BY R.RecipeID";
             $result = pdo->query($query);
             while ($row = mysqli_fetch_assoc($result)) {
