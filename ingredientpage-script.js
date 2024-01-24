@@ -35,13 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
     dropdown.addEventListener('change', (event) => {
-        event.preventDefault(); // Prevents any default action that the event might trigger
+        event.preventDefault();
         updateButtons(event.target.value);
     });
 
     buttons.forEach((button, index) => {
         button.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevents the button click from refreshing the page
+            event.preventDefault();
             this.classList.toggle('active');
             const category = dropdown.value;
             const activeIndex = activeButtons[category].indexOf(index);
@@ -53,6 +53,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize buttons with the first category
     updateButtons('fruits');
 });
