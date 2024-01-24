@@ -62,57 +62,31 @@ require_once('pdo-connect.php');
       <label for="filter15"> 5 stars</label><br>
     </div>
     <div class="recipes">
-      <div class="card-holder">
       <?php
-      $query = "SELECT R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients
-                FROM Recipe R
-                JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
-                GROUP BY R.RecipeID";
-      $result = pdo->query($query);
-      while ($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="column1">
-        <img class="images" src="image1.jpg" alt="Recept 1">
-        </div>';
-        echo '<div class="column2">';
-        echo '<h2 class="title-card">' . htmlspecialchars($row['RecipeTitle']) . '</h2>';
-        echo '<div class="labels">';
-        $ingredients = explode(',', $row['Ingredients']);
-        foreach ($ingredients as $ingredient) {
+        $query = "SELECT R.RecipeID, R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients
+          FROM Recipe R
+          JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
+          GROUP BY R.RecipeID";
+        $result = $pdo->query($query);
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+          echo '<a href="recipe-details.php?recipeID=' . $row['RecipeID'] . '" class="recipe-link">';
+          echo '<div class="card-holder">';
+          echo '<div class="column1">';
+          echo '<img class="images" src="image1.jpg" alt="Recept 1">';
+          echo '</div>';
+          echo '<div class="column2">';
+          echo '<h2 class="title-card">' . htmlspecialchars($row['RecipeTitle']) . '</h2>';
+          echo '<div class="labels">';
+          $ingredients = explode(',', $row['Ingredients']);
+          foreach ($ingredients as $ingredient) {
             echo '<span class="label-available">' . htmlspecialchars($ingredient) . '</span>';
+          }
+          echo '</div>';
+          echo '</div>';
+          echo '</div>';
+          echo '</a>';
         }
-        echo '</div>';
-        echo '</div>';
-      }
-      ?>
-
-        <div class="column1">
-          <img class="images" src="image1.jpg" alt="Recept 1">
-        </div>
-        <div class="column2">
-          <h2 class="title-card">Tomato soup</h2>
-          <div class="labels">
-            <span class="label-available">Tomato</span>
-            <span class="label-available">Onion</span>
-            <span class="label-available">Vegetable stock</span>
-            <span class="label-available">Garlic</span>
-            <span class="label-unavailable">Olive oil</span>
-          </div>
-        </div>
-      </div>
-      <div class="card-holder">
-        <div class="column1">
-          <img class="images" src="image1.jpg" alt="Recept 1">
-        </div>
-        <div class="column2">
-          <h2 class="title-card">Tomato soup</h2>
-          <div class="labels">
-            <span class="label-available">Tomato</span>
-            <span class="label-available">Onion</span>
-            <span class="label-available">Vegetable stock</span>
-            <span class="label-available">Garlic</span>
-            <span class="label-unavailable">Olive oil</span>
-          </div>
-        </div>
+        ?>
       </div>
     </div>
   </div>

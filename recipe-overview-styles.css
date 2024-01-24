@@ -95,3 +95,9 @@ body {
 .column2{
     padding: 10px;
 }
+
+.recipe-link{
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
