@@ -22,7 +22,7 @@
                     <li class="pageTraversal" id="search"><a href="#">Search</a></li>
                 </ul>
                 <ul id="accountNav">
-                    <li class="pageTraversal" id="login"><a href="login.html">Login</a></li>
+                    <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
                 </ul>
             </nav>
         </header>
