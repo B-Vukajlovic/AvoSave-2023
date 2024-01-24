@@ -34,13 +34,14 @@
         <div class="mainpage">
             <h1>My Account</h1>
             <h2 class="second-title">Account information</h2>
-            <div class="acc-info-input">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Your username...">
-                <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" placeholder="Your e-mail...">
-                <input type="submit" value="Submit your changes">
-            </div>
+            <form action="process_uname_email.php" method="post">
+                <div class="acc-info-input">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" readonly="readonly" value="Your username">
+                    <label for="email">E-mail</label>
+                    <input type="text" id="email" name="email" readonly="readonly" value="Your username">
+                </div>
+            </form>
             <h2 class="second-title">Change password</h2>
             <div class="acc-info-input">
                 <label for="username">Current Password</label>
