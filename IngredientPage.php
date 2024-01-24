@@ -69,7 +69,7 @@ $response = isset($ingredients[$category]) ? $ingredients[$category] : [];
         </div>
 
         <div>
-            <button class="next">Next</button>
+            <button class="next" onclick="window.location.href = 'recipe-overview.php';">Next</button>
         </div>
     </section>
     <script src="ingredientpage-script.js"></script>
