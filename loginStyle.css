@@ -107,7 +107,7 @@ input[type=text], input[type=password] {
     display: inline-block;
 }
 
-button {
+.buttonContainer input {
     background-color: #009688;
     border-style: solid;
     border-width: 1px;
@@ -121,7 +121,7 @@ button {
     border-radius: 0px;
 }
 
-button:hover {
+.buttonContainer input:hover {
     opacity: 0.8;
 }
 
