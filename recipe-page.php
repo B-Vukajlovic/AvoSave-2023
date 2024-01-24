@@ -13,8 +13,8 @@ try{
     exit();
 }
 
-$userid = $_SESSION["user_id"];
-$recipe_id = $_GET["recipe_id"];
+$UserID = $_SESSION["UserID"];
+$RecipeID = $_GET["RecipeID"];
 ?>
 
 <!DOCTYPE html>
@@ -56,8 +56,8 @@ $recipe_id = $_GET["recipe_id"];
                 <div class="title-bar"> <!--get title from database-->
                     <h1>
                         <?php
-                        global $pdo, $recipe_id;
-                        $title = $pdo -> query("SELECT Title FROM Recipe WHERE RecipeID = $recipe_id");
+                        global $pdo, $RecipeID;
+                        $title = $pdo -> query("SELECT Title FROM Recipe WHERE RecipeID = $RecipeID");
                         echo $title;
                         ?>
                     </h1>
@@ -66,8 +66,8 @@ $recipe_id = $_GET["recipe_id"];
             <div class="side-block"> <!--get description from database-->
                 <h2>Description</h2>
                 <?php
-                    global $pdo, $recipe_id;
-                    $description = $pdo -> query("SELECT [Description] FROM Recipe WHERE RecipeID = $recipe_id");
+                    global $pdo, $RecipeID;
+                    $description = $pdo -> query("SELECT [Description] FROM Recipe WHERE RecipeID = $RecipeID");
                     echo $description?>
             </div>
         </div>
@@ -75,9 +75,9 @@ $recipe_id = $_GET["recipe_id"];
             <div>
                 <!-- get pictureURL from database, alt=title-->
                 <?php
-                    global $pdo, $recipe_id;
-                    $image = $pdo -> query("SELECT ImageURL FROM Image WHERE Image.RecipeID = $recipe_id");
-                    $title = $pdo -> query("SELECT Title FROM Recipe WHERE RecipeID = $recipe_id");
+                    global $pdo, $RecipeID;
+                    $image = $pdo -> query("SELECT ImageURL FROM Image WHERE Image.RecipeID = $RecipeID");
+                    $title = $pdo -> query("SELECT Title FROM Recipe WHERE RecipeID = $RecipeID");
                     echo "<img class='title-image' src='".$image."' alt='Picture of ".$title."'>"
                     ?>
             </div>
@@ -85,15 +85,15 @@ $recipe_id = $_GET["recipe_id"];
                 <div class="column1">
                     <h2>Recipe card</h2>
                     <!--get prep time and servings from database-->
-                    <?php global $pdo, $recipe_id;
-                    $time = $pdo -> query("SELECT Time FROM Recipe WHERE RecipeID = $recipe_id");
-                    $servings = $pdo -> query("SELECT Servings FROM Recipe WHERE RecipeID = $recipe_id");
+                    <?php global $pdo, $RecipeID;
+                    $time = $pdo -> query("SELECT Time FROM Recipe WHERE RecipeID = $RecipeID");
+                    $servings = $pdo -> query("SELECT Servings FROM Recipe WHERE RecipeID = $RecipeID");
                     echo "<p>Preparation time: ".$time." mins, servings: ".$servings."</p>";
                     ?>
                     <h3>Ingredients</h3>
                     <ul> <!--get amount ingredient, amount ingredient, etc, etc from database-->
-                    <?php global $pdo, $recipe_id;
-                    $ingredients = $pdo -> query("SELECT IngredientName, Amount FROM RecipeIngredient WHERE RecipeID = $recipe_id");
+                    <?php global $pdo, $RecipeID;
+                    $ingredients = $pdo -> query("SELECT IngredientName, Amount FROM RecipeIngredient WHERE RecipeID = $RecipeID");
 
                     if ($ingredients -> num_rows > 0) {
                         while($id = ingredients -> fetch_assoc()) {
@@ -143,15 +143,15 @@ $recipe_id = $_GET["recipe_id"];
             </form>
         </div>
         <?php
-        global $pdo, $recipe_id;
-        $comments = $pdo -> query("SELECT CommentID, CreatedAt, CommentText, UserID FROM Comment WHERE RecipeID = $recipe_id ORDER BY CreatedAt DESC");
+        global $pdo, $RecipeID;
+        $comments = $pdo -> query("SELECT CommentID, CreatedAt, CommentText, UserID FROM Comment WHERE RecipeID = $RecipeID ORDER BY CreatedAt DESC");
 
         if ($comments -> num_rows > 0) {
             while($id = $comments -> fetch_assoc()) {
-                $userid = $id["UserID"];
-                $user = $pdo -> query("SELECT Username FROM User WHERE User.UserID = $userid");
+                $commenterid = $id["UserID"];
+                $commenter = $pdo -> query("SELECT Username FROM User WHERE User.UserID = $commenterid");
                 echo "<div class='comment'>";
-                echo "<p class='comment-info'>" . $user. " commented on " . $id["CreatedAt"]."</p>";
+                echo "<p class='comment-info'>" . $commenter. " commented on " . $id["CreatedAt"]."</p>";
                 echo "<p class='comment-text'>".$id["CommentText"]."</p>";
                 echo "</div>";
             }
