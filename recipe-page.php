@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
+session_start();
 
 $dbname = "AvoSave";
-$dbuser = "jonav";
-$dbpass = "FvgrJqjhdwhBusEPsbZNkhhGszQpZezL";
+$dbuser = "jdevries";
+$dbpass = "password123";
 $dbhost = "localhost";
 
 try{
@@ -15,8 +13,12 @@ try{
     exit();
 }
 
+$userid = $_SESSION["user_id"];
 $recipe_id = $_GET["recipe_id"];
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -24,6 +26,8 @@ $recipe_id = $_GET["recipe_id"];
     <link rel="stylesheet" href="recipe-page-styles.css">
     <link rel="stylesheet" href="colors.css">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js>](<https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js>)">
+    </script>
 </head>
 
 <body>
@@ -122,7 +126,18 @@ $recipe_id = $_GET["recipe_id"];
             <form method="post" action="place-comment.php">
                 <label>New comment:</label>
                 <br>
-                <textarea id="commentinput" placeholder="Write your comment..."></textarea>
+                <textarea maxlength='1024' id="commentinput" placeholder="Write your comment..."></textarea>
+                <div id="the-count">
+                    <span id="current">0</span>
+                    <span id="maximum">/ 1024</span>
+                </div>
+                <script type="text/javascript">
+                    var textArea = $("#commentinput");
+                    var userText = trim(textArea.val());
+                    var charCount = userText.length;
+                    var countDisp = $("#current");
+                    countDisp.text("${charCount}");
+                </script>
                 <br>
                 <input type="submit" value="Post">
             </form>
@@ -136,7 +151,7 @@ $recipe_id = $_GET["recipe_id"];
                 $userid = $id["UserID"];
                 $user = $pdo -> query("SELECT Username FROM User WHERE User.UserID = $userid");
                 echo "<div class='comment'>";
-                echo "<p class='comment-info'>" . $user. " commented on " . date("j/n/Y, H:i", $id["CreatedAt"])."</p>";
+                echo "<p class='comment-info'>" . $user. " commented on " . $id["CreatedAt"]."</p>";
                 echo "<p class='comment-text'>".$id["CommentText"]."</p>";
                 echo "</div>";
             }

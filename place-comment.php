@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
+session_start();
 
 $dbname = "AvoSave";
-$dbuser = "jonav";
-$dbpass = "FvgrJqjhdwhBusEPsbZNkhhGszQpZezL";
+$dbuser = "jdevries";
+$dbpass = "password123";
 $dbhost = "localhost";
 
 try{
@@ -15,9 +13,10 @@ try{
     exit();
 }
 
-$recipeid;
-$userid;
-$time = time();
+$recipeid = $_GET["recipe_id"];
+$userid = $_SESSION["user_id"];
+// YYYY-MM-DD HH:MM:SS format
+$time = date("Y-m-d H:i:s", time());
 
 $commentinput = htmlspecialchars(stripslashes(trim($_POST["commentinput"])));
 
@@ -29,5 +28,3 @@ $extra = 'recipe-page.php';
 header("Location: http://$host$uri/$extra");
 exit;
 ?>
-
-</html>
