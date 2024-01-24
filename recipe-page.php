@@ -28,6 +28,19 @@ $RecipeID = $_GET["RecipeID"];
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js>](<https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js>)">
     </script>
+    <script>
+
+// how tf make it change in the database, ajax shit?
+    $(document).ready(function(){
+      $('#saveButton').click(function(){
+        if ((this).attr("src") == "/recipe-images/unsaved.png") {
+            $(this).attr("src", "/recipe-images/saved.png");
+        } else {
+            $(this).attr("src", "/recipe-images/unsaved.png")
+        }
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -113,9 +126,18 @@ $RecipeID = $_GET["RecipeID"];
                     </ol>
                 </div>
                 <div class="column2">
-                    <a class="button" title="Add to favourites"> <!--button changes png, and saved status, check login!-->
-                        <img id="favourite-button" src="/recipe-images/love.png" alt="&lt;3">
-                    </a>
+                    <button id="saveButton" title="Add to favourites"> <!--button changes png, and saved status, check login!-->
+                        <?php
+                        global $pdo, $RecipeID, $UserID;
+                        $status = $pdo->query("SELECT SavedStatus FROM UserRecipe WHERE UserRecipe.UserID = $UserID AND WHERE UserRecipe.RecipeID = $RecipeID");
+                        if ($status = 1) {
+                            $image = "/recipe-images/saved.png";
+                        } else {
+                            $image = "/recipe-images/unsaved.png";
+                        }
+                        echo "<img id='favourite-button' src=$image alt='&lt;3'>";
+                        ?>
+                </button>
                 </div>
             </div>
         </div>
