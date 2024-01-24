@@ -69,7 +69,8 @@ require_once('pdo-connect.php');
           GROUP BY R.RecipeID";
         $result = $pdo->query($query);
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-          echo '<a href="recipe-page.php?recipeID=' . $row['RecipeID'] . '" class="recipe-link">';
+          $_GET["RecipeID"] = $RecipeID;
+          echo '<a href="recipe-page.php?RecipeID=' . $row['RecipeID'] . '" class="recipe-link">';
           echo '<div class="card-holder">';
           echo '<div class="column1">';
           echo '<img class="images" src="image1.jpg" alt="Recept 1">';

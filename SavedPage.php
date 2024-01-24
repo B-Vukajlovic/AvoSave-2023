@@ -16,8 +16,8 @@ require_once('pdo-connect.php')
 <body>
     <div class="navbar1">
         <div class="logoCombo">
-            <img src="/VIdeos/avosave_logo-removebg-preview.png" class="logo">
-            <img src="/VIdeos/Logo-PhotoRoom(3).png" class="logo">
+            <img src="/pictures/avosave_logo-removebg-preview.png" class="logo">
+            <img src="/pictures/Logo-PhotoRoom(3).png" class="logo">
             <nav class="navbar">
                 <ul id="pageNav">
                     <li class="pageTraversal" id="home"><a href="#">Home</a></li>
