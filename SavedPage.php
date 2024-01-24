@@ -1,3 +1,8 @@
+<?php
+require_once('pdo-connect.php')
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,15 +32,15 @@
     <div class="wrapper">
         <div class="navbar2">
             <div class="topnav">
-                <a class="myAccountNav" href="ProfilePage.html">My Account</a>
-                <a class="SavedNav" href="SavedPage.html">Saved</a>
+                <a class="myAccountNav" href="ProfilePage.php">My Account</a>
+                <a class="SavedNav" href="SavedPage.php">Saved</a>
             </div>
         </div>
         <div class="mainpage">
             <h1 class = "title-page">My Saved Recipes</h1>
             <?php
             //TODO: Cookie with UserID Needed in query.
-                $query = "SELECT R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients
+            $query = "SELECT R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients
                     FROM Recipe R, UserRecipe UR
                     JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
                     WHERE R.RecipeID = UR.RecipeID AND UR.SavedStatus = 1
