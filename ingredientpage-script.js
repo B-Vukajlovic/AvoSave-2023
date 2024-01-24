@@ -1,57 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.label-available');
-    const dropdown = document.getElementById('category-dropdown');
+document.addEventListener('DOMContentLoaded', function() {
+    var dropdown = document.getElementById('category-dropdown');
+    var container = document.getElementById('ingredients-container');
 
-    const fruits = ["Apple", "Avocado", "Banana", "Grape", "Kiwi", "Peach", "Orange", "Pineapple", "Pear", "Watermelon", "Cherry", "Mango", "Blueberry", "Pomegranate", "Raspberry", "Lemon", "Grapefruit", "Passion fruit", "Lime", "Fig"];
-    const vegetables = ["Carrot", "Broccoli", "Asparagus", "Cauliflower", "Corn", "Cucumber", "Eggplant", "Green Pepper", "Lettuce", "Mushrooms", "Onion", "Potato", "Pumpkin", "Red Pepper", "Spinach", "Sweet Potato", "Tomato", "Beetroot", "Brussel Sprouts", "Peas"];
-    const meatAndFish = ["Chicken", "Beef", "Pork", "Salmon", "Tuna"];
-    const seasoning = ["Salt", "Pepper", "Cinnamon", "Garlic Powder"];
-    const dairy = ["Milk", "Cheese", "Butter", "Yogurt"];
-
-    let activeButtons = { 'fruits': [], 'vegetables': [], 'meatAndFish': [], 'seasoning': [], 'dairy': []};
+    dropdown.addEventListener('change', function() {
+        var category = this.value;
+        updateButtons(category);
+    });
 
     function updateButtons(category) {
-    let items;
-    switch (category) {
-        case 'vegetables':
-            items = vegetables;
-            break;
-        case 'meatAndFish':
-            items = meatAndFish;
-            break;
-        case 'seasoning':
-            items = seasoning;
-            break;
-        case 'dairy':
-            items = dairy;
-            break;
-        default: // 'fruits' or any other case
-            items = fruits;
+        container.innerHTML = '';
+
+        fetch('IngredientPage.php?category=' + category, {
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(ingredient => {
+                var button = document.createElement('button');
+                button.textContent = ingredient;
+                container.appendChild(button);
+            });
+        })
+        .catch(error => console.error('Error:', error));
     }
-    buttons.forEach((button, index) => {
-        button.textContent = items[index] || '';
-        button.classList.toggle('active', activeButtons[category].includes(index));
-    });
-}
 
-    dropdown.addEventListener('change', (event) => {
-        event.preventDefault();
-        updateButtons(event.target.value);
-    });
-
-    buttons.forEach((button, index) => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
-            this.classList.toggle('active');
-            const category = dropdown.value;
-            const activeIndex = activeButtons[category].indexOf(index);
-            if (activeIndex > -1) {
-                activeButtons[category].splice(activeIndex, 1);
-            } else {
-                activeButtons[category].push(index);
-            }
-        });
-    });
-
-    updateButtons('fruits');
+    updateButtons(dropdown.value);
 });
