@@ -27,23 +27,24 @@
                 </ul>
             </nav>
         </header>
-        <form action="ProcessLogin.php" method="post">
+        <form action="ProcessRegister.php" method="post">
             <div class="loginContainer">
                 <div class="tekstContainer">
                     <h1>Welcome.</h1>
                 </div>
                 <div class="inputContainer">
+                    <label> for="email">Email</label>
+                    <input type="email" placeholder="Enter your email" name="email" required>
+
                     <label for="username">Username</label>
                     <input type="text" placeholder="Enter Username" name="username" required>
 
                     <label for="password">Password</label>
-                    <input type="password" placeholder="Enter Password" name="password" required>
+                    <input type="password" placeholder="Enter password" name="password" required>
+                    <input type="password" placeholder="Repeat your password" name="confirmPassword" required>
                 </div>
                 <div class="buttonContainer">
-                    <input type="submit" name="sumbit" value="Log in">
-                </div>
-                <div class="buttonContainer">
-                    <a href="register.php">Register</a>
+                    <input type="submit" name="sumbit" value="Register">
                 </div>
             </div>
         </form>

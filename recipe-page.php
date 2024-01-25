@@ -1,5 +1,6 @@
 <?php
-include_once('pdo_connect.php');
+include_once('pdo-connect.php');
+var_dump($pdo);
 session_start();
 
 $UserID = $_SESSION["UserID"];
