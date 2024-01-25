@@ -1,5 +1,25 @@
 <?php
     include("database.php");
+
+    session_start();
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = $_POST["password"];
+
+        $stmt = $pdo->prepare("SELECT * FROM User WHERE Username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && password_verify($password, $user['hashedPassword'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['Username'];
+            header("Location: index.php");
+            exit();
+        } else {
+            echo "Invalid username or password";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -52,47 +72,3 @@
     </div>
 </body>
 </html>
-
-<?php
-    function userExists($pdo, $username) {
-        try {
-            $stmt = $pdo->prepare("SELECT * FROM User WHERE user = :user");
-            $stmt->bindvalue(':user', $username);
-            $stmt->execute();
-            return !!$stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo "An error occurred: " . $e->getMessage();
-        }
-    }
-
-    function userRegister($pdo, $username, $password) {
-        try {
-            $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("INSERT INTO User (Username, hashedPassword)
-            VALUES (:value1, :value2)");
-
-            $stmt->bindvalue(':value1', $username);
-            $stmt->bindvalue(':value2', $hashPassword);
-
-            $stmt->execute();
-        } catch (PDOException $e) {
-            echo "An error occurred: " . $e->getMessage();
-        }
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
-        $password = $_POST["password"];
-
-        $exists = userExists($pdo, $username);
-
-        if($exists) {
-            echo "User already exists";
-        }
-        else {
-            userRegister($pdo, $username, $password);
-            echo "Registered succesfully";
-        }
-    }
-?>
