@@ -1,17 +1,6 @@
 <?php
+include_once('pdo_connect.php');
 session_start();
-
-$dbname = "AvoSave";
-$dbuser = "jdevries";
-$dbpass = "password123";
-$dbhost = "localhost";
-
-try{
-    $pdo = new PDO("mysql:host =" . $dbhost . ";dbname=" . $dbname, $dbuser, $dbpass);
-} catch (PDOException $e){
-    echo "Database error occured: " . $e->getMessage();
-    exit();
-}
 
 $UserID = $_SESSION["UserID"];
 $RecipeID = $_GET["RecipeID"];
@@ -46,8 +35,8 @@ $RecipeID = $_GET["RecipeID"];
 <body>
     <header>
         <div class="logoCombo">
-            <img src="/VIdeos/avosave_logo-removebg-preview.png" class="logo">
-            <img src="/VIdeos/Logo-PhotoRoom(3).png" class="logo">
+            <img src="/pictures/avosave_logo-removebg-preview.png" class="logo">
+            <img src="/pictures/Logo-PhotoRoom(3).png" class="logo">
         </div>
         <nav class="navbar">
             <ul id="pageNav">
