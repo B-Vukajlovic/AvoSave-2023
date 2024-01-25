@@ -1,5 +1,46 @@
 <?php
     include("database.php");
+
+    function userExists($pdo, $username) {
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM User WHERE user = ?");
+            $stmt->execute([$username]);
+            return !!$stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "An error occurred: " . $e->getMessage();
+        }
+    }
+
+    function userRegister($pdo, $username, $password) {
+        try {
+            $hashPassword = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare("INSERT INTO User (Username, hashedPassword)
+            VALUES (?, ?)");
+
+            $stmt->execute([$username, $hashPassword]);
+        } catch (PDOException $e) {
+            echo "An error occurred: " . $e->getMessage();
+        }
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $usernameMessage = "";
+        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = $_POST["password"];
+
+        $exists = userExists($pdo, $username);
+
+        if($exists) {
+            $message = "User already exists, please log in";
+        }
+        else {
+            userRegister($pdo, $username, $password);
+            echo "Registered succesfully";
+            header('Location: index.html');
+            exit();
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +75,7 @@
                 <div class="inputContainer">
                     <label for="username">Username</label>
                     <input type="text" placeholder="Enter Username" name="username" required>
+                    <div class="usernameText"> <?php echo $message; ?> </div>
 
                     <label for="password">Password</label>
                     <input type="password" placeholder="Enter Password" name="password" required>
@@ -52,25 +94,3 @@
     </div>
 </body>
 </html>
-
-<?php
-    session_start();
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
-        $password = $_POST["password"];
-
-        $stmt = $pdo->prepare("SELECT * FROM User WHERE username = ?");
-        $stmt->execute([$username]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            header("Location: index.html");
-            exit();
-        } else {
-            echo "Invalid username or password";
-        }
-    }
-?>
