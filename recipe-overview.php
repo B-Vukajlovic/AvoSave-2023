@@ -90,6 +90,7 @@ require_once('pdo-connect.php');
       </div>
     </div>
   </div>
+  <script src = "filter_handeling.js"></script>
 </body>
 </html>
 
