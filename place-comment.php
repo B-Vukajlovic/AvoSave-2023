@@ -1,17 +1,6 @@
 <?php
 session_start();
-
-$dbname = "AvoSave";
-$dbuser = "jdevries";
-$dbpass = "password123";
-$dbhost = "localhost";
-
-try{
-    $pdo = new PDO("mysql:host =" . $dbhost . ";dbname=" . $dbname, $dbuser, $dbpass);
-} catch (PDOException $e){
-    echo "Database error occured: " . $e->getMessage();
-    exit();
-}
+require_once('pdo_connect.php');
 
 $recipeid = $_GET["recipe_id"];
 $userid = $_SESSION["user_id"];

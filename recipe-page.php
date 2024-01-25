@@ -4,7 +4,6 @@ session_start();
 
 $UserID = $_SESSION["UserID"];
 $RecipeID = $_GET["RecipeID"];
-
 ?>
 
 <!DOCTYPE html>
@@ -88,7 +87,7 @@ $RecipeID = $_GET["RecipeID"];
                     if ($ingredients -> num_rows > 0) {
                         while($id = ingredients -> fetch_assoc()) {
                             $amount = $id["Amount"];
-  g                          $name = $id["IngredientName"];
+                            $name = $id["IngredientName"];
                             echo "<li>".$amount." ".$name."</li>";
                         }
                     }
