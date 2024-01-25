@@ -1,5 +1,6 @@
 <?php
-    include("database.php");
+    include_once("pdo_connect.php");
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
                     <input type="password" placeholder="Enter Password" name="password" required>
                 </div>
                 <div class="buttonContainer">
-                    <input type="submit" name="sumbit" value="Register">
+                    <input type="submit" name="sumbit" value="Log in">
                 </div>
             </div>
         </form>
@@ -88,7 +89,8 @@
         $exists = userExists($pdo, $username);
 
         if($exists) {
-            echo "User already exists";
+            $UserID = $pdo->query("")
+            $_SESSION["UserID"] = 
         }
         else {
             userRegister($pdo, $username, $password);

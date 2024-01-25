@@ -80,7 +80,7 @@ $RecipeID = $_GET["RecipeID"];
                 <h2>Description</h2>
                 <?php
                     global $pdo, $RecipeID;
-                    $description = $pdo -> query("SELECT [Description] FROM Recipe WHERE RecipeID = $RecipeID");
+                    $description = $pdo -> query("SELECT R.Description FROM Recipe R WHERE RecipeID = $RecipeID");
                     echo $description?>
             </div>
         </div>
