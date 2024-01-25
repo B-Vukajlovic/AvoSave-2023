@@ -9,7 +9,6 @@
 .search-bar {
     width: 450px;
     height: 100px;
-
 }
 
 .input-search-bar {
@@ -38,11 +37,17 @@
     background-color: white;
 }
 
+.ingredient-button:hover {
+    background-color: #6ed472;
+}
 
-.label-available:hover {background-color: greenyellow;}
+.ingredient-button.selected {
+    background-color: #4CAF50;
+}
 
-.label-available.active {background-color: var(--high-light);}
-
+.ingredient-button[style="display: none;"] {
+    display: none;
+}
 
 .ingredients-container{
     display: grid;
@@ -116,7 +121,7 @@
 }
 
 .body{
-    background-image: url(/Webtechnologie-Website-2023-UvA/VIdeos/background\(ingredients\).webp);
+    background-image: url(/VIdeos/background\(ingredients\).webp);
 }
 
 .logoCombo {

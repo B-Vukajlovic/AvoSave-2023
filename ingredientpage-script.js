@@ -1,28 +1,54 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var dropdown = document.getElementById('category-dropdown');
-    var container = document.getElementById('ingredients-container');
+    var dropdown = document.getElementById('dropdown-content');
+    dropdown.value = "All";
+    var buttons = document.querySelectorAll('.ingredient-button');
+    var selectedIngredients = [];
+    var searchInput = document.getElementById('ingredient-search');
 
-    dropdown.addEventListener('change', function() {
-        var category = this.value;
-        updateButtons(category);
+    // Select ingredients
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var ingredientName = this.textContent;
+
+            if (selectedIngredients.includes(ingredientName)) {
+                var index = selectedIngredients.indexOf(ingredientName);
+                selectedIngredients.splice(index, 1);
+                this.classList.remove('selected');
+            } else {
+                selectedIngredients.push(ingredientName);
+                this.classList.add('selected');
+            }
+        });
     });
 
-    function updateButtons(category) {
-        container.innerHTML = '';
+    // Dropdown menu
+    dropdown.addEventListener('change', function() {
+        var selectedType = this.value;
+        buttons.forEach(function(button) {
+            if (selectedType === 'All' || button.getAttribute('data-type') === selectedType) {
+                button.style.display = '';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+    });
 
-        fetch('IngredientPage.php?category=' + category, {
-            headers: { 'X-Requested-With': 'XMLHttpRequest' }
-        })
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(ingredient => {
-                var button = document.createElement('button');
-                button.textContent = ingredient;
-                container.appendChild(button);
-            });
-        })
-        .catch(error => console.error('Error:', error));
-    }
+    // Search bar
+    searchInput.addEventListener('input', function() {
+        var searchText = this.value.toLowerCase();
 
-    updateButtons(dropdown.value);
+        buttons.forEach(function(button) {
+            var ingredientName = button.textContent.toLowerCase();
+            if (ingredientName.includes(searchText)) {
+                button.style.display = '';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+    });
+
+    // Send ingredients
+    document.getElementById('ingredient-form').addEventListener('submit', function(event) {
+        document.getElementById('selected-ingredients').value = JSON.stringify(selectedIngredients);
+    });
 });

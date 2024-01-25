@@ -1,25 +1,17 @@
 <?php
-/* $servername = "localhost";
-$username = "username";
-$password = "password";
+$dbname = "AvoSave";
+$dbuser = "ismailo";
+$dbpass = "ytrewq";
+$dbhost = "localhost";
 
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Connected successfully";
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
-}*/
+try{
+    $pdo = new PDO("mysql:host =" . $dbhost . ";dbname=" . $dbname, $dbuser, $dbpass);
+} catch (PDOException $e){
+    echo "Database error occured: " . $e->getMessage();
+    exit();
+}
 
-$ingredients = [
-    'fruits' => ["Apple", "Banana", "Cherry"],
-    'vegetables' => ["Carrot", "Broccoli", "Spinach"],
-    'meatAndFish' => ["Chicken", "Beef", "Salmon"],
-];
-
-$category = $_GET['category'] ?? 'fruits';
-$response = isset($ingredients[$category]) ? $ingredients[$category] : [];
+$ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
 
 ?>
 
@@ -33,8 +25,8 @@ $response = isset($ingredients[$category]) ? $ingredients[$category] : [];
 </head>
 <body class="body">
     <div class="logoCombo">
-        <img src="/Webtechnologie-Website-2023-UvA/VIdeos/avosave_logo-removebg-preview.png" class="logo">
-        <img src="/Webtechnologie-Website-2023-UvA/VIdeos/Logo-PhotoRoom(3).png" class="logo">
+        <img src="/VIdeos/avosave_logo-removebg-preview.png" class="logo">
+        <img src="/VIdeos/Logo-PhotoRoom(3).png" class="logo">
         <nav class="navbar">
             <ul id="pageNav">
                 <li class="pageTraversal" id="home"><a href="#">Home</a></li>
@@ -52,24 +44,33 @@ $response = isset($ingredients[$category]) ? $ingredients[$category] : [];
 
     <section class="tools">
         <div class="search-bar">
-            <input type="text" placeholder="Search an ingredient..." class="input-search-bar">
+            <input type="text" id="ingredient-search" placeholder="Search an ingredient..." class="input-search-bar">
         </div>
         <div id="dropdown">
             <select id="dropdown-content">
-                <?php foreach ($ingredients as $key => $value): ?>
-                    <option value="<?php echo htmlspecialchars($key); ?>"><?php echo htmlspecialchars(ucfirst($key)); ?></option>
-                <?php endforeach; ?>
+                <option value="All">All</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Meat">Meat</option>
+                <option value="Fish and Seafood">Fish and Seafood</option>
+                <option value="Dairy and Eggs">Dairy and Eggs</option>
+                <option value="Oils and Seasoning">Oils and Seasoning</option>
+                <option value="Nuts and Seeds">Nuts and Seeds</option>
+                <option value="Grains">Grains</option>
             </select>
         </div>
 
         <div id="ingredients-container">
-            <?php foreach ($response as $ingredient): ?>
-                <button class="ingredient-button"><?php echo htmlspecialchars($ingredient); ?></button>
-            <?php endforeach; ?>
+            <?php while ($row = $ingredients->fetch()) {
+                echo "<button class='ingredient-button' data-type='{$row['Type']}'>{$row['Name']}</button>";}
+            ?>
         </div>
 
         <div>
-            <button class="next">Next</button>
+            <form id="ingredient-form" action="recipe-overview.php" method="post">
+                <input type="hidden" id="selected-ingredients" name="selectedIngredients">
+                <button type="submit" class="next">Next</button>
+            </form>
         </div>
     </section>
     <script src="ingredientpage-script.js"></script>
