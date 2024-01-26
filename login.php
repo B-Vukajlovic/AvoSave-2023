@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="loginStyle.css">
+    <link rel="stylesheet" href="colors.css">
     <title>Document</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
                     <li class="pageTraversal" id="search"><a href="#">Search</a></li>
                 </ul>
                 <ul id="accountNav">
-                    <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
+                    <li class="pageTraversal" id="register"><a href="register.php">Register</a></li>
                 </ul>
             </nav>
         </header>
@@ -38,15 +39,14 @@
 
                     <label for="password">Password</label>
                     <input type="password" placeholder="Enter Password" name="password" required>
+                    <input type="checkbox" name="rememberMe" checked> Remember me
                 </div>
                 <div class="buttonContainer">
                     <input type="submit" name="sumbit" value="Log in">
                 </div>
-                <div class="buttonContainer">
-                    <a href="register.php">Register</a>
-                </div>
             </div>
         </form>
+
         <img src="/pictures/colorfullFruit.png" class="image" id="img1">
         <img src="/pictures/blackFruit.png" class="image" id="img3">
         <img src="/pictures/redFruit.png" class="image" id="img5">

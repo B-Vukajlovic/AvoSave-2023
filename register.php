@@ -1,6 +1,7 @@
 <?php
-    include_once("pdo_connect.php");
-    session_start();
+    require_once("includes/pdo_connect.php");
+    require_once("includes/config_session.php");
+    require_once("includes/ProcessRegister.php");
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@
                     <h1>Welcome.</h1>
                 </div>
                 <div class="inputContainer">
-                    <label> for="email">Email</label>
+                    <label for="email">Email</label>
                     <input type="email" placeholder="Enter your email" name="email" required>
 
                     <label for="username">Username</label>
@@ -48,6 +49,7 @@
                 </div>
             </div>
         </form>
+
         <img src="/pictures/colorfullFruit.png" class="image" id="img1">
         <img src="/pictures/blackFruit.png" class="image" id="img3">
         <img src="/pictures/redFruit.png" class="image" id="img5">
