@@ -1,5 +1,6 @@
 <?php
-    include("database.php");
+    session_start();
+    require_once "database.php";
 
     function userExists($pdo, $username) {
         try {
@@ -7,7 +8,8 @@
             $stmt->execute([$username]);
             return !!$stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo "An error occurred: " . $e->getMessage();
+            error_log("Database error: " . $e->getMessage());
+            return null;
         }
     }
 
@@ -16,29 +18,57 @@
             $hashPassword = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare("INSERT INTO User (Username, hashedPassword)
             VALUES (?, ?)");
-
             $stmt->execute([$username, $hashPassword]);
+            return $pdo->lastInsertId();
         } catch (PDOException $e) {
-            echo "An error occurred: " . $e->getMessage();
+            error_log("Database error: " . $e->getMessage());
+            return false;
         }
     }
 
+    $usernameError = $passwordError = $generalError = "";
+    $formValid = true;
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-        $usernameMessage = "";
-        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
-        $password = $_POST["password"];
-
-        $exists = userExists($pdo, $username);
-
-        if($exists) {
-            $message = "User already exists, please log in";
+        if (empty($_POST["username"])) {
+            $usernameError = "Username is required";
+            $formValid = false;
         }
-        else {
-            userRegister($pdo, $username, $password);
-            echo "Registered succesfully";
-            header('Location: index.html');
-            exit();
+
+        if (empty($_POST["password"])) {
+            $passwordError = "Password is required";
+            $formValid = false;
+        }
+
+        if ($formValid) {
+            $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = $_POST["password"];
+
+            $userExistsResult = userExists($pdo, $username);
+
+            switch ($userExistsResult) {
+                case true:
+                    $usernameError = "User already exists";
+                    break;
+                case null:
+                    $generalError = "An error occurred. Please try again later.";
+                    break;
+                case false:
+                    $userId = userRegister($pdo, $username, $password);
+                    if ($userId) {
+                        $_SESSION["loggedin"] = true;
+                        $_SESSION["userid"] = $userId;
+                        $_SESSION["username"] = $username;
+
+                        header('Location: index.html');
+                        exit();
+                    } else {
+                        $generalError = "An error occurred. Please try again later.";
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
 ?>
@@ -54,9 +84,9 @@
 <body>
     <div class="gridContainer">
         <header>
-            <!--<div class="logoBar">
-                <img src="/pictures/avosave_logo-removebg-preview.png" class="logo">
-            </div>-->
+            <div class="logoBar">
+                <img src="" class="logo">
+            </div>
             <nav class="navBar">
                 <ul id="pageNav">
                     <li class="pageTraversal" id="home"><a href="index.html">Home</a></li>
@@ -67,30 +97,42 @@
                 </ul>
             </nav>
         </header>
-        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
-            <div class="loginContainer">
-                <div class="tekstContainer">
-                    <h1>Welcome.</h1>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+            <div class="tekstContainer">
+                <h1>Welcome.</h1>
+            </div>
+            <div class="inputContainer">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+                <div class="usernameHelperText">
+                    <?php
+                        if(!empty($usernameError)) {
+                            echo $usernameError;
+                        }
+                    ?>
                 </div>
-                <div class="inputContainer">
-                    <label for="username">Username</label>
-                    <input type="text" placeholder="Enter Username" name="username" required>
-                    <div class="usernameText"> <?php echo $message; ?> </div>
 
-                    <label for="password">Password</label>
-                    <input type="password" placeholder="Enter Password" name="password" required>
-                </div>
-                <div class="buttonContainer">
-                    <input type="submit" name="sumbit" value="Register">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <div class="passwordHelperTekst">
+                    <?php
+                        if(!empty($passwordError)) {
+                            echo $passwordError;
+                        }
+                    ?>
                 </div>
             </div>
+            <div class="buttonContainer">
+                <input type="submit" name="submit" value="Register">
+            </div>
+            <div class="generalHelperText">
+                <?php
+                    if(!empty($generalError)) {
+                        echo $generalError;
+                    }
+                ?>
+            </div>
         </form>
-        <img src="/pictures/colorfullFruit.png" class="image" id="img1">
-        <img src="/pictures/blackFruit.png" class="image" id="img3">
-        <img src="/pictures/redFruit.png" class="image" id="img5">
-        <img src="/pictures/orangeFruit.png" class="image" id="img6">
-        <img src="/pictures/colorFullFruit4.png" class="image" id="img7">
-        <img src="/pictures/purpleFruit.png" class="image" id="img8">
     </div>
 </body>
 </html>
