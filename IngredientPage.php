@@ -7,7 +7,7 @@ $dbhost = "localhost";
 try{
     $pdo = new PDO("mysql:host =" . $dbhost . ";dbname=" . $dbname, $dbuser, $dbpass);
 } catch (PDOException $e){
-    echo "Database error occured: " . $e->getMessage();
+    echo "Database error occurred: " . $e->getMessage();
     exit();
 }
 
@@ -29,11 +29,11 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
         <img src="/VIdeos/Logo-PhotoRoom(3).png" class="logo">
         <nav class="navbar">
             <ul id="pageNav">
-                <li class="pageTraversal" id="home"><a href="#">Home</a></li>
-                <li class="pageTraversal" id="search"><a href="#">Search</a></li>
+                <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
+                <li class="pageTraversal" id="search"><a href="recipe-overview.php">Search</a></li>
             </ul>
             <ul id="accountNav">
-                <li class="pageTraversal" id="login"><a href="#">Login</a></li>
+                <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
             </ul>
         </nav>
     </div>
@@ -42,12 +42,12 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
         <h1>Choose ingredients to include</h1>
     </div>
 
-    <section class="tools">
+    <section class="filter">
         <div class="search-bar">
             <input type="text" id="ingredient-search" placeholder="Search an ingredient..." class="input-search-bar">
         </div>
         <div id="dropdown">
-            <select id="dropdown-content">
+            <select class="dropdown-menu" id="dropdown-content">
                 <option value="All">All</option>
                 <option value="Fruits">Fruits</option>
                 <option value="Vegetables">Vegetables</option>
@@ -59,19 +59,21 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
                 <option value="Grains">Grains</option>
             </select>
         </div>
+        <div>
+             <form id="ingredient-form" action="recipe-overview.php" method="post">
+                <input type="hidden" id="selected-ingredients" name="selectedIngredients">
+                <button type="submit" class="next">View Recipes</button>
+            </form>
+        </div>
+    </section>
 
-        <div id="ingredients-container">
+    <section class="tools">
+        <div class="ingredients-container">
             <?php while ($row = $ingredients->fetch()) {
                 echo "<button class='ingredient-button' data-type='{$row['Type']}'>{$row['Name']}</button>";}
             ?>
         </div>
 
-        <div>
-            <form id="ingredient-form" action="recipe-overview.php" method="post">
-                <input type="hidden" id="selected-ingredients" name="selectedIngredients">
-                <button type="submit" class="next">Next</button>
-            </form>
-        </div>
     </section>
     <script src="ingredientpage-script.js"></script>
 </body>

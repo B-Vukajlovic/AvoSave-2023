@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Search bar
     searchInput.addEventListener('input', function() {
         var searchText = this.value.toLowerCase();
+        dropdown.value = 'All';
 
         buttons.forEach(function(button) {
             var ingredientName = button.textContent.toLowerCase();
