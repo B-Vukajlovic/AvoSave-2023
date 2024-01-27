@@ -1,23 +1,37 @@
 <?php
-    include("database.php");
-
     session_start();
+    require_once "database.php";
+
+    $usernameError = $passwordError = $generalError = "";
+    $formValid = true;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
-        $password = $_POST["password"];
+        if (empty($_POST["username"])) {
+            $usernameError = "Username is required";
+            $formValid = false;
+        }
 
-        $stmt = $pdo->prepare("SELECT * FROM User WHERE Username = ?");
-        $stmt->execute([$username]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (empty($_POST["password"])) {
+            $passwordError = "Password is required";
+            $formValid = false;
+        }
 
-        if ($user && password_verify($password, $user['hashedPassword'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['Username'];
-            header("Location: index.php");
-            exit();
-        } else {
-            echo "Invalid username or password";
+        if ($formValid) {
+            $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = $_POST["password"];
+
+            $stmt = $pdo->prepare("SELECT * FROM User WHERE Username = ?");
+            $stmt->execute([$username]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($user && password_verify($password, $user['hashedPassword'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['Username'];
+                header("Location: index.php");
+                exit();
+            } else {
+                echo "Invalid username or password";
+            }
         }
     }
 ?>
