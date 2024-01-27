@@ -4,9 +4,10 @@
 
     function userExists($pdo, $username) {
         try {
-            $stmt = $pdo->prepare("SELECT * FROM User WHERE user = ?");
+            $stmt = $pdo->prepare("SELECT * FROM User WHERE Username = ?");
             $stmt->execute([$username]);
             return !!$stmt->fetch(PDO::FETCH_ASSOC);
+
         } catch (PDOException $e) {
             error_log("Database error: " . $e->getMessage());
             return null;
@@ -16,10 +17,12 @@
     function userRegister($pdo, $username, $password) {
         try {
             $hashPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("INSERT INTO User (Username, hashedPassword)
-            VALUES (?, ?)");
+
+            $stmt = $pdo->prepare("INSERT INTO User (Username, HashedPassword)
+                VALUES (?, ?)");
             $stmt->execute([$username, $hashPassword]);
             return $pdo->lastInsertId();
+
         } catch (PDOException $e) {
             error_log("Database error: " . $e->getMessage());
             return false;
@@ -97,7 +100,7 @@
                 </ul>
             </nav>
         </header>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="tekstContainer">
                 <h1>Welcome.</h1>
             </div>
