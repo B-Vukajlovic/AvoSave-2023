@@ -19,11 +19,11 @@ require_once('pdo-connect.php')
             <img src="/VIdeos/Logo-PhotoRoom(3).png" class="logo">
             <nav class="navbar">
                 <ul id="pageNav">
-                    <li class="pageTraversal" id="home"><a href="#">Home</a></li>
-                    <li class="pageTraversal" id="search"><a href="#">Search</a></li>
+                    <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
+                    <li class="pageTraversal" id="search"><a href="recipe-overview.php">Search</a></li>
                 </ul>
                 <ul id="accountNav">
-                    <li class="pageTraversal" id="login"><a href="#">Login</a></li>
+                    <li class="pageTraversal" id="login"><a href="ProfilePage.php">Profile</a></li>
                 </ul>
             </nav>
         </div>

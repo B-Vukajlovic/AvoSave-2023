@@ -67,7 +67,7 @@
 }
 
 .navbar2 {
-    height: 60vh;
+    height: 60vw;
     width: 15vw;
     background-color: hsl(35, 49%, 12%);
     color: #fff;
@@ -92,6 +92,7 @@
 }
 
 .wrapper {
+    height:100%;
     display: grid;
     grid-template-columns: 25% 75%;
 }
