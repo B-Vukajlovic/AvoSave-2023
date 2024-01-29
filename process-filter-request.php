@@ -1,5 +1,12 @@
 <?php
-require_once('pdo-connect.php');
+require_once( 'pdo-connect.php' );
+
+function array_order_desc($a, $b) {
+    return $b['Priority'] - $a['Priority'];
+}
+
+$preferedIngredientsString = $_POST[ 'selectedIngredients' ];
+$preferedIngredientsArray = json_decode( $preferedIngredientsString );
 
 if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' ] ) ) {
     $filters = $_POST[ 'filtersApplied' ];
@@ -22,38 +29,38 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
               FROM RecipeIngredient AS RI
               JOIN Ingredient AS I ON RI.IngredientName = I.Name
               WHERE I.Type IN ('Meat', 'Fish and Seafood'))";
-            break;
+                break;
             case 'vegan':
-            $conditions[] = "R.RecipeID NOT IN (
-                  SELECT RI.RecipeID
-                  FROM RecipeIngredient AS RI
-                  JOIN Ingredient AS I ON RI.IngredientName = I.Name
-                  WHERE I.Type IN ('Meat', 'Fish and Seafood', 'Dairy and Eggs'))";
-            break;
+                $conditions[] = "R.RecipeID NOT IN (
+                    SELECT RI.RecipeID
+                    FROM RecipeIngredient AS RI
+                    JOIN Ingredient AS I ON RI.IngredientName = I.Name
+                    WHERE I.Type IN ('Meat', 'Fish and Seafood', 'Dairy and Eggs'))";
+                break;
             case 'less15':
-            $timeAmount[] = 'R.Time < 15';
-            break;
+                $timeAmount[] = 'R.Time < 15';
+                break;
             case '15to30':
-            $timeAmount[] = 'R.Time >= 15 AND R.Time <= 30';
-            break;
+                $timeAmount[] = 'R.Time >= 15 AND R.Time <= 30';
+                break;
             case '30to60':
-            $timeAmount[] = 'R.Time >= 30 AND R.Time <= 60';
-            break;
+                $timeAmount[] = 'R.Time >= 30 AND R.Time <= 60';
+                break;
             case '60more':
-            $timeAmount[] = 'R.Time > 60';
-            break;
+                $timeAmount[] = 'R.Time > 60';
+                break;
             case '1serving':
-            $servings[] = 'R.Servings = 1';
-            break;
+                $servings[] = 'R.Servings = 1';
+                break;
             case '2servings':
-            $servings[] = 'R.Servings = 2';
-            break;
+                $servings[] = 'R.Servings = 2';
+                break;
             case '3servings':
-            $servings[] = 'R.Servings = 3';
-            break;
+                $servings[] = 'R.Servings = 3';
+                break;
             case '4moreservings':
-            $servings[] = 'R.Servings > 4';
-            break;
+                $servings[] = 'R.Servings > 4';
+                break;
         }
     }
 
@@ -71,7 +78,25 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
     $sql .= implode( ' AND ', $conditions );
     $sql .= ' GROUP BY R.RecipeID';
     $result = $pdo->query( $sql );
-    while ( $row = $result->fetch( PDO::FETCH_ASSOC ) ) {
+    $rows = $result->fetchAll( PDO::FETCH_ASSOC );
+
+    //Adds priority to the recipes based on preferences
+    foreach ( $rows as $row ) {
+        $matches = 0;
+        $ingredients = explode( ',', $row[ 'Ingredients' ] );
+        foreach ( $ingredient as $ingredients ) {
+            foreach ( $preferedIngredient as $preferedIngredientsArray ) {
+                if ( $ingredient == $preferedIngredient ) {
+                    $matches++;
+                    break;
+                }
+            }
+        }
+        $row[ 'Priority' ] = $matches;
+    }
+    $ordered_rows = usort($rows, 'array_order_desc');
+
+    foreach ( $ordered_rows as $row ) {
         echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
         echo '<div class="card-holder">';
         echo '<div class="column1">';
@@ -90,7 +115,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
         echo '</a>';
     }
 
-//Default display without filters
+    //Default display without filters
 } else {
     $sql = "SELECT R.RecipeID, R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients
   FROM Recipe R
@@ -98,7 +123,24 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
   JOIN Ingredient AS I ON RI.IngredientName = I.Name
   GROUP BY R.RecipeID";
     $result = $pdo->query( $sql );
-    while ( $row = $result->fetch( PDO::FETCH_ASSOC ) ) {
+    $rows = $result->fetchAll( PDO::FETCH_ASSOC );
+
+    //Adds priority to the recipes based on preferences
+    foreach ( $rows as $row ) {
+        $matches = 0;
+        $ingredients = explode( ',', $row[ 'Ingredients' ] );
+        foreach ( $ingredient as $ingredients ) {
+            foreach ( $preferedIngredient as $preferedIngredientsArray ) {
+                if ( $ingredient == $preferedIngredient ) {
+                    $matches++;
+                    break;
+                }
+            }
+        }
+        $row[ 'Priority' ] = $matches;
+    }
+    $ordered_rows = usort($rows, 'array_order_desc');
+    foreach ( $ordered_rows as $row ) {
         echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
         echo '<div class="card-holder">';
         echo '<div class="column1">';
