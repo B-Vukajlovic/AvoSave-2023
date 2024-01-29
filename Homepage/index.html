@@ -9,33 +9,32 @@
 <body>
     <div class="gridContainer">
         <header>
-            <!--<div class="logoBar">
-                <img src="/pictures/avosave_logo-removebg-preview.png" class="logo">
-            </div>-->
+            <div class="logoBar">
+                <li class="navText">AvoSave</li>
+            </div>
             <nav class="navBar">
-                <ul id="pageNav">
+                <ul class="navSub" id="pageNav">
                     <li class="pageTraversal" id="home"><a href="index.html">Home</a></li>
                     <li class="pageTraversal" id="search"><a href="#">Search</a></li>
                 </ul>
-                <ul id="accountNav">
+                <ul class="navSub" id="accountNav">
                     <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
                 </ul>
             </nav>
         </header>
-        <main class="homePageContent">
-            <section>
-                <div id="transformX">
-                    <article id="homePageArticle">
-                        <h1>Less waste for a better future.</h1>
-                        <p>Use our advanced recipe search tool to find a recipe based on
-                            your own ingredients or left-overs.</p>
-                        <button onclick="window.location.href = 'IngredientPage.php';"id="button">
-                            Get started
-                        </button>
-                    </article>
-                </div>
-            </section>
-        </main>
+        <section class="homePageContent">
+            <div id="transformX">
+                <article id="homePageArticle">
+                    <h1>Give purpose To waste.</h1>
+                    <br>
+                    <p>Say goodbye to food waste and hello to delicious, home-cooked meals that make the most of what you've got.</p>
+                    <button onclick="window.location.href = 'IngredientPage.php';" id="button"> Get started </button>
+                </article>
+            </div>
+        </section>
+        <div class="imgContainer">
+            <img src="pictures/HomeScreen.png" class="homescreenImage">
+        </div>
     </div>
 </body>
 </html>
