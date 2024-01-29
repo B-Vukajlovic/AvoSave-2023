@@ -114,11 +114,6 @@ header {
     font-weight: 400;
 }
 
-#homePageArticle a {
-    text-decoration: underline;
-    color: black;
-}
-
 .homePageContent #button {
     background-color: hsl(130, 45%, 75%);
     border-style: solid;

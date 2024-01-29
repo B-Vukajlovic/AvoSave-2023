@@ -14,11 +14,15 @@
             </div>
             <nav class="navBar">
                 <ul class="navSub" id="pageNav">
-                    <li class="pageTraversal" id="home"><a href="index.html">Home</a></li>
-                    <li class="pageTraversal" id="search"><a href="#">Search</a></li>
+                    <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
+                    <li class="pageTraversal" id="home"><a href="#aboutUs">Our goal</a></li>
                 </ul>
                 <ul class="navSub" id="accountNav">
-                    <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
+                    <?php if (isset($_COOKIE["user_id"])): ?>
+                        <li class="pageTraversal" id="profile"><a href="profile.php">Profile</a></li>
+                    <?php else: ?>
+                        <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
+                    <?php endif; ?>
                 </ul>
             </nav>
         </header>
@@ -30,9 +34,6 @@
                     <p>Say goodbye to food waste and hello to delicious, home-cooked meals that make the most of what you've got.</p>
                     <button onclick="window.location.href = 'IngredientPage.php';" id="button"> Get started </button>
                     <br>
-                    <a href="#aboutUs" class="scroll-down-arrow">
-                        Our goal
-                    </a>
                 </article>
             </div>
         </section>
