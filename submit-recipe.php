@@ -1,5 +1,6 @@
 <?php
-require_once('pdo-connect.php')
+require_once('pdo-connect.php');
+require_once('submission.php');
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +38,7 @@ require_once('pdo-connect.php')
         </div>
         <div class="mainpage">
             <h1>Submit a Recipe!<h1>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="acc-info-input">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title" placeholder="e.g. 'My Recipe'">
@@ -51,21 +52,33 @@ require_once('pdo-connect.php')
                     <input type="text" id="time" name="time" placeholder="e.g. '120'">
                     <label for="author">Author</label>
                     <input type="text" id="author" name="author" placeholder = "e.g. 'John Doe'">
-                    <label for="ingredients">Ingredients</label>
-                    <input type="hidden" id="selected-ingredients" name="selectedIngredients">
 
-                    <div class="search-bar">
-                        <input type="text" id="ingredient-search" placeholder="Search an ingredient..." class="input-search-bar">
+                    <div class="visuals">
+                        <div class ="see">
+                            <label for="image">Image</label>
+                            <input type="file" id="image" name="image" class="select-img">
+                            <img src="" class="img" alt="...">
+                            <input type="hidden" id="imgur-url" name="imgur-url">
+                        </div>
+
+                        <div class="pick">
+                            <label for="ingredients">Ingredients</label>
+                            <input type="hidden" id="selected-ingredients" name="selectedIngredients">
+                            <div class="search-bar">
+                                <input type="text" id="ingredient-search" placeholder="Search an ingredient..." class="input-search-bar">
+                            </div>
+
+                            <div class="ingredients-container">
+                                <?php
+                                    $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
+                                    while ($row = $ingredients->fetch()) {
+                                        echo "<button type='button' class='ingredient-button' data-type='{$row['Type']}'>{$row['Name']}</button>";}
+                                ?>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="ingredients-container">
-                        <?php
-                            $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
-                            while ($row = $ingredients->fetch()) {
-                                echo "<button type='button' class='ingredient-button' data-type='{$row['Type']}'>{$row['Name']}</button>";}
-                        ?>
-                    </div>
-                    <input type="submit" value="Submit the recipe">
+                    <input type="submit" name="submit" value="Submit the recipe">
                 </div>
             </form>
         </div>

@@ -159,7 +159,6 @@ input[type=submit]:hover {
     display: grid;
     grid-template-columns: auto;
     gap: 10px;;
-    margin: 5px;
     margin-bottom: 1%;
     overflow-y: scroll;
 }
@@ -184,4 +183,31 @@ input[type=submit]:hover {
 
 h1 {
     margin: 25px;
+}
+
+.img {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.select-img {
+    max-height: 40px;
+    margin-top: -110px;
+}
+
+.visuals {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.pick {
+    max-height: 500px;
+    margin-left: -300px;
+}
+
+.see {
+    display: grid;
+    grid-template-columns: auto;
+    margin-top: 1%;
+    max-width: 300px;
 }

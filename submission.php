@@ -1,5 +1,6 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+/*
+if (isset($_POST['submit'])) {
 
     // Get recipe information
     $title = $_POST['title'];
@@ -8,9 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servings = $_POST['servings'];
     $time = $_POST['time'];
     $author = $_POST['author'];
-    $selectedIngredients = json_decode($_POST['selectedIngredients'], true);
-    $amount =
-    $unit =
+    $selectedIngredients = json_decode($_POST['selected-ingredients'], true);
+   // $amount = $_PO;
+   // $unit = 0;
+    $imageUrl = $_POST['imgur-url'];
 
     // Insert recipe
     $recipeId = 0;
@@ -37,5 +39,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Invalid request method.";
 }
-
+*/
 ?>
