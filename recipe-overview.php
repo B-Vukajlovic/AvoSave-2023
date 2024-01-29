@@ -15,9 +15,7 @@ require_once('pdo-connect.php');
 <body>
   <h1 class="title-page"> Recipes</h1>
   <div class="container">
-    <div class="search-bar">
-      <input type="text" placeholder="Search..." class="input-search-bar">
-    </div>
+
   </div>
   <div class="main-page">
     <div class="filters">
@@ -49,17 +47,6 @@ require_once('pdo-connect.php');
       <input type="checkbox" id="filter10" name="filter10" value="4moreservings">
       <label for="filter10"> 4+ servings</label><br><br>
 
-      <label for="filter11" class="title-filter"> Rating</label><br>
-      <input type="checkbox" id="filter11" name="filter11" value="1star">
-      <label for="filter11"> 1 star</label><br>
-      <input type="checkbox" id="filter12" name="filter12" value="2stars">
-      <label for="filter12"> 2 stars</label><br>
-      <input type="checkbox" id="filter13" name="filter13" value="3stars">
-      <label for="filter13"> 3 stars</label><br>
-      <input type="checkbox" id="filter14" name="filter14" value="4stars">
-      <label for="filter14"> 4 stars</label><br>
-      <input type="checkbox" id="filter15" name="filter15" value="5stars">
-      <label for="filter15"> 5 stars</label><br>
     </div>
     <div class="recipes">
     </div>

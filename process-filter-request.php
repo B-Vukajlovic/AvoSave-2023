@@ -5,7 +5,7 @@ function array_order_desc($a, $b) {
     return $b['Priority'] - $a['Priority'];
 }
 
-$preferedIngredientsString = $_POST[ 'selectedIngredients' ];
+$preferedIngredientsString = $_POST("selectedIngredients");
 $preferedIngredientsArray = json_decode( $preferedIngredientsString );
 
 if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' ] ) ) {
@@ -81,22 +81,23 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
     $rows = $result->fetchAll( PDO::FETCH_ASSOC );
 
     //Adds priority to the recipes based on preferences
-    foreach ( $rows as $row ) {
+    foreach ($rows as $key => $row) {
         $matches = 0;
         $ingredients = explode( ',', $row[ 'Ingredients' ] );
-        foreach ( $ingredient as $ingredients ) {
-            foreach ( $preferedIngredient as $preferedIngredientsArray ) {
+        foreach ( $ingredients as $ingredient ) {
+            foreach ( $preferedIngredientsArray as $preferedIngredient ) {
                 if ( $ingredient == $preferedIngredient ) {
                     $matches++;
                     break;
                 }
             }
         }
-        $row[ 'Priority' ] = $matches;
+        $rows[$key]['Priority'] = $matches;
     }
-    $ordered_rows = usort($rows, 'array_order_desc');
 
-    foreach ( $ordered_rows as $row ) {
+    usort($rows, 'array_order_desc');
+
+    foreach ($rows as $row ) {
         echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
         echo '<div class="card-holder">';
         echo '<div class="column1">';
@@ -126,21 +127,21 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
     $rows = $result->fetchAll( PDO::FETCH_ASSOC );
 
     //Adds priority to the recipes based on preferences
-    foreach ( $rows as $row ) {
+    foreach ($rows as $key => $row) {
         $matches = 0;
         $ingredients = explode( ',', $row[ 'Ingredients' ] );
-        foreach ( $ingredient as $ingredients ) {
-            foreach ( $preferedIngredient as $preferedIngredientsArray ) {
+        foreach ( $ingredients as $ingredient ) {
+            foreach ( $preferedIngredientsArray as $preferedIngredient ) {
                 if ( $ingredient == $preferedIngredient ) {
                     $matches++;
                     break;
                 }
             }
         }
-        $row[ 'Priority' ] = $matches;
+        $rows[$key]['Priority'] = $matches;
     }
-    $ordered_rows = usort($rows, 'array_order_desc');
-    foreach ( $ordered_rows as $row ) {
+    usort($rows, 'array_order_desc');
+    foreach ( $rows as $row ) {
         echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
         echo '<div class="card-holder">';
         echo '<div class="column1">';
