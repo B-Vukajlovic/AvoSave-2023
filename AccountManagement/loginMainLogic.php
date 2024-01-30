@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "database.php";
     require "loginFunctionLogic.php";
 
@@ -23,9 +24,23 @@
             $user = userFetch($pdo, $username);
             if ($user && password_verify($password, $user['HashedPassword'])) {
                 if (isset($_POST['remember_me'])) {
-                    setcookie("user_id", $user["UserID"], time() + (86400 * 30));
+                    setcookie("user_id", $user["UserID"], [
+                        'expires' => time() + (86400 * 30),
+                        'path' => '/',
+                        'domain' => '',
+                        'secure' => true,
+                        'httponly' => true,
+                        'samesite' => 'Lax'
+                    ]);
                 } else {
-                    setcookie("user_id", $user["UserID"], time() + (3600));
+                    setcookie("user_id", $user["UserID"], [
+                        'expires' => time() + (3600),
+                        'path' => '/',
+                        'domain' => '',
+                        'secure' => true,
+                        'httponly' => true,
+                        'samesite' => 'Lax'
+                    ]);
                 }
                 header("Location: index.php");
                 exit();

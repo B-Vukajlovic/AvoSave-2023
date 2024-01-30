@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="loginStyle.css">
+    <link rel="stylesheet" href="registerStyle.css">
     <title>Document</title>
 </head>
 <body>
@@ -27,7 +27,7 @@
                 ?>
             </div>
             <label for="email">Email</label>
-            <input type="tekst" name="email" placeholder="Enter your email">
+            <input type="tekst" name="email" placeholder="Enter your Email">
             <div class="emailHelperText">
                 <?php
                     if(!empty($emailError)) {

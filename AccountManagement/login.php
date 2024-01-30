@@ -14,7 +14,7 @@
 <body>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="tekstContainer">
-            <h1>Welcome.</h1>
+            <h1>Welcome Back.</h1>
         </div>
         <div class="inputContainer">
             <label for="username">Username</label>

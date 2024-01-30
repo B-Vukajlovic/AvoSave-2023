@@ -34,15 +34,29 @@
 
                 switch ($userExistsResult) {
                     case true:
-                        $usernameError = "User already exists";
+                        $usernameError = "Username or email already exists";
                         break;
                     case false:
                         $userId = userRegister($pdo, $username, $email, $password);
                         if ($userId) {
                             if (isset($_POST['remember_me'])) {
-                                setcookie("user_id", $userId, time() + (86400 * 30));
+                                setcookie("user_id", $userId, [
+                                    'expires' => time() + (86400 * 30),
+                                    'path' => '/',
+                                    'domain' => '',
+                                    'secure' => true,
+                                    'httponly' => true,
+                                    'samesite' => 'Lax'
+                                ]);
                             } else {
-                                setcookie("user_id", $userId, time() + (3600));
+                                setcookie("user_id", $userId, [
+                                    'expires' => time() + (3600),
+                                    'path' => '/',
+                                    'domain' => '',
+                                    'secure' => true,
+                                    'httponly' => true,
+                                    'samesite' => 'Lax'
+                                ]);
                             }
                             header('Location: index.php');
                             exit();
