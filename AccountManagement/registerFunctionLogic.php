@@ -14,9 +14,9 @@
         try {
             $hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
-            $stmt = $pdo->prepare("INSERT INTO User (Username, HashedPassword, Email)
-                VALUES (?, ?, ?)");
-            $stmt->execute([$username, $hashPassword, $email]);
+            $stmt = $pdo->prepare("INSERT INTO User (Username, HashedPassword, Email, isAdmin)
+                VALUES (?, ?, ?, ?)");
+            $stmt->execute([$username, $hashPassword, $email, 0]);
             return $pdo->lastInsertId();
 
         } catch (PDOException $e) {
