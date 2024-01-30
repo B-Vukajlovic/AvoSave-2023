@@ -10,7 +10,7 @@ $userid = $_SESSION["UserID"];
 // YYYY-MM-DD HH:MM:SS format
 $time = date("Y-m-d H:i:s", time());
 
-$commentinput = htmlspecialchars(stripslashes(trim($_POST["commentinput"])));
+$commentinput = filter_input(INPUT_POST, "commentinput", FILTER_SANITIZE_SPECIAL_CHARS);
 
 $pdo -> query("INSERT INTO Comment (CommentText, CreatedAt, RecipeID, UserID) VALUES ($commentinput, $time, $recipeid, $userid");
 

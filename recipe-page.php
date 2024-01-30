@@ -180,7 +180,7 @@ if (isset($_GET["RecipeID"])){
                     });
                 </script>
                 <br>
-                <input type="submit" value="Post">
+                <input id='postComment' type="submit" value="Post">
             </form>
         </div>
         <?php

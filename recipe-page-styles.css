@@ -78,6 +78,16 @@
     padding: 20px;
 }
 
+#postComment{
+    padding: 5px;
+    color: var(--txt-clr);
+    margin: 5px;
+    background-color: var(--light-accent);
+    border-radius: 5px;
+    border: var(--light-accent) outset;
+
+}
+
 .details{
     margin: 20px;
     grid-area: 4/1/4/3;
