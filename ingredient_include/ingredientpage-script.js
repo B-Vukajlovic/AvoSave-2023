@@ -2,8 +2,15 @@ document.addEventListener('DOMContentLoaded', function() {
     var dropdown = document.getElementById('dropdown-content');
     dropdown.value = "All";
     var buttons = document.querySelectorAll('.ingredient-button');
-    var selectedIngredients = [];
+    var selectedIngredients = JSON.parse(sessionStorage.getItem('selectedIngredients') || '[]');
     var searchInput = document.getElementById('ingredient-search');
+
+    // Initialize button states based on session storage
+    buttons.forEach(function(button) {
+        if (selectedIngredients.includes(button.textContent)) {
+            button.classList.add('selected');
+        }
+    });
 
     // Select ingredients
     buttons.forEach(function(button) {
@@ -18,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 selectedIngredients.push(ingredientName);
                 this.classList.add('selected');
             }
+            sessionStorage.setItem('selectedIngredients', JSON.stringify(selectedIngredients));
         });
     });
 
@@ -50,6 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Send ingredients
     document.getElementById('ingredient-form').addEventListener('submit', function(event) {
-        document.getElementById('selected-ingredients').value = JSON.stringify(selectedIngredients);
+        document.getElementById('selected-ingredients').value = sessionStorage.getItem('selectedIngredients');
     });
 });

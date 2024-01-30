@@ -2,7 +2,7 @@
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
 if ($_SESSION['userid'] == null) {
-    header('Location: index.php');
+    header('Location: login.php');
     die();
 }
 
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                 $message = "Password changed successfully!";
             }
         } else {
-            $current_verify = "The entered current password is not correct.";
+            $current_verify = "Current password is not correct.";
         }
     }
 }

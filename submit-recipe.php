@@ -3,7 +3,7 @@ require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
 require_once('profile_include/submission.php');
 if ($_SESSION['userid'] == null) {
-    header('Location: index.php');
+    header('Location: login.php');
     die();
 }
 
