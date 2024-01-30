@@ -49,6 +49,7 @@
                                     'samesite' => 'Lax'
                                 ]);
                             }
+                            $_SESSION['userid'] = $userId;
                             header('Location: index.php');
                             exit();
                         } else {

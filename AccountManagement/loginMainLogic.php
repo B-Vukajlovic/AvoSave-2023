@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require_once "database.php";
     require "loginFunctionLogic.php";
 
@@ -33,7 +32,7 @@
                         'samesite' => 'Lax'
                     ]);
                 }
-
+                $_SESSION['userid'] = $user['UserID'];
                 header("Location: index.php");
                 exit();
             } else {
