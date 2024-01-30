@@ -23,8 +23,8 @@ require_once('includes/config_session.php');
                     <li class="pageTraversal" id="home"><a href="#aboutUs">Our goal</a></li>
                 </ul>
                 <ul class="navSub" id="accountNav">
-                    <?php if (isset($_COOKIE["user_id"])): ?>
-                        <li class="pageTraversal" id="profile"><a href="profile.php">Profile</a></li>
+                    <?php if (isset($_SESSION["userid"])): ?>
+                        <li class="pageTraversal" id="profile"><a href="ProfilePage.php">Profile</a></li>
                     <?php else: ?>
                         <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
                     <?php endif; ?>
