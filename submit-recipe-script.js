@@ -80,35 +80,36 @@ document.addEventListener('DOMContentLoaded', function() {
         // AJAX submission
         submitForm();
     });
-});
 
-function validateForm() {
-    // Check if all inputs are filled
-    const inputs = document.querySelectorAll('input[type=text]:not(#ingredient-search)');
-    for (let input of inputs) {
-        if (input.value.trim() === '') {
-            return false;
+    function validateForm() {
+        // Check if all inputs are filled
+        const inputs = document.querySelectorAll('input[type=text]:not(#ingredient-search)');
+        for (let input of inputs) {
+            if (input.value.trim() === '') {
+                return false;
+            }
         }
+
+        // Check if any ingredient is selected
+        return selectedIngredients.length > 0;
     }
 
-    // Check if any ingredient is selected
-    return selectedIngredients.length > 0;
-}
+    function submitForm() {
+        const formData = new FormData(document.querySelector('form'));
 
-function submitForm() {
-    const formData = new FormData(document.querySelector('form'));
+        fetch('submission.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Display success/failure message
+            alert(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while submitting the form.');
+        });
+    }
+});
 
-    fetch('submission.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        // Display success/failure message
-        alert(data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while submitting the form.');
-    });
-}
