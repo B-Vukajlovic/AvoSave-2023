@@ -1,6 +1,5 @@
 *{
     margin: 0px;
-    /* padding: 1; */
     font-family: sans-serif;
     color: var(--txt-clr);
 }
@@ -8,6 +7,19 @@
 #back-button{
     margin-top: 100px;
     grid-area: 1/1/1/1;
+}
+
+#favourite-button{
+    width: 50px;
+    background-color: var(--light-accent);
+    border-radius: 50px;
+    border: none;
+}
+
+.saveButton{
+    width: 50px;
+    background-color: var(--light-accent);
+    border: none;
 }
 
 .button{
@@ -27,6 +39,43 @@
 
 .column2{
     margin: 20px;
+}
+
+.comment{
+    margin: 20px;
+    padding: 10px;
+    width: 80%;
+    min-height: 50px;
+    border-radius: 10px;
+    background-color: var(--light-accent);
+}
+
+#commentinput{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    resize: none;
+    border-radius: 5px;
+    border: solid grey 2px;
+}
+
+.comment-section{
+    margin: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.comment-text{
+    margin: 5px;
+    color: var(--dark-accent);
+}
+
+.new-comment{
+    width: 80%;
+    padding: 20px;
 }
 
 .details{
@@ -66,6 +115,8 @@
 .title-bar{
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .title-image{
@@ -141,4 +192,30 @@ header {
 
 .pageTraversal:hover::after {
     width: 100%;
+}
+
+.loginPopup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    background-color: #e8eae6;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 100;
+    display: none;
+    /*to hide popup initially*/
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    padding: 4px;
 }

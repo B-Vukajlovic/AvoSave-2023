@@ -1,6 +1,5 @@
 <?php
-
-$dbname = "AvoSave";
+$dbname = "AvoSave2";
 $dbuser = "jona";
 $dbpass = "password";
 $dbhost = "localhost";
