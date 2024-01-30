@@ -45,7 +45,7 @@ require_once('pdo-connect.php')
                     JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
                     WHERE R.RecipeID = UR.RecipeID AND UR.SavedStatus = 1
                     GROUP BY R.RecipeID";
-            $result = pdo->query($query);
+            $result = $pdo->query($query);
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<div class="column1">
                 <img class="images" src="image1.jpg" alt="Recept 1">
