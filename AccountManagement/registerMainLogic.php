@@ -2,7 +2,7 @@
     require_once "database.php";
     require "registerFunctionLogic.php";
 
-    $usernameError = $passwordError = $generalError = $emailError = "";
+    $usernameError = $passwordError = $generalError = "";
     $formValid = true;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -19,6 +19,12 @@
         if (empty($_POST["password"])) {
             $passwordError = "Password is required";
             $formValid = false;
+        } else {
+            $passwordCriteriaErrors = checkPassword($_POST["password"]);
+            if (!empty($passwordCriteriaErrors)) {
+                $passwordError = implode("<br>", $passwordCriteriaErrors);
+                $formValid = false;
+            }
         }
 
         if ($formValid) {
