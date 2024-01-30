@@ -1,7 +1,21 @@
 <?php
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
-require_once('submission.php');
+require_once('profile_include/submission.php');
+if ($_SESSION['userid'] == null) {
+    header('Location: index.php');
+    die();
+}
+
+$userid = $_SESSION['userid'];
+$stmt = $pdo->prepare("SELECT isAdmin FROM User WHERE UserID=?");
+$stmt->execute([$userid]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if(!$user['isAdmin']) {
+    header('Location: index.php');
+    die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +35,11 @@ require_once('submission.php');
             <img src="includes/Logo-PhotoRoom(3).png" class="logo">
             <nav class="navbar">
                 <ul id="pageNav">
-                    <li class="pageTraversal" id="home"><a href="#">Home</a></li>
-                    <li class="pageTraversal" id="search"><a href="#">Search</a></li>
+                    <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
+                    <li class="pageTraversal" id="search"><a href="recipe-overview.php">Search</a></li>
                 </ul>
                 <ul id="accountNav">
-                    <li class="pageTraversal" id="login"><a href="#">Profile</a></li>
+                    <li class="pageTraversal" id="login"><a href="ProfilePage.php">Profile</a></li>
                 </ul>
             </nav>
         </div>

@@ -134,3 +134,18 @@ input[type=submit]:hover {
 .second-title {
     padding-top: 20px;
 }
+
+.passwordmsg {
+    color: red;
+    margin-top: 20px;
+}
+
+.succesmsg {
+    color: rgb(44, 94, 31);
+    margin: 7px;
+    font-size: medium;
+}
+
+.passinput {
+    margin-bottom: -80px;
+}

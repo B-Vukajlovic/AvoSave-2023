@@ -1,6 +1,58 @@
 <?php
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
+if ($_SESSION['userid'] == null) {
+    header('Location: index.php');
+    die();
+}
+
+$current_verify = '';
+$new_verify = '';
+$repeat_verify = '';
+$message = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    $entered_current_password = $_POST["current_password"];
+    $new_password = $_POST["new_password"];
+    $repeat_password = $_POST["repeat_password"];
+
+    if (empty($entered_current_password) || empty($new_password) || empty($repeat_password)) {
+        $current_verify = "All fields are required.";
+        $new_verify = "All fields are required.";
+        $repeat_verify = "All fields are required.";
+    } elseif ($new_password != $repeat_password) {
+        $new_verify = "New password and repeat password do not match.";
+        $repeat_verify = "New password and repeat password do not match.";
+    } elseif (strlen($new_password) < 8) {
+        $new_verify = "Password must be at least 8 characters long.";
+        $repeat_verify = "Password must be at least 8 characters long.";
+    } elseif (!preg_match("#[0-9]+#", $new_password)) {
+        $new_verify = "Password must include at least one number.";
+        $repeat_verify = "Password must include at least one number.";
+    }elseif (!preg_match("#[\W]+#", $new_password)) {
+        $new_verify = "Password must include at least one special character.";
+        $repeat_verify = "Password must include at least one special character.";
+    } else {
+        $userid = $_SESSION['userid'];
+        $stmt = $pdo->prepare("SELECT HashedPassword FROM User WHERE UserID=?");
+        $stmt->execute([$userid]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result && password_verify($entered_current_password, $result['HashedPassword'])) {
+            if ($result && password_verify($new_password, $result['HashedPassword'])) {
+                $new_verify = "New password cannot be the same as current";
+                $repeat_verify = "New password cannot be the same as current";
+            } else {
+                $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+                $update_stmt = $pdo->prepare("UPDATE User SET HashedPassword=? WHERE UserID=?");
+                $update_stmt->execute([$hashed_password, $userid]);
+                $message = "Password changed successfully!";
+            }
+        } else {
+            $current_verify = "The entered current password is not correct.";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,73 +92,40 @@ require_once('includes/config_session.php');
             <h1>My Account</h1>
             <h2 class="second-title">Account information</h2>
                 <div class="acc-info-input">
-                <label for="username">
-                    <?php
-                        $userid = $_SESSION['userid'];
-                        $stmt = $pdo->prepare("SELECT Username FROM User WHERE UserID=?");
-                        $stmt->execute([$userid]); // The parameter should be an array
-                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                        if ($result) {
-                            echo "Username";
-                        } else {
-                            echo "Username not found";
-                        }
-                    ?>
-                </label>
-                <input type="text" id="username" name="username" readonly="readonly" value="<?php echo htmlspecialchars($result['Username'] ?? 'Your username'); ?>">
-
-                <label for="email">
-                    <?php
-                        $userid = $_SESSION['userid'];
-                        $stmt = $pdo->prepare("SELECT Email FROM User WHERE UserID=?");
-                        $stmt->execute([$userid]); // The parameter should be an array
-                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                        if ($result) {
-                            echo "Email";
-                        } else {
-                            echo "Email not found";
-                        }
-                    ?>
-                </label>
-                <input type="text" id="email" name="email" readonly="readonly" value="<?php echo htmlspecialchars($result['Email'] ?? 'Your email'); ?>">
-
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" readonly="readonly" value="<?php
+                    $userid = $_SESSION['userid'];
+                    $stmt = $pdo->prepare("SELECT Username FROM User WHERE UserID=?");
+                    $stmt->execute([$userid]);
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    echo htmlspecialchars($result['Username'] ?? 'Username not found');
+                    ?>">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" readonly="readonly" value="<?php
+                    $userid = $_SESSION['userid'];
+                    $stmt = $pdo->prepare("SELECT Email FROM User WHERE UserID=?");
+                    $stmt->execute([$userid]);
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    echo htmlspecialchars($result['Email'] ?? 'Your email');
+                    ?>">
                 </div>
             <h2 class="second-title">Change password</h2>
-            <form id="passwordForm" method="post">
                 <div class="acc-info-input">
-                    <label for="username">Current Password</label>
-                    <input type="password" id="username" name="username">
-                    <label for="username">New Password</label>
-                    <input type="password" id="username" name="username">
-                    <label for="username">Repeat Password</label>
-                    <input type="password" id="username" name="username">
-                    <input type="submit" value="Submit your new password">
+                    <form method="post" id="passwordForm">
+                        <label>Current Password:</label>
+                        <div id="current_verify" class="passwordmsg"><?php if(!empty($current_verify)) echo htmlspecialchars($current_verify); ?></div>
+                        <input class="passinput" type="password" name="current_password"><br>
+                        <label>New Password:</label>
+                        <div id="new_verify" class="passwordmsg"><?php if(!empty($new_verify)) echo htmlspecialchars($new_verify); ?></div>
+                        <input class="passinput" type="password" name="new_password"><br>
+                        <label>Repeat New Password:</label>
+                        <div id="repeat_verify" class="passwordmsg"><?php if(!empty($repeat_verify)) echo htmlspecialchars($repeat_verify); ?></div>
+                        <input class="passinput" type="password" name="repeat_password"><br>
+                        <div id="message" class="succesmsg"><?php if(!empty($message)) echo htmlspecialchars($message); ?></div>
+                        <input type="submit" name="submit" value="Change Password">
+                    </form>
                 </div>
-            </form>
-            <div id="message" class="passwordmsg"></div>
         </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('#passwordForm').on('submit', function(e) {
-            e.preventDefault();
-
-            $.ajax({
-                url: 'profile_include/process_password_change.php',
-                type: 'post',
-                data: $('#passwordForm').serialize(),
-                success: function(response) {
-                    $('#message').html(response);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                }
-            });
-        });
-    });
-    </script>
-
+    <script src="change-password-script.js"></script>
 </body>
-
 </html>
