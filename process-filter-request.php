@@ -5,7 +5,7 @@ function array_order_desc($a, $b) {
     return $b['Priority'] - $a['Priority'];
 }
 
-$preferedIngredientsString = $_POST("selectedIngredients");
+$preferedIngredientsString = $_POST["selectedIngredients"];
 $preferedIngredientsArray = json_decode( $preferedIngredientsString );
 
 if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' ] ) ) {
