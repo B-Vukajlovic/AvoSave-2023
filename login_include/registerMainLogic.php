@@ -1,4 +1,6 @@
 <?php
+    require_once('includes/pdo-connect.php');
+    require_once('includes/config_session.php');
     require "registerFunctionLogic.php";
 
     $usernameError = $passwordError = $generalError = $emailError = "";

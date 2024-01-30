@@ -70,7 +70,7 @@
 }
 
 .body {
-    background-image: url(background\(ingredients\).webp);
+    background-image: url(../includes/background\(ingredients\).webp);
 }
 
 .center {

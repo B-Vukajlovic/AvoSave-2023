@@ -29,7 +29,7 @@ if (isset($_GET["RecipeID"])){
     <link rel="stylesheet" href="recipe_include/recipe-page-styles.css">
     <link rel="stylesheet" href="includes/colors.css">
     <base href="http://localhost:8080/">
-    <title>Document</title>
+    <title>Recipe</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         var sessionUserID = <?php echo json_encode($UserID); ?>;
@@ -40,8 +40,8 @@ if (isset($_GET["RecipeID"])){
 <body>
     <header>
         <div class="logoCombo">
-            <img src="recipe_include/pictures/avosave_logo-removebg-preview.png" class="logo">
-            <img src="recipe_include/pictures/Logo-PhotoRoom(3).png" class="logo">
+            <img src="includes/avosave_logo-removebg-preview.png" class="logo">
+            <img src="includes/Logo-PhotoRoom(3).png" class="logo">
         </div>
         <nav class="navbar">
             <ul id="pageNav">
@@ -58,7 +58,7 @@ if (isset($_GET["RecipeID"])){
         <div class="column1">
             <div class="back-title-grid">
                 <a id="back-button" href="javascript:window. history. back();">
-                    <img class=button src="pictures/back-arrow.png" alt="&lt back">
+                    <img class=button src="recipe_include/pictures/back-arrow.png" alt="&lt back">
                 </a>
                 <div class="title-bar"> <!--get title from database-->
                     <h1>

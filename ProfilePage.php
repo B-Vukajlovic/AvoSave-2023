@@ -16,8 +16,8 @@ require_once('includes/config_session.php');
 <body>
     <div class="navbar1">
         <div class="logoCombo">
-            <img src="/pictures/avosave_logo-removebg-preview.png" class="logo">
-            <img src="/pictures/Logo-PhotoRoom(3).png" class="logo">
+            <img src="includes/avosave_logo-removebg-preview.png" class="logo">
+            <img src="includes/Logo-PhotoRoom(3).png" class="logo">
             <nav class="navbar">
                 <ul id="pageNav">
                     <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>

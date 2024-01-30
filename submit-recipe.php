@@ -11,14 +11,14 @@ require_once('submission.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
     <link rel="stylesheet" href="profile_include/submit-recipe-styles.css">
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 
 <body>
 <div class="navbar1">
         <div class="logoCombo">
-            <img src="/VIdeos/avosave_logo-removebg-preview.png" class="logo">
-            <img src="/VIdeos/Logo-PhotoRoom(3).png" class="logo">
+            <img src="includes/avosave_logo-removebg-preview.png" class="logo">
+            <img src="includes/Logo-PhotoRoom(3).png" class="logo">
             <nav class="navbar">
                 <ul id="pageNav">
                     <li class="pageTraversal" id="home"><a href="#">Home</a></li>

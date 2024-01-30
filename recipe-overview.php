@@ -14,7 +14,7 @@ require_once('includes/config_session.php');
 </head>
 
 <body>
-  <h1 class="title-page"> Recipes</h1>
+  <h1 class="title-page">Recipes</h1>
   <div class="container">
 
   </div>

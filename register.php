@@ -1,5 +1,6 @@
 <?php
-    session_start();
+    require_once('includes/pdo-connect.php');
+    require_once('includes/config_session.php');
     require "login_include/registerMainLogic.php";
 ?>
 
@@ -9,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login_include/registerStyle.css">
-    <title>Document</title>
+    <title>Register</title>
 </head>
 <body>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
