@@ -1,5 +1,5 @@
 <?php
-require_once('includes/pdo-connect.php');
+require_once('includes/pdo-connect.php'); //locations fix
 require_once('includes/config_session.php');
 
 if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST'){

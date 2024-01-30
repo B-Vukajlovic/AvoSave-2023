@@ -1,5 +1,5 @@
 <?php
-require_once('includes/pdo_connect.php');
+require_once('includes/pdo_connect.php'); //locations
 require_once("includes/config_session.php");
 
 $recipeid = $_GET["recipe_id"];

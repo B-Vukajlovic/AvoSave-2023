@@ -3,9 +3,10 @@ require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
 // var_dump($pdo);
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+
 
 if (isset($_SESSION["UserID"])){
     $UserID = $_SESSION["UserID"];
@@ -38,14 +39,14 @@ if (isset($_GET["RecipeID"])){
 </head>
 
 <body>
-    <header>
+    <header> <!-- nav bar locations and links -->
         <div class="logoCombo">
             <img src="/pictures/avosave_logo-removebg-preview.png" class="logo">
             <img src="/pictures/Logo-PhotoRoom(3).png" class="logo">
         </div>
         <nav class="navbar">
             <ul id="pageNav">
-                <li class="pageTraversal" id="home"><a href="#">Home</a></li>
+                <li class="pageTraversal" id="home"><a href="">Home</a></li>
                 <li class="pageTraversal" id="search"><a href="#">Search</a></li>
             </ul>
             <ul id="accountNav">
@@ -58,7 +59,7 @@ if (isset($_GET["RecipeID"])){
         <div class="column1">
             <div class="back-title-grid">
                 <a id="back-button" href="javascript:window. history. back();">
-                    <img class=button src="pictures/back-arrow.png" alt="&lt back">
+                    <img class=button src="pictures/back-arrow.png" alt="&lt back"> <!-- -->
                 </a>
                 <div class="title-bar"> <!--get title from database-->
                     <h1>
@@ -129,10 +130,17 @@ if (isset($_GET["RecipeID"])){
                     </ul>
                     <?php
                     global $pdo, $RecipeID;
-                    $result = $pdo -> query("SELECT R.StepsRecipe FROM Recipe R WHERE RecipeID = $RecipeID");
-                    $description = $result->fetch(PDO::FETCH_ASSOC);
-                    echo "<br>";
-                    echo $description['StepsRecipe'];
+                    $stmt = $pdo->prepare("SELECT R.StepsRecipe FROM Recipe R WHERE RecipeID = :recipeid");
+                    // $result = $pdo -> query("SELECT R.StepsRecipe FROM Recipe R WHERE RecipeID = $RecipeID");
+                    $stmt->execute(['recipeid' => $RecipeID]);
+                    $steps = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $str = $steps['StepsRecipe'];
+                    // echo $str;
+                    preg_match_all('/(\d+\.)\s*([^0-9]+)/', $str, $stepsArray, PREG_SET_ORDER);
+
+                    foreach ($stepsArray as $step) {
+                        echo $step[1] . ' ' . trim($step[2]) . PHP_EOL;
+                    }
                     ?>
                 </div>
                 <div class="column2">
