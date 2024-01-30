@@ -27,25 +27,22 @@
             </nav>
         </header>
         <section class="homePageContent">
-            <div id="transformX">
-                <article id="homePageArticle">
-                    <h1>Give purpose To waste.</h1>
-                    <br>
-                    <p>Say goodbye to food waste and hello to delicious, home-cooked meals that make the most of what you've got.</p>
-                    <button onclick="window.location.href = 'IngredientPage.php';" id="button"> Get started </button>
-                    <br>
-                </article>
-            </div>
+            <article id="homePageArticle">
+                <h1>Give purpose To waste.</h1>
+                <br>
+                <p>Say goodbye to food waste and hello to delicious, home-cooked meals that make the most of what you've got.</p>
+                <button onclick="window.location.href = 'IngredientPage.php';" id="button"> Get started </button>
+                <br>
+            </article>
         </section>
-        <img src="pictures/homescreenSubImage1(1).png" id="img1" class="homescreenImage">
-        <img src="pictures/HomeScreen.png" id="img2" class="homescreenImage">
+        <img src="pictures/HomeScreen.png" id="img1" class="homescreenImage">
+        <img src="pictures/homescreenSubImage1(1)(1).png" id="img2" class="homescreenImage">
     </div>
     <div class="gridContainerMainSection" id="aboutUs">
         <img src="path-to-your-image.jpg">
         <div class="mainContent">
             <div class="textContent">
-                <h1>Help us reduce wasted food</h1>
-                <br>
+                <h1>Help Us Reduce Wasted Food</h1>
                 <p>
                 In a world brimming with culinary possibilities, AvoSave emerges as a beacon of
                 sustainability and convenience with its advanced recipe search tool. Designed
@@ -70,3 +67,5 @@
     </div>
 </body>
 </html>
+
+
