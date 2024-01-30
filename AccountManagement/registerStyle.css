@@ -1,0 +1,90 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.tekstContainer, .inputContainer, .buttonContainer {
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+input[type="text"], input[type="password"], input[type="tekst"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    outline: none;
+    border: 2px solid hsl(117, 100%, 40%);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.usernameHelperText, .passwordHelperTekst, .emailHelperText, .generalHelperText {
+    color: red;
+    font-size: 0.8em;
+    height: 20px;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%, 75% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+label {
+    font-size: 0.9em;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: hsl(117, 100%, 40%);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: hsl(130, 45%, 75%);
+}
+
+a {
+    color: hsl(117, 100%, 40%);
+    text-decoration: none;
+    font-size: 0.9em;
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
