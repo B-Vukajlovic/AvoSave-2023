@@ -15,12 +15,6 @@
         if (empty($_POST["password"])) {
             $passwordError = "Password is required";
             $formValid = false;
-        } else {
-            $passwordCriteriaErrors = checkPassword($_POST["password"]);
-            if (!empty($passwordCriteriaErrors)) {
-                $passwordError = implode("<br>", $passwordCriteriaErrors);
-                $formValid = false;
-            }
         }
 
         if ($formValid) {
