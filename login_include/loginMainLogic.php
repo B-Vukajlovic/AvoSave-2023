@@ -1,4 +1,6 @@
 <?php
+    require_once('includes/pdo-connect.php');
+    require_once('includes/config_session.php');
     require "loginFunctionLogic.php";
 
     $usernameError = $passwordError = $generalError = "";
@@ -22,7 +24,7 @@
             $user = userFetch($pdo, $username);
             if ($user && password_verify($password, $user['HashedPassword'])) {
                 if (isset($_POST['remember_me'])) {
-                    setcookie("user_id", $user["UserID"], [
+                    setcookie("user_id", $user["Username"], [
                         'expires' => time() + (86400 * 30),
                         'path' => '/',
                         'domain' => '',
@@ -30,17 +32,9 @@
                         'httponly' => true,
                         'samesite' => 'Lax'
                     ]);
-                } else {
-                    setcookie("user_id", $user["UserID"], [
-                        'expires' => time() + (3600),
-                        'path' => '/',
-                        'domain' => '',
-                        'secure' => true,
-                        'httponly' => true,
-                        'samesite' => 'Lax'
-                    ]);
                 }
-                header("Location: index.php");
+                $_SESSION['userid'] = $user['UserID'];
+                header("Location: ../index.php");
                 exit();
             } else {
                 $generalError = "Invalid username or password";
