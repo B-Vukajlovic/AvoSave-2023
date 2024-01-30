@@ -117,7 +117,7 @@ if (isset($_GET["recipeID"])){
                 <!-- get pictureURL from database, alt=title-->
                 <?php
                     global $pdo, $RecipeID;
-                    $query = "SELECT I.ImageURL FROM Image I WHERE I.RecipeID = ?";
+                    $query = "SELECT R.ImageURL FROM Recipe R WHERE R.RecipeID = ?";
                     $stmt = $pdo->prepare($query);
                     $stmt->execute([$RecipeID]);
                     $image = $stmt->fetch(PDO::FETCH_ASSOC);
