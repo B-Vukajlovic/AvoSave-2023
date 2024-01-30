@@ -40,9 +40,23 @@ require_once('includes/config_session.php');
             <h1>My Account</h1>
             <h2 class="second-title">Account information</h2>
                 <div class="acc-info-input">
-                    <label for="username">Username</label>
+                    <label for="username">
+                        <?php
+                            $userid = $_SESSION['userid'];
+                            $stmt = $pdo->prepare("SELECT Username FROM User WHERE UserID=?");
+                            $stmt->execute($userid);
+                            echo(htmlspecialchars($stmt->fetch(PDO::FETCH_ASSOC)));
+                        ?>
+                    </label>
                     <input type="text" id="username" name="username" readonly="readonly" value="Your username">
-                    <label for="email">E-mail</label>
+                    <label for="email">
+                        <?php
+                            $userid = $_SESSION['userid'];
+                            $stmt = $pdo->prepare("SELECT Email FROM User WHERE UserID=?");
+                            $stmt->execute($userid);
+                            echo(htmlspecialchars($stmt->fetch(PDO::FETCH_ASSOC)));
+                        ?>
+                    </label>
                     <input type="text" id="email" name="email" readonly="readonly" value="Your username">
                 </div>
             <h2 class="second-title">Change password</h2>
