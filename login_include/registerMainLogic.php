@@ -41,7 +41,7 @@
                         $userId = userRegister($pdo, $username, $email, $password);
                         if ($userId) {
                             if (isset($_POST['remember_me'])) {
-                                setcookie("user_id", $userId, [
+                                setcookie("username", $username, [
                                     'expires' => time() + (86400 * 30),
                                     'path' => '/',
                                     'domain' => '',
