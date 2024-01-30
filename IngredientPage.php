@@ -64,6 +64,6 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
         </div>
 
     </section>
-    <script src="ingredientpage-script.js"></script>
+    <script src="ingredient_include/ingredientpage-script.js"></script>
 </body>
 </html>

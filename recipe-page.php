@@ -45,11 +45,11 @@ if (isset($_GET["RecipeID"])){
         </div>
         <nav class="navbar">
             <ul id="pageNav">
-                <li class="pageTraversal" id="home"><a href="#">Home</a></li>
-                <li class="pageTraversal" id="search"><a href="#">Search</a></li>
+                <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
+                <li class="pageTraversal" id="search"><a href="recipe-overview.php">Search</a></li>
             </ul>
             <ul id="accountNav">
-                <li class="pageTraversal" id="login"><a href="#">Login</a></li>
+                <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -101,11 +101,11 @@ if (isset($_GET["RecipeID"])){
                     <h2>Recipe card</h2>
                     <!--get prep time and servings from database-->
                     <?php global $pdo, $RecipeID;
-                    $query = $pdo -> query("SELECT Time, Servings, AuthorURL FROM Recipe WHERE RecipeID = $RecipeID");
+                    $query = $pdo -> query("SELECT Time, Servings, Author FROM Recipe WHERE RecipeID = $RecipeID");
                     $result = $query->fetch(PDO::FETCH_ASSOC);
                     echo "<ul><li>Preparation time: ".$result['Time']." mins</li>";
                     echo "<li>Servings: ".$result['Servings']."</li>";
-                    echo "<li>Source: <a href='".$result['AuthorURL']."'>".$result['AuthorURL']."</a></li></ul>";
+                    echo "<li>Source: <a href='".$result['Author']."'>".$result['Author']."</a></li></ul>";
                     ?>
                     <h3>Ingredients</h3>
                     <ul> <!--get amount ingredient, amount ingredient, etc, etc from database-->
