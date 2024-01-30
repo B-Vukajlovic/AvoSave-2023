@@ -26,9 +26,8 @@ body {
 
 .card-holder {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 60% 40%;
     width: 120%;
-    height: auto;
     padding: 10px;
     background-color: rgb(218, 235, 218);
     border-radius: 10px;
@@ -43,7 +42,7 @@ body {
 
 .images{
     max-width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
 }
 
@@ -85,7 +84,6 @@ body {
 .title-filter{
     font-weight: bold;
     font-size: 20px;
-    margin-top: 50px;
 }
 
 .left-page-title{

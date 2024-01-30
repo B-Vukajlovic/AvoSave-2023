@@ -1,12 +1,34 @@
 <?php
 require_once( 'pdo-connect.php' );
 
+$preferedIngredientsString = $_POST["selectedIngredients"];
+$preferedIngredientsArray = json_decode( $preferedIngredientsString );
+
 function array_order_desc($a, $b) {
     return $b['Priority'] - $a['Priority'];
 }
 
-$preferedIngredientsString = $_POST["selectedIngredients"];
-$preferedIngredientsArray = json_decode( $preferedIngredientsString );
+function displayRecipes($rows){
+    foreach ( $rows as $row ) {
+        echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
+        echo '<div class="card-holder">';
+        echo '<div class="column1">';
+        echo '<img class="images" src="image1.jpg" alt="Recipe Image">';
+        echo '</div>';
+        echo '<div class="column2">';
+        echo '<h2 class="title-card">' . htmlspecialchars( $row[ 'RecipeTitle' ] ) . '</h2>';
+        echo '<div class="labels">';
+        $ingredients = explode( ',', $row[ 'Ingredients' ] );
+        foreach ( $ingredients as $ingredient ) {
+            echo '<span class="label-available">' . htmlspecialchars( $ingredient ) . '</span>';
+        }
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</a>';
+    }
+}
+
 
 if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' ] ) ) {
     $filters = $_POST[ 'filtersApplied' ];
@@ -96,25 +118,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
     }
 
     usort($rows, 'array_order_desc');
-
-    foreach ($rows as $row ) {
-        echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
-        echo '<div class="card-holder">';
-        echo '<div class="column1">';
-        echo '<img class="images" src="image1.jpg" alt="Recipe Image">';
-        echo '</div>';
-        echo '<div class="column2">';
-        echo '<h2 class="title-card">' . htmlspecialchars( $row[ 'RecipeTitle' ] ) . '</h2>';
-        echo '<div class="labels">';
-        $ingredients = explode( ',', $row[ 'Ingredients' ] );
-        foreach ( $ingredients as $ingredient ) {
-            echo '<span class="label-available">' . htmlspecialchars( $ingredient ) . '</span>';
-        }
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-        echo '</a>';
-    }
+    displayRecipes($rows);
 
     //Default display without filters
 } else {
@@ -141,23 +145,6 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
         $rows[$key]['Priority'] = $matches;
     }
     usort($rows, 'array_order_desc');
-    foreach ( $rows as $row ) {
-        echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
-        echo '<div class="card-holder">';
-        echo '<div class="column1">';
-        echo '<img class="images" src="image1.jpg" alt="Recipe Image">';
-        echo '</div>';
-        echo '<div class="column2">';
-        echo '<h2 class="title-card">' . htmlspecialchars( $row[ 'RecipeTitle' ] ) . '</h2>';
-        echo '<div class="labels">';
-        $ingredients = explode( ',', $row[ 'Ingredients' ] );
-        foreach ( $ingredients as $ingredient ) {
-            echo '<span class="label-available">' . htmlspecialchars( $ingredient ) . '</span>';
-        }
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-        echo '</a>';
-    }
+    displayRecipes($rows);
 }
 ?>
