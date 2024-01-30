@@ -40,27 +40,39 @@ require_once('includes/config_session.php');
             <h1>My Account</h1>
             <h2 class="second-title">Account information</h2>
                 <div class="acc-info-input">
-                    <label for="username">
-                        <?php
-                            $userid = $_SESSION['userid'];
-                            $stmt = $pdo->prepare("SELECT Username FROM User WHERE UserID=?");
-                            $stmt->execute($userid);
-                            echo(htmlspecialchars($stmt->fetch(PDO::FETCH_ASSOC)));
-                        ?>
-                    </label>
-                    <input type="text" id="username" name="username" readonly="readonly" value="Your username">
-                    <label for="email">
-                        <?php
-                            $userid = $_SESSION['userid'];
-                            $stmt = $pdo->prepare("SELECT Email FROM User WHERE UserID=?");
-                            $stmt->execute($userid);
-                            echo(htmlspecialchars($stmt->fetch(PDO::FETCH_ASSOC)));
-                        ?>
-                    </label>
-                    <input type="text" id="email" name="email" readonly="readonly" value="Your username">
+                <label for="username">
+                    <?php
+                        $userid = $_SESSION['userid'];
+                        $stmt = $pdo->prepare("SELECT Username FROM User WHERE UserID=?");
+                        $stmt->execute([$userid]); // The parameter should be an array
+                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                        if ($result) {
+                            echo "Username";
+                        } else {
+                            echo "Username not found";
+                        }
+                    ?>
+                </label>
+                <input type="text" id="username" name="username" readonly="readonly" value="<?php echo htmlspecialchars($result['Username'] ?? 'Your username'); ?>">
+
+                <label for="email">
+                    <?php
+                        $userid = $_SESSION['userid'];
+                        $stmt = $pdo->prepare("SELECT Email FROM User WHERE UserID=?");
+                        $stmt->execute([$userid]); // The parameter should be an array
+                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                        if ($result) {
+                            echo "Email";
+                        } else {
+                            echo "Email not found";
+                        }
+                    ?>
+                </label>
+                <input type="text" id="email" name="email" readonly="readonly" value="<?php echo htmlspecialchars($result['Email'] ?? 'Your email'); ?>">
+
                 </div>
             <h2 class="second-title">Change password</h2>
-            <form action="process_password_change.php" method="post">
+            <form id="passwordForm" method="post">
                 <div class="acc-info-input">
                     <label for="username">Current Password</label>
                     <input type="password" id="username" name="username">
@@ -71,8 +83,30 @@ require_once('includes/config_session.php');
                     <input type="submit" value="Submit your new password">
                 </div>
             </form>
+            <div id="message" class="passwordmsg"></div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#passwordForm').on('submit', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: 'profile_include/process_password_change.php',
+                type: 'post',
+                data: $('#passwordForm').serialize(),
+                success: function(response) {
+                    $('#message').html(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+    </script>
+
 </body>
 
 </html>

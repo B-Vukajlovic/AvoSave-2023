@@ -4,34 +4,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $entered_current_password = $_POST["current_password"];
     $new_password = $_POST["new_password"];
     $repeat_password = $_POST["repeat_password"];
-    // Hash entered password for comparison
-    $entered_hashed = password_hash($entered_current_password, PASSWORD_DEFAULT);
+    $message = '';
 
-    // Retrieve current password
-    // TO DO: Get id with cookie
-    $user_id = 1;
-    $sql = "SELECT HashedPassword FROM User WHERE UserID=?";
-    $stmt= $pdo->prepare($sql);
-    $stmt->execute($user_id);
-
-    // Check validation
+    // Check if any fields are empty
     if (empty($entered_current_password) || empty($new_password) || empty($repeat_password)) {
-        echo "All fields are required.";
+        $message = "All fields are required.";
     } elseif ($new_password != $repeat_password) {
-        echo "New password and repeat password do not match.";
-    } elseif ($entered_hashed != $current_password) {
-        echo "The entered password is not correct";
-    }
+        $message = "New password and repeat password do not match.";
+    } else {
+        // Retrieve current hashed password from the database
+        $userid = $_SESSION['userid'];
+        $sql = "SELECT HashedPassword FROM User WHERE UserID=?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$userid]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    else {
-        // Hash new password
-        $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-        $sql = "UPDATE User SET HashedPassword=? WHERE UserID=?";
-        $stmt= $pdo->prepare($sql);
-        $stmt->execute([$hashed_password, $user_id]);
-        echo "Password changed successfully!";
+        if ($result && password_verify($entered_current_password, $result['HashedPassword'])) {
+            // Hash new password
+            $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+            $sql = "UPDATE User SET HashedPassword=? WHERE UserID=?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$hashed_password, $userid]);
+            $message =  "Password changed successfully!";
+        } else {
+            $message =  "The entered current password is not correct.";
+        }
     }
 } else {
     exit();
 }
+
 ?>
