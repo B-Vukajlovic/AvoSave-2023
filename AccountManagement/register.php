@@ -18,7 +18,7 @@
         </div>
         <div class="inputContainer">
             <label for="username">Username</label>
-            <input type="text" placeholder="Enter a Username" name="username">
+            <input type="text" placeholder="Enter a Username" name="username" value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
             <div class="usernameHelperText">
                 <?php
                     if(!empty($usernameError)) {
@@ -27,7 +27,7 @@
                 ?>
             </div>
             <label for="email">Email</label>
-            <input type="tekst" name="email" placeholder="Enter your Email">
+            <input type="tekst" name="email" placeholder="Enter your Email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
             <div class="emailHelperText">
                 <?php
                     if(!empty($emailError)) {

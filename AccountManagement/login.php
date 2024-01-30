@@ -18,7 +18,15 @@
         </div>
         <div class="inputContainer">
             <label for="username">Username</label>
-            <input type="text" placeholder="Enter a Username" name="username">
+            <input type="text" placeholder="Enter a Username" name="username" value=
+            "<?php
+                if(isset($_COOKIE['username'])) {
+                    echo htmlspecialchars($_COOKIE['username']);
+                }
+                elseif(isset($_POST['username'])) {
+                    echo htmlspecialchars($_POST['username']);
+                }
+            ?>">
             <div class="usernameHelperText">
                 <?php
                     if(!empty($usernameError)) {

@@ -24,7 +24,7 @@
             $user = userFetch($pdo, $username);
             if ($user && password_verify($password, $user['HashedPassword'])) {
                 if (isset($_POST['remember_me'])) {
-                    setcookie("user_id", $user["UserID"], [
+                    setcookie("user_id", $user["Username"], [
                         'expires' => time() + (86400 * 30),
                         'path' => '/',
                         'domain' => '',
@@ -32,16 +32,8 @@
                         'httponly' => true,
                         'samesite' => 'Lax'
                     ]);
-                } else {
-                    setcookie("user_id", $user["UserID"], [
-                        'expires' => time() + (3600),
-                        'path' => '/',
-                        'domain' => '',
-                        'secure' => true,
-                        'httponly' => true,
-                        'samesite' => 'Lax'
-                    ]);
                 }
+
                 header("Location: index.php");
                 exit();
             } else {

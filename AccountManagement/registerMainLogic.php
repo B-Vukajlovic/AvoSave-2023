@@ -48,15 +48,6 @@
                                     'httponly' => true,
                                     'samesite' => 'Lax'
                                 ]);
-                            } else {
-                                setcookie("user_id", $userId, [
-                                    'expires' => time() + (3600),
-                                    'path' => '/',
-                                    'domain' => '',
-                                    'secure' => true,
-                                    'httponly' => true,
-                                    'samesite' => 'Lax'
-                                ]);
                             }
                             header('Location: index.php');
                             exit();
