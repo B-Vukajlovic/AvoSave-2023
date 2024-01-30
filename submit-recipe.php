@@ -10,7 +10,7 @@ require_once('submission.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <link rel="stylesheet" href="submit-recipe-styles.css">
+    <link rel="stylesheet" href="profile_include/submit-recipe-styles.css">
     <title>Document</title>
 </head>
 

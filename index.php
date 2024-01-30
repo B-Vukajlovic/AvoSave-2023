@@ -8,7 +8,7 @@ require_once('includes/config_session.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index_styles.css">
+    <link rel="stylesheet" href="homepage_include/index_styles.css">
     <title>Document</title>
 </head>
 <body>
@@ -40,8 +40,8 @@ require_once('includes/config_session.php');
                 <br>
             </article>
         </section>
-        <img src="pictures/HomeScreen.png" id="img1" class="homescreenImage">
-        <img src="pictures/homescreenSubImage1(1)(1).png" id="img2" class="homescreenImage">
+        <img src="homepage_include/pictures/HomeScreen.png" id="img1" class="homescreenImage">
+        <img src="homepage_include/pictures/homescreenSubImage1(1)(1).png" id="img2" class="homescreenImage">
     </div>
     <div class="gridContainerMainSection" id="aboutUs">
         <img src="path-to-your-image.jpg">

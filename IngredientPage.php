@@ -9,13 +9,13 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="ingredientpage-style.css">
+    <link rel="stylesheet" href="ingredient_include/ingredientpage-style.css">
     <title>Pick Ingredients</title>
 </head>
 <body class="body">
     <div class="logoCombo">
-        <img src="/VIdeos/avosave_logo-removebg-preview.png" class="logo">
-        <img src="/VIdeos/Logo-PhotoRoom(3).png" class="logo">
+        <img src="ingredients_include/avosave_logo-removebg-preview.png" class="logo">
+        <img src="ingredients_include/Logo-PhotoRoom(3).png" class="logo">
         <nav class="navbar">
             <ul id="pageNav">
                 <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>

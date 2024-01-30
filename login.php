@@ -1,7 +1,7 @@
 <?php
     require_once('includes/pdo-connect.php');
     require_once('includes/config_session.php');
-    require "loginMainLogic.php";
+    require "login_include/loginMainLogic.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="loginStyle.css">
+    <link rel="stylesheet" href="login_include/loginStyle.css">
     <title>Document</title>
 </head>
 <body>

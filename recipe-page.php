@@ -26,8 +26,8 @@ if (isset($_GET["RecipeID"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/recipe-page-styles.css">
-    <link rel="stylesheet" href="/colors.css">
+    <link rel="stylesheet" href="recipe_include/recipe-page-styles.css">
+    <link rel="stylesheet" href="includes/colors.css">
     <base href="http://localhost:8080/">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -40,8 +40,8 @@ if (isset($_GET["RecipeID"])){
 <body>
     <header>
         <div class="logoCombo">
-            <img src="/pictures/avosave_logo-removebg-preview.png" class="logo">
-            <img src="/pictures/Logo-PhotoRoom(3).png" class="logo">
+            <img src="recipe_include/pictures/avosave_logo-removebg-preview.png" class="logo">
+            <img src="recipe_include/pictures/Logo-PhotoRoom(3).png" class="logo">
         </div>
         <nav class="navbar">
             <ul id="pageNav">

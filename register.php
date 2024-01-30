@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require "registerMainLogic.php";
+    require "login_include/registerMainLogic.php";
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="registerStyle.css">
+    <link rel="stylesheet" href="login_include/registerStyle.css">
     <title>Document</title>
 </head>
 <body>

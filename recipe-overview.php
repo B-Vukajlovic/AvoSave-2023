@@ -9,7 +9,7 @@ require_once('includes/config_session.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="recipe-overview-styles.css">
+  <link rel="stylesheet" href="overview_include/recipe-overview-styles.css">
   <title>Recipe overview</title>
 </head>
 

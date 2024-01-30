@@ -57,7 +57,7 @@
                                     'samesite' => 'Lax'
                                 ]);
                             }
-                            header('Location: index.php');
+                            header('Location: ../index.php');
                             exit();
                         } else {
                             $generalError = "An error occurred. Please try again.";
