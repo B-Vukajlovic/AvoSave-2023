@@ -21,11 +21,11 @@
             <label for="username">Username</label>
             <input type="text" placeholder="Enter a Username" name="username" value=
             "<?php
-                if(isset($_COOKIE['username'])) {
-                    echo htmlspecialchars($_COOKIE['username']);
-                }
-                elseif(isset($_POST['username'])) {
+                if(isset($_POST['username'])) {
                     echo htmlspecialchars($_POST['username']);
+                }
+                elseif(isset($_COOKIE['username'])) {
+                    echo htmlspecialchars($_COOKIE['username']);
                 }
             ?>">
             <div class="usernameHelperText">

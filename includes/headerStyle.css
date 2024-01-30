@@ -1,0 +1,74 @@
+header {
+    width: calc(100vw - 40px);
+    left: 0%;
+    margin: 30px 20px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.navText {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+    cursor: pointer;
+}
+
+.logoBar {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.navBar {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.navSub {
+    background: hsl(130, 45%, 75%);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.pageTraversal {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.pageTraversal a {
+    text-decoration: none;
+    color: #343A40;
+    font-size: 1.3em;
+    transition: color 0.3s;
+}
+
+.pageTraversal:hover a {
+    color: hsl(117, 100%, 40%);
+}
+
+.pageTraversal::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: hsl(117, 100%, 40%);
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.5s;
+}
+
+.pageTraversal:hover::after {
+    width: 100%;
+}

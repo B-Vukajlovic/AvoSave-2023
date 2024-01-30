@@ -1,8 +1,8 @@
 <?php
 
 $dbname = "AvoSave";
-$dbuser = "ismailo";
-$dbpass = "ytrewq";
+$dbuser = "boris";
+$dbpass = "Test1234!";
 $dbhost = "localhost";
 
 try{

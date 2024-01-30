@@ -28,7 +28,7 @@
                 ?>
             </div>
             <label for="email">Email</label>
-            <input type="tekst" name="email" placeholder="Enter your Email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+            <input type="text" name="email" placeholder="Enter your Email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
             <div class="emailHelperText">
                 <?php
                     if(!empty($emailError)) {
