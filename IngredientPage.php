@@ -1,5 +1,6 @@
 <?php
-require_once('pdo-connect.php');
+require_once('includes/pdo-connect.php');
+require_once('includes/config_session.php');
 $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
 ?>
 

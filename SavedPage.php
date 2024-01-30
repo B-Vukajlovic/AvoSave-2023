@@ -1,6 +1,6 @@
 <?php
-require_once('pdo-connect.php')
-
+require_once('includes/pdo-connect.php');
+require_once('includes/config_session.php');
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +46,7 @@ require_once('pdo-connect.php')
                     WHERE R.RecipeID = UR.RecipeID AND UR.SavedStatus = 1
                     GROUP BY R.RecipeID";
             $result = $pdo->query($query);
-            while ($row = mysqli_fetch_assoc($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {  // TO DO fix error mysqli?
                 echo '<div class="column1">
                 <img class="images" src="image1.jpg" alt="Recept 1">
                 </div>';

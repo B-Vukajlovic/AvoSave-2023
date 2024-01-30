@@ -1,5 +1,4 @@
 <?php
-require_once( 'pdo-connect.php' );
 
 $preferedIngredientsString = $_POST["selectedIngredients"];
 $preferedIngredientsArray = json_decode( $preferedIngredientsString );

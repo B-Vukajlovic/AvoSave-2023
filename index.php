@@ -1,3 +1,8 @@
+<?php
+require_once('includes/pdo-connect.php');
+require_once('includes/config_session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
