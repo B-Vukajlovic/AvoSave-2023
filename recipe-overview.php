@@ -10,6 +10,7 @@ require_once('includes/config_session.php');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="overview_include/recipe-overview-styles.css">
+  <script src = "filter_handeling.js"></script>
   <title>Recipe overview</title>
 </head>
 
@@ -80,7 +81,6 @@ require_once('includes/config_session.php');
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src = "filter_handeling.js"></script>
 </body>
 </html>
 
