@@ -1,7 +1,24 @@
 *{
-    margin: 0px;
     font-family: sans-serif;
     color: var(--txt-clr);
+}
+
+.body-container{
+    background-image: url(../includes/background\(ingredients\).webp);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.fixed-bg {
+    background-image: url("/includes/background.webp");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #back-button{
@@ -25,6 +42,7 @@
 .button{
     text-decoration: underline;
     color: var(--high-light);
+    background-color: hsla(0,0,0,100);
     padding: 10px;
     margin: 10px;
     border: solid var(--high-light);
@@ -48,6 +66,7 @@
     min-height: 50px;
     border-radius: 10px;
     background-color: var(--light-accent);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #commentinput{
@@ -68,17 +87,49 @@
     padding: 10px;
 }
 
+.comment-title{
+    padding-left: 20px;
+}
+
 .comment-text{
     margin: 5px;
     color: var(--dark-accent);
 }
 
-.new-comment{
-    width: 80%;
-    padding: 20px;
+.comment-info{
+    font-style: italic;
+    color: var(--dark-accent);
+    text-align: right;
 }
 
-#postComment{
+.delete{
+    background-color: var(--txt-clr);
+    color: white;
+    float: right;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: var(--txt-clr) outset;
+}
+
+.hidden{
+    display: none;
+}
+
+.new-comment{
+    width: 80%;
+    padding: 10px;
+}
+
+.inner{
+    margin: 10px;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    background-color: #faf6e8;
+}
+
+.postComment{
     padding: 5px;
     color: var(--txt-clr);
     margin: 5px;
@@ -86,6 +137,10 @@
     border-radius: 5px;
     border: var(--light-accent) outset;
 
+}
+
+.container{
+    margin: 10px;
 }
 
 .details{
@@ -98,6 +153,11 @@
     grid-template-columns: 30% 70%;
 }
 
+#loginPopup{
+    color: red;
+    background-color: lightgray;
+}
+
 .recipe-card{
     width: 65%;
     padding: 10px;
@@ -105,7 +165,12 @@
     border-radius: 10px;
     color: var(--txt-clr);
     background-color: var(--light-accent);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     /* how tf do I make the bullets and numbers in lists coloured but keep the text just normal text colour?? */
+}
+
+.recipe-section{
+    margin: 10px;
 }
 
 .recipe-grid{
@@ -115,11 +180,17 @@
 
 .side-block{
     width: 90%;
-    padding: 10px;
+    padding: 20px;
     margin: 20px;
     border-radius: 10px;
     color: var(--dark-accent);
     background-color: var(--light-accent);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.side-block-header{
+    margin-bottom: 5px;
+    color: var(--dark-accent);
 }
 
 .title-bar{
@@ -130,13 +201,22 @@
 }
 
 .title-image{
-    width: 66%;
+    width: 100%;
     max-width:100%;
     height: auto;
     display: block;
     margin-right: auto;
-    border: var(--light-accent) outset;
     background-color: var(--light-accent);
+}
+
+.image-box{
+    width: 66%;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: var(--light-accent);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 5px;
+    border-radius: 5px;
 }
 
 .frontPage {
@@ -152,8 +232,6 @@ header {
     width: 100%;
     display: flex;
     align-items: center;
-    /* padding: 20px; */
-    /* z-index: 3; */
 }
 
 .logoCombo {

@@ -15,18 +15,18 @@ function click(){
         let RID = val[1];
 
         $.ajax({
-            url: 'change-saved-status.php',
+            url: 'recipe_include/change-saved-status.php',
             type: 'POST',
             data: { savedStatus: SvSt, RecipeID: RID },
             success: function(response) {
                 document.getElementById("favButton").setAttribute("value", response);
+                sendSaveRequest()
             },
             error: function(error) {
             console.error('Error:', error);
             }
         });
 
-        sendSaveRequest()
     } else {
         var popup = 'Log in to save your favourite recipes on your account!';
         $('#loginRequirement').text(popup);
@@ -36,16 +36,16 @@ function click(){
 function sendSaveRequest(){
     var SvSt;
     try {
-    let btn = document.getElementById("favButton");
-    let res = btn.value;
-    let val = JSON.parse(res);
-    SvSt = val[0];
+        let btn = document.getElementById("favButton");
+        let res = btn.value;
+        let val = JSON.parse(res);
+        SvSt = val[0];
     } catch (error) {
         console.error("Error parsing JSON:", error);
     }
 
     $.ajax({
-        url: 'save-recipe.php',
+        url: 'recipe_include/save-recipe.php',
         type: 'POST',
         data: { savedStatus: SvSt },
         success: function(response) {

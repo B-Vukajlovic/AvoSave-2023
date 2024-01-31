@@ -1,0 +1,7 @@
+Redirectmatch 404 /.git.*
+Redirectmatch 404 /includes.*
+Redirectmatch 404 /hamepage_include.*
+Redirectmatch 404 /login_include.*
+Redirectmatch 404 /overview_include.*
+Redirectmatch 404 /profile_include.*
+Redirectmatch 404 /recipe_include.*

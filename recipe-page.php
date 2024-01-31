@@ -7,17 +7,46 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-if (isset($_SESSION["UserID"])){
-    $UserID = $_SESSION["UserID"];
+if (isset($_SESSION["userid"])){
+    $UserID = $_SESSION["userid"];
+    $query = "SELECT isAdmin FROM User WHERE UserID = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$UserID]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $isAdmin = $result['isAdmin'];
 } else {
     $UserID = NULL;
 }
 
-if (isset($_GET["RecipeID"])){
-    $RecipeID = filter_input(INPUT_GET, "RecipeID", FILTER_SANITIZE_SPECIAL_CHARS);
+if (isset($_GET["recipeID"])){
+    $RecipeID = filter_input(INPUT_GET, "recipeID", FILTER_SANITIZE_SPECIAL_CHARS);
 } else {
-    $RecipeID = 1;
+    header("Location: index.php");
+    die();
 }
+
+// var_dump($isAdmin);
+
+// function dbQuery($query, $arg1=null, $arg2=null, $arg3=null, $arg4=null){
+//     if (!$query) {
+//         echo null;
+//     } else {
+//         $stmt = $pdo->prepare($query);
+//         if ($arg1 == null) {
+//             $stmt->execute();
+//         } else if ($arg2 == null) {
+//             $stmt->execute([$arg1]);
+//         } else if ($arg3 == null) {
+//             $stmt->execute([$arg1, $arg2]);
+//         } else if ($arg4 == null) {
+//             $stmt->execute([$arg1, $arg2, $arg3]);
+//         } else {
+//             $stmt->execute([$arg1, $arg2, $arg3, $arg4]);
+//         }
+//     }
+// }
+
+// var_dump($UserID);
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +57,6 @@ if (isset($_GET["RecipeID"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="recipe_include/recipe-page-styles.css">
     <link rel="stylesheet" href="includes/colors.css">
-    <link rel="stylesheet" href="includes/headerStyle.css">
-    <base href="http://localhost:8080/">
     <title>Recipe</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -39,7 +66,23 @@ if (isset($_GET["RecipeID"])){
 </head>
 
 <body>
-    <?php include "includes/header.php";?>
+    <div class="body-container">
+    <header>
+        <div class="logoCombo">
+            <img src="includes/avosave_logo-removebg-preview.png" class="logo">
+            <img src="includes/Logo-PhotoRoom(3).png" class="logo">
+        </div>
+        <nav class="navbar">
+            <ul id="pageNav">
+                <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
+                <li class="pageTraversal" id="search"><a href="recipe-overview.php">Search</a></li>
+            </ul>
+            <ul id="accountNav">
+                <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div class="main-page">
         <div class="column1">
             <div class="back-title-grid">
@@ -58,7 +101,7 @@ if (isset($_GET["RecipeID"])){
                 </div>
             </div>
             <div class="side-block"> <!--get description from database-->
-                <h2>Description</h2>
+                <h2 class='side-block-header'>Description</h2>
                 <?php
                     global $pdo, $RecipeID;
                     $result = $pdo -> query("SELECT R.Description FROM Recipe R WHERE RecipeID = $RecipeID");
@@ -68,31 +111,35 @@ if (isset($_GET["RecipeID"])){
             </div>
         </div>
         <div class="column2">
-            <div>
+            <div class='image-box'>
                 <!-- get pictureURL from database, alt=title-->
                 <?php
                     global $pdo, $RecipeID;
-                    $imgResult = $pdo -> query("SELECT ImageURL FROM Image WHERE Image.RecipeID = $RecipeID");
-                    $titleResult = $pdo -> query("SELECT Title FROM Recipe WHERE RecipeID = $RecipeID");
-                    $image = $imgResult->fetch(PDO::FETCH_ASSOC);
-                    $title = $titleResult->fetch(PDO::FETCH_ASSOC);
-                    if ($image !== false) {
-                        echo "<img class='title-image' src='".$image['ImageURL']."' alt='Picture of ".$title['Title']."'>";
-                    }
+                    $query = "SELECT I.ImageURL FROM Image I WHERE I.RecipeID = ?";
+                    $stmt = $pdo->prepare($query);
+                    $stmt->execute([$RecipeID]);
+                    $image = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $query = "SELECT R.Title FROM Recipe R WHERE R.RecipeID = ?";
+                    $stmt = $pdo->prepare($query);
+                    $stmt->execute([$RecipeID]);
+                    $title = $stmt->fetch(PDO::FETCH_ASSOC);
+                    echo "<img class='title-image' src='".$image['ImageURL']."' alt='Picture of ".$title['Title']."'>";
                     ?>
                     <!-- <img class="title-image" src='/pictures/ApplePie.jpg' alt='Apple pie'> -->
             </div>
             <div class="recipe-card recipe-grid">
                 <div class="column1">
                     <h2>Recipe card</h2>
+                    <div class="recipe-section">
                     <!--get prep time and servings from database-->
                     <?php global $pdo, $RecipeID;
                     $query = $pdo -> query("SELECT Time, Servings, Author FROM Recipe WHERE RecipeID = $RecipeID");
                     $result = $query->fetch(PDO::FETCH_ASSOC);
                     echo "<ul><li>Preparation time: ".$result['Time']." mins</li>";
                     echo "<li>Servings: ".$result['Servings']."</li>";
-                    echo "<li>Source: <a href='".$result['Author']."'>".$result['Author']."</a></li></ul>";
+                    echo "<li>Author: ".$result['Author']."</li></ul>";
                     ?>
+                    </div>
                     <h3>Ingredients</h3>
                     <ul> <!--get amount ingredient, amount ingredient, etc, etc from database-->
                     <?php global $pdo, $RecipeID;
@@ -113,12 +160,21 @@ if (isset($_GET["RecipeID"])){
                     }
                     ?>
                     </ul>
+                    <br>
                     <?php
                     global $pdo, $RecipeID;
-                    $result = $pdo -> query("SELECT R.StepsRecipe FROM Recipe R WHERE RecipeID = $RecipeID");
-                    $description = $result->fetch(PDO::FETCH_ASSOC);
-                    echo "<br>";
-                    echo $description['StepsRecipe'];
+                    $stmt = $pdo->prepare("SELECT R.StepsRecipe FROM Recipe R WHERE RecipeID = :recipeid");
+                    $stmt->execute(['recipeid' => $RecipeID]);
+                    $steps = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $str = $steps['StepsRecipe'];
+                    $stepsArray = preg_split('/\d+\. /', $str, -1, PREG_SPLIT_NO_EMPTY);
+
+                    echo "<div class='container'><ol>";
+                    foreach ($stepsArray as $step) {
+                        echo "<li>";
+                        echo $step . "</li>";
+                    }
+                    echo "</ol></div>";
                     ?>
                 </div>
                 <div class="column2">
@@ -128,7 +184,7 @@ if (isset($_GET["RecipeID"])){
                     if ($UserID !== NULL) {
                         $status = $pdo->query("SELECT SavedStatus FROM UserRecipe WHERE UserRecipe.UserID = $UserID AND UserRecipe.RecipeID = $RecipeID");
                         $stat = $status->fetch(PDO::FETCH_ASSOC);
-                        if ($stat["SavedStatus"] === 1) {
+                        if ($stat !== false && $stat["SavedStatus"] === 1) {
                             $savedStatus = 1;
                         }
                     }
@@ -144,30 +200,37 @@ if (isset($_GET["RecipeID"])){
         </div>
     </div>
     <div class="comment-section">
-        <h2>Comment section</h2>
+        <h2 class="comment-title">Comment section</h2>
         <div class="new-comment">
-            <form method="post" action="place-comment.php">
+        <?php
+        if ($UserID !== NULL) {
+            echo "
+            <div class='new-comment inner'>
+            <form method='post' action='recipe_include/place-comment.php/?RecipeID=$RecipeID'>
                 <label>New comment:</label>
                 <br>
-                <textarea maxlength='1024' id="commentinput" placeholder="Write your comment..."></textarea>
-                <div id="characterCount">0 / 1024</div>
+                <textarea required maxlength='1024' id='commentinput' name='commentinput' placeholder='Write your comment...'></textarea>
+                <div id='characterCount'>0 / 1024</div>
 
                 <script>
                     $(document).ready(function () {
-                        var $textArea = $('#commentinput');
-                        var $characterCount = $('#characterCount');
+                        var textArea = $('#commentinput');
+                        var characterCount = $('#characterCount');
 
-                        $textArea.on('input', function () {
-                            var currentLength = $textArea.val().length;
-                            var maxLength = parseInt($textArea.attr('maxlength'));
+                        textArea.on('input', function () {
+                            var currentLength = textArea.val().length;
+                            var maxLength = parseInt(textArea.attr('maxlength'));
 
-                            $characterCount.text(currentLength + ' / ' + maxLength);
+                            characterCount.text(currentLength + ' / ' + maxLength);
                         });
                     });
                 </script>
                 <br>
-                <input id='postComment' type="submit" value="Post">
+                <input class='postComment' type='submit' value='Post'>
             </form>
+        </div>";
+        }
+        ?>
         </div>
         <?php
         global $pdo, $RecipeID;
@@ -178,9 +241,14 @@ if (isset($_GET["RecipeID"])){
                 $commenterid = $id["UserID"];
                 $result = $pdo -> query("SELECT Username FROM User WHERE User.UserID = $commenterid");
                 $commenter = $result->fetch(PDO::FETCH_ASSOC);
+
                 echo "<div class='comment'>";
-                echo "<p class='comment-info'>" . $commenter['Username']. " commented on " . $id["CreatedAt"]."</p>";
+                echo "<p><b>" . $commenter['Username']."</b></p>";
+                if ($UserID !== null && ($commenterid == $UserID || $isAdmin)){
+                    echo "<button class='delete' data-commentid='".$id['CommentID']."'>Delete comment</button>";
+                }
                 echo "<p class='comment-text'>".$id["CommentText"]."</p>";
+                echo "<p class='comment-info'> commented on " . $id["CreatedAt"]."</p>";
                 echo "</div>";
             }
         } else {
@@ -191,6 +259,8 @@ if (isset($_GET["RecipeID"])){
         ?>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src = "SaveScript.js"></script>
+    <script src = "recipe_include/SaveScript.js"></script>
+    <script src= "recipe_include/DeleteComment.js"></script>
+    </div>
 </body>
 </html>
