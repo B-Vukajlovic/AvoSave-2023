@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+}
+
+:root {
+    --background-clr: hsl(0, 100%, 100%);
+    --txt-clr: hsl(110, 45%, 12%);
+    --light-accent: hsl(130, 45%, 75%);
+    --dark-accent: hsl(35, 50%, 20%);
+    --high-light: hsl(117, 100%, 40%);
+}
+
+.logoCombo {
+    display: flex;
+    align-items: center;
+    margin: 0px 20px 0px 0px;
+    background-color: var(--txt-clr);
+}
+
+.logo {
+    width: 120px;
+    cursor: pointer;
+}
+
+.navbar {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pageTraversal {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.pageTraversal {
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.pageTraversal a {
+    text-decoration: none;
+    color: white;
+    text-transform: capitalize;
+    font-size: 1.5em;
+    font-weight: bolder;
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+}
+
+.pageTraversal::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: 0.5s;
+}
+
+.pageTraversal:hover::after {
+    width: 100%;
+}
+
+.navbar2 {
+    height: 100%;
+    width: 15vw;
+    background-color: hsl(35, 49%, 12%);
+    color: #fff;
+}
+
+.topnav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topnav a {
+    text-decoration: none;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.topnav a:hover {
+    background-color: #555;
+}
+
+.wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px 50px;
+}
+
+
+.buttonDelete{
+    background-color: hsl(0, 82%, 56%);
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 15px; /* Apply border radius here */
+    color: black;
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 30px 0px;
+    transition: background-color 0.3s;
+}
+
+.Title-page{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

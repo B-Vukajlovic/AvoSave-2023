@@ -12,15 +12,6 @@
 
 }
 
-.fixed-bg {
-    background-image: url("/includes/background.webp");
-    min-height: 500px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 #back-button{
     margin-top: 100px;
     grid-area: 1/1/1/1;
@@ -43,19 +34,20 @@
     text-decoration: underline;
     color: var(--high-light);
     background-color: hsla(0,0,0,100);
-    padding: 10px;
+    padding: 5px;
     margin: 10px;
     border: solid var(--high-light);
     border-radius: 50px;
-    width: 5%;
+    width: 10%;
     max-width: 100%;
 }
 
-.column1{
+.column1, .column2{
     margin: 20px;
+    margin-top: 100px;
 }
 
-.column2{
+.recipe-column1, .recipe-column2{
     margin: 20px;
 }
 
@@ -166,7 +158,6 @@
     color: var(--txt-clr);
     background-color: var(--light-accent);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    /* how tf do I make the bullets and numbers in lists coloured but keep the text just normal text colour?? */
 }
 
 .recipe-section{
@@ -219,91 +210,49 @@
     border-radius: 5px;
 }
 
-.frontPage {
-    width: 100vw;
-    height: 100vh;
-    background-image: url(/VIdeos/Black.png);
-    background-size: cover;
-}
 
-header {
-    /* position: fixed; */
-    background-color: var(--txt-clr);
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
+@media screen and (max-width: 800px) {
+    .main-page{
+        grid-template-columns: auto;
+    }
 
-.logoCombo {
-    display: flex;
-    align-items: center;
-    margin: 0px 20px 0px 0px;
-}
+    .image-box{
+        width: 90%;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+    }
 
-.logo {
-    width: 120px;
-    cursor: pointer;
-}
+    .recipe-card{
+        width: 90%;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+    }
 
-.navbar {
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-}
+    .comment-section{
+        margin: 20px;
+        width: auto;
+    }
 
-.pageTraversal {
-    list-style: none;
-    display: inline-block;
-    position: relative;
-    margin: 0px 20px;
-}
+    .inner{
+        margin: 0px;
+        padding: 20px;
+        width: 90%;
+    }
 
-.pageTraversal a {
-    text-decoration: none;
-    color: white;
-    text-transform: capitalize;
-    font-size: 1.5em;
-    font-weight: bolder;
-    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
-}
+    .new-comment{
+        width: auto;
 
-.pageTraversal::after {
-    content: '';
-    height: 3px;
-    width: 0;
-    background: var(--light-accent);
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    transition: 0.5s;
-}
+    }
 
-.pageTraversal:hover::after {
-    width: 100%;
-}
+    .comment{
+        margin: 20px;
+        padding: 20px;
+        width: 90%;
+    }
 
-.loginPopup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 200px;
-    text-align: center;
-    background-color: #e8eae6;
-    box-sizing: border-box;
-    padding: 10px;
-    z-index: 100;
-    display: none;
-    /*to hide popup initially*/
-}
-
-.close-btn {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    background-color: black;
-    color: white;
-    border-radius: 50%;
-    padding: 4px;
+    .column2{
+        margin-top: 20px;
+    }
 }

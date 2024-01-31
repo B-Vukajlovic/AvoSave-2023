@@ -1,6 +1,7 @@
 <?php
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
+
 if ($_SESSION['userid'] == null) {
     header('Location: login.php');
     die();
@@ -30,14 +31,16 @@ if ($_SESSION['userid'] == null) {
         <div class="mainpage">
             <h1 class = "title-page">My Saved Recipes</h1>
             <?php
-            //TODO: Cookie with UserID Needed in query.
-            $query = "SELECT R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients
-                    FROM Recipe R, UserRecipe UR
-                    JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
-                    WHERE R.RecipeID = UR.RecipeID AND UR.SavedStatus = 1 AND 
-                    GROUP BY R.RecipeID";
-            $result = $pdo->query($query);
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $UserID = $_SESSION["userid"];
+             //TO DO: Image fix needed
+             $query = "SELECT R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients
+                     FROM Recipe R, UserRecipe UR
+                     JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
+                     WHERE R.RecipeID = UR.RecipeID AND UR.SavedStatus = 1 AND UserID = ?
+                     GROUP BY R.RecipeID";
+             $stmt = $pdo->prepare($query);
+             $stmt = execute([$UserID]);
+             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="column1">
                 <img class="images" src="image1.jpg" alt="Recept 1">
                 </div>';
