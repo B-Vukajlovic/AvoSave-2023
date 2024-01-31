@@ -6,54 +6,6 @@ if ($_SESSION['userid'] == null) {
     die();
 }
 
-$current_verify = '';
-$new_verify = '';
-$repeat_verify = '';
-$message = '';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $entered_current_password = $_POST["current_password"];
-    $new_password = $_POST["new_password"];
-    $repeat_password = $_POST["repeat_password"];
-
-    if (empty($entered_current_password) || empty($new_password) || empty($repeat_password)) {
-        $current_verify = "All fields are required.";
-        $new_verify = "All fields are required.";
-        $repeat_verify = "All fields are required.";
-    } elseif ($new_password != $repeat_password) {
-        $new_verify = "New password and repeat password do not match.";
-        $repeat_verify = "New password and repeat password do not match.";
-    } elseif (strlen($new_password) < 8) {
-        $new_verify = "Password must be at least 8 characters long.";
-        $repeat_verify = "Password must be at least 8 characters long.";
-    } elseif (!preg_match("#[0-9]+#", $new_password)) {
-        $new_verify = "Password must include at least one number.";
-        $repeat_verify = "Password must include at least one number.";
-    }elseif (!preg_match("#[\W]+#", $new_password)) {
-        $new_verify = "Password must include at least one special character.";
-        $repeat_verify = "Password must include at least one special character.";
-    } else {
-        $userid = $_SESSION['userid'];
-        $stmt = $pdo->prepare("SELECT HashedPassword FROM User WHERE UserID=?");
-        $stmt->execute([$userid]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($result && password_verify($entered_current_password, $result['HashedPassword'])) {
-            if ($result && password_verify($new_password, $result['HashedPassword'])) {
-                $new_verify = "New password cannot be the same as current";
-                $repeat_verify = "New password cannot be the same as current";
-            } else {
-                $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-                $update_stmt = $pdo->prepare("UPDATE User SET HashedPassword=? WHERE UserID=?");
-                $update_stmt->execute([$hashed_password, $userid]);
-                $message = "Password changed successfully!";
-            }
-        } else {
-            $current_verify = "Current password is not correct.";
-        }
-    }
-}
-
 /* function logOut(){
     session_unset();
 
@@ -72,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logout"])) {
     logOut();
 }*/
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

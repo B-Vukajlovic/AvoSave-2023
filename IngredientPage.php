@@ -13,7 +13,7 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
     <link rel="stylesheet" href="includes/headerStyle.css">
     <title>Pick Ingredients</title>
 </head>
-<body class="body">
+<body>
     <?php include "includes/header.php";?>
 
     <div class="center">
