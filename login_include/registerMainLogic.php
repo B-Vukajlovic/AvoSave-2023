@@ -18,7 +18,7 @@
         }
         elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
                 $emailError = "Invalid email format";
-                $formValid = false;
+                $formValid = false;  
         }
 
         if (empty($_POST["password"])) {
