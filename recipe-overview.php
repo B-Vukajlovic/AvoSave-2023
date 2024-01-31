@@ -1,6 +1,7 @@
 <?php
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +58,6 @@ require_once('includes/config_session.php');
           GROUP BY R.RecipeID";
         $result = $pdo->query($query);
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-          $_GET["RecipeID"] = $RecipeID;
           echo '<a href="recipe-page.php?RecipeID=' . $row['RecipeID'] . '" class="recipe-link">';
           echo '<div class="card-holder">';
           echo '<div class="column1">';
@@ -80,7 +80,7 @@ require_once('includes/config_session.php');
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src = "filter_handeling.js"></script>
+  <script src = "overview_include/filter_handeling.js"></script>
 </body>
 </html>
 

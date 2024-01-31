@@ -1,7 +1,11 @@
 <?php
+require_once('../includes/pdo-connect.php');
+require_once('../includes/config_session.php');
 
-$preferedIngredientsString = $_POST["selectedIngredients"];
-$preferedIngredientsArray = json_decode( $preferedIngredientsString );
+if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['selectedIngredients'] ) ) {
+    $preferedIngredientsString = $_POST['selectedIngredients'];
+    $preferedIngredientsArray = json_decode($preferedIngredientsString);
+}
 
 function array_order_desc($a, $b) {
     return $b['Priority'] - $a['Priority'];

@@ -8,6 +8,8 @@ $(document).ready(function() {
 
 // Sends a request to apply the new filter
 function sendFilterRequest() {
+  // Gets all selected ingredients
+  var selectedIngredients = sessionStorage.getItem('selectedIngredients');
   // Gets all checked filters
   var checkedCheckboxes = $('input[type="checkbox"]:checked');
   var checkedValues = checkedCheckboxes.map(function() {
@@ -16,9 +18,9 @@ function sendFilterRequest() {
 
   // Sends AJAX request to update recipes based on changed filters
   $.ajax({
-    url: 'process-filter-request.php',
+    url: 'overview_include/process-filter-request.php',
     type: 'POST',
-    data: { filtersApplied: checkedValues },
+    data: { filtersApplied: checkedValues, selectedIngredients: selectedIngredients},
     success: function(response) {
       $('.recipes').html(response);
     },

@@ -125,8 +125,6 @@ input[type=submit]:hover {
     background-color: hsl(129, 41%, 66%);
 }
 
-
-
 .ingredient {
     display: grid;
     grid-template-columns: auto auto;

@@ -55,9 +55,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Send ingredients
-    document.getElementById('ingredient-form').addEventListener('submit', function(event) {
-        document.getElementById('selected-ingredients').value = sessionStorage.getItem('selectedIngredients');
-    });
 });
