@@ -10,10 +10,12 @@ require_once('includes/config_session.php');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="overview_include/recipe-overview-styles.css">
+  <link rel="stylesheet" href="includes/headerStyle.css">
   <title>Recipe overview</title>
 </head>
 
 <body>
+  <?php include "includes/header.php";?>
   <h1 class="title-page">Recipes</h1>
   <div class="container">
 

@@ -1,64 +1,101 @@
-header {
-    width: calc(100vw - 40px);
-    left: 0%;
-    margin: 30px 20px;
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
-.navText {
+header {
+    width: 100vw;
+    padding: 20px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    background-color: hsl(128, 69%, 86%);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.navSubsection {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+#leftBar {
+    width: 33%;
+}
+
+#middleBar {
+    width: 33%
+}
+
+#rightBar {
+    width: 33%
+}
+
+.logoText {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
-    list-style: none;
+    color: black;
     display: inline-block;
     position: relative;
     margin: 0px 20px;
     cursor: pointer;
 }
 
-.logoBar {
-    height: 100%;
-    width: 10%;
-    display: flex;
-    justify-content: center;
+.logoutButton {
+    position: relative;
+    margin: 0px 20px;
 }
 
-.navBar {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-
+#formHeader input[type="submit"] {
+    background-color: hsl(0, 0%, 100%);
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    color: black;
+    padding: 3px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
 }
 
-.navSub {
-    background: hsl(130, 45%, 75%);
-    border-radius: 15px;
-    padding: 15px;
+#formHeader input[type="submit"]:hover {
+    background-color: hsl(127, 52%, 80%);
 }
 
-.pageTraversal {
-    list-style: none;
+.navLink {
     display: inline-block;
     position: relative;
     margin: 0px 20px;
 }
 
-.pageTraversal a {
+.navLink a {
     text-decoration: none;
-    color: #343A40;
+    color: black;
     font-size: 1.3em;
     transition: color 0.3s;
 }
 
-.pageTraversal:hover a {
+.navLink:hover a {
     color: hsl(117, 100%, 40%);
 }
 
-.pageTraversal::after {
+.navLink::after {
     content: '';
     height: 3px;
     width: 0;
@@ -69,6 +106,6 @@ header {
     transition: width 0.5s;
 }
 
-.pageTraversal:hover::after {
+.navLink:hover::after {
     width: 100%;
 }
