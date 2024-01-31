@@ -29,42 +29,38 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="gridContainerHomepage">
-        <header>
-            <div class="logoBar">
-                <li class="navText">AvoSave</li>
-            </div>
-            <nav class="navBar">
-                <ul class="navSub" id="pageNav">
-                    <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
-                    <li class="pageTraversal" id="home"><a href="#aboutUs">Our goal</a></li>
-                </ul>
-                <ul class="navSub" id="accountNav">
-                    <?php if (isset($_SESSION["userid"])): ?>
-                        <li class="pageTraversal" id="logout">
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                <input type="submit" value="Log-Out">
-                            </form>
-                        </li>
-                        <li class="pageTraversal" id="profile"><a href="ProfilePage.php">Profile</a></li>
-                    <?php else: ?>
-                        <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
-                    <?php endif; ?>
-                </ul>
-            </nav>
-        </header>
-        <section class="homePageContent">
-            <article id="homePageArticle">
-                <h1>Give purpose To waste.</h1>
-                <br>
-                <p>Say goodbye to food waste and hello to delicious, home-cooked meals that make the most of what you've got.</p>
-                <button onclick="window.location.href = 'IngredientPage.php';" id="button"> Get started </button>
-                <br>
-            </article>
-        </section>
-        <img src="homepage_include/pictures/HomeScreen.png" id="img1" class="homescreenImage">
-        <img src="homepage_include/pictures/homescreenSubImage1(1)(1).png" id="img2" class="homescreenImage">
-    </div>
+    <header>
+        <div class="logoBar">
+            <li class="navText">AvoSave</li>
+        </div>
+        <nav class="navBar">
+            <ul class="navSub" id="pageNav">
+                <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
+                <li class="pageTraversal" id="home"><a href="#aboutUs">Our goal</a></li>
+            </ul>
+            <ul class="navSub" id="accountNav">
+                <?php if (isset($_SESSION["userid"])): ?>
+                    <li class="pageTraversal" id="logout">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                            <input type="submit" value="Log-Out">
+                        </form>
+                    </li>
+                    <li class="pageTraversal" id="profile"><a href="ProfilePage.php">Profile</a></li>
+                <?php else: ?>
+                    <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+    </header>
+    <section class="homePageContent">
+        <article id="homePageArticle">
+            <h1>Give purpose To waste.</h1>
+            <br>
+            <p>Say goodbye to food waste and hello to delicious, home-cooked meals that make the most of what you've got.</p>
+            <button onclick="window.location.href = 'IngredientPage.php';" id="button"> Get started </button>
+            <br>
+        </article>
+    </section>
     <div class="gridContainerMainSection" id="aboutUs">
         <img src="path-to-your-image.jpg">
         <div class="mainContent">
