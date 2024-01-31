@@ -2,9 +2,16 @@
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
 
+$isAdmin = 0;
 if ($_SESSION['userid'] == null) {
     header('Location: login.php');
     die();
+} else {
+    $query = "SELECT isAdmin FROM User WHERE UserID = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$_SESSION['userid']]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $isAdmin = $result['isAdmin'];
 }
 ?>
 
@@ -26,6 +33,12 @@ if ($_SESSION['userid'] == null) {
             <div class="topnav">
                 <a class="myAccountNav" href="ProfilePage.php">My Account</a>
                 <a class="SavedNav" href="SavedPage.php">Saved</a>
+                <?php
+                if ($isAdmin) {
+                    echo '<a class="ManAdminNav" href="manageAdmins.php">Manage admins</a>';
+                    echo '<a class="ManRecipeNav" href="manageRecipes.php">Manage recipes</a>';
+                }
+                ?>
             </div>
         </div>
         <div class="mainpage">
