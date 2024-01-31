@@ -3,19 +3,35 @@ document.addEventListener('DOMContentLoaded', function() {
     var selectedIngredients = [];
     var searchInput = document.getElementById('ingredient-search');
     var image = document.getElementById('image');
+    var ingredientItems = document.querySelectorAll('.ingredient-item');
 
     // Select ingredients
-    buttons.forEach(function(button) {
+    document.querySelectorAll('.ingredient-button').forEach(button => {
         button.addEventListener('click', function() {
-            var ingredientName = this.textContent;
+            let ingredientDiv = this.nextElementSibling;
+            let ingredientName = this.getAttribute('data-name');
+            let amountInput = ingredientDiv.querySelector('.amount');
+            let unitSelect = ingredientDiv.querySelector('.unit');
+            let amount = amountInput.value;
+            let unit = unitSelect.value;
+            let ingredientIndex = selectedIngredients.findIndex(ingredient => ingredient.name === ingredientName);
 
-            if (selectedIngredients.includes(ingredientName)) {
-                var index = selectedIngredients.indexOf(ingredientName);
-                selectedIngredients.splice(index, 1);
+            // Toggle selection
+            if (ingredientIndex > -1) {
+                selectedIngredients.splice(ingredientIndex, 1);
                 this.classList.remove('selected');
+                amountInput.disabled = false;
+                unitSelect.disabled = false;
             } else {
-                selectedIngredients.push(ingredientName);
-                this.classList.add('selected');
+                if (amount && unit && unit !== 'units') {
+                    // Select and disable fields to prevent editing
+                    selectedIngredients.push({ name: ingredientName, amount: amount, unit: unit });
+                    this.classList.add('selected');
+                    amountInput.disabled = true;
+                    unitSelect.disabled = true;
+                } else {
+                    alert('Please fill in the amount and select a unit.');
+                }
             }
         });
     });
@@ -24,16 +40,19 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('input', function() {
         var searchText = this.value.toLowerCase();
 
-        buttons.forEach(function(button) {
-            var ingredientName = button.textContent.toLowerCase();
+        ingredientItems.forEach(function(item) {
+            var ingredientButton = item.querySelector('.ingredient-button');
+            var ingredientName = ingredientButton.getAttribute('data-name').toLowerCase();
+
             if (ingredientName.includes(searchText)) {
-                button.style.display = '';
+                item.style.display = '';
             } else {
-                button.style.display = 'none';
+                item.style.display = 'none';
             }
         });
     });
 
+    // Add image with imgurAPI
     image.addEventListener('change', function(event) {
         const file = event.target.files[0];
         const formData = new FormData();
@@ -70,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Validation
         if (!validateForm()) {
-            alert('Please fill in all fields and select at least one ingredient.');
+            alert('Please fill in all fields including image and select at least one ingredient.');
             return;
         }
 
@@ -82,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function validateForm() {
-        // Check if all inputs are filled
+        // Check if all text inputs are filled
         const inputs = document.querySelectorAll('input[type=text]:not(#ingredient-search)');
         for (let input of inputs) {
             if (input.value.trim() === '') {
@@ -91,13 +110,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Check if any ingredient is selected
-        return selectedIngredients.length > 0;
+        if (selectedIngredients.length === 0) {
+            return false;
+        }
+
+        // Check if an image is selected
+        const imageInput = document.getElementById('image');
+        if (!imageInput.files.length) {
+            return false;
+        }
+
+        return true;
     }
 
     function submitForm() {
         const formData = new FormData(document.querySelector('form'));
 
-        fetch('submission.php', {
+        fetch('profile_include/submission.php', {
             method: 'POST',
             body: formData
         })

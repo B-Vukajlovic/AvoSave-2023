@@ -1,7 +1,7 @@
 <?php
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
-require_once('profile_include/submission.php');
+
 if ($_SESSION['userid'] == null) {
     header('Location: login.php');
     die();
@@ -88,7 +88,18 @@ if(!$user['isAdmin']) {
                                 <?php
                                     $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
                                     while ($row = $ingredients->fetch()) {
-                                        echo "<button type='button' class='ingredient-button' data-type='{$row['Type']}'>{$row['Name']}</button>";}
+                                        echo "<div class='ingredient-item'>
+                                                <button class='ingredient-button' type='button' data-type='{$row['Type']}' data-name='{$row['Name']}'>{$row['Name']}</button>
+                                                <div class='ingredient' data-name='Ingredient Name'>
+                                                    <input type='number' class='amount' placeholder='Amount'>
+                                                    <select class='unit'>
+                                                        <option value='units'>Unit</option>
+                                                        <option value='none'>x</option>
+                                                        <option value='gr'>gram</option>
+                                                        <option value='mL'>milliliter</option>
+                                                    </select>
+                                                </div>
+                                              </div>";}
                                 ?>
                             </div>
                         </div>
@@ -99,6 +110,6 @@ if(!$user['isAdmin']) {
             </form>
         </div>
     </div>
-    <script src="submit-recipe-script.js"></script>
+    <script src="profile_include/submit-recipe-script.js"></script>
 </body>
 </html>
