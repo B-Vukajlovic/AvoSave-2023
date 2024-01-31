@@ -47,6 +47,10 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     animation: shake 0.5s;
 }
 
+.passwordHelperTekst {
+    height: 65px;
+}
+
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25%, 75% { transform: translateX(-5px); }
