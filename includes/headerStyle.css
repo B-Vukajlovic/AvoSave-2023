@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    width: 100vw;
+    padding: 20px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    background-color: hsl(128, 69%, 86%);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.navSubsection {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+#leftBar {
+    width: 33%;
+}
+
+#middleBar {
+    width: 33%
+}
+
+#rightBar {
+    width: 33%
+}
+
+.logoText {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+    cursor: pointer;
+}
+
+.logoutButton {
+    position: relative;
+    margin: 0px 20px;
+}
+
+#formHeader input[type="submit"] {
+    background-color: hsl(0, 0%, 100%);
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    color: black;
+    padding: 3px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+#formHeader input[type="submit"]:hover {
+    background-color: hsl(127, 52%, 80%);
+}
+
+.navLink {
+    display: inline-block;
+    position: relative;
+    margin: 0px 20px;
+}
+
+.navLink a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3em;
+    transition: color 0.3s;
+}
+
+.navLink:hover a {
+    color: hsl(117, 100%, 40%);
+}
+
+.navLink::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: hsl(117, 100%, 40%);
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.5s;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}

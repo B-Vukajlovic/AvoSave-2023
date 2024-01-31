@@ -10,22 +10,11 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ingredient_include/ingredientpage-style.css">
+    <link rel="stylesheet" href="includes/headerStyle.css">
     <title>Pick Ingredients</title>
 </head>
 <body class="body">
-    <div class="logoCombo">
-        <img src="includes/avosave_logo-removebg-preview.png" class="logo">
-        <img src="includes/Logo-PhotoRoom(3).png" class="logo">
-        <nav class="navbar">
-            <ul id="pageNav">
-                <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
-                <li class="pageTraversal" id="search"><a href="recipe-overview.php">Search</a></li>
-            </ul>
-            <ul id="accountNav">
-                <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
-            </ul>
-        </nav>
-    </div>
+    <?php include "includes/header.php";?>
 
     <div class="center">
         <h1>Choose ingredients to include</h1>

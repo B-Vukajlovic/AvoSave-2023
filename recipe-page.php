@@ -28,6 +28,7 @@ if (isset($_GET["RecipeID"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="recipe_include/recipe-page-styles.css">
     <link rel="stylesheet" href="includes/colors.css">
+    <link rel="stylesheet" href="includes/headerStyle.css">
     <base href="http://localhost:8080/">
     <title>Recipe</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -38,22 +39,7 @@ if (isset($_GET["RecipeID"])){
 </head>
 
 <body>
-    <header>
-        <div class="logoCombo">
-            <img src="includes/avosave_logo-removebg-preview.png" class="logo">
-            <img src="includes/Logo-PhotoRoom(3).png" class="logo">
-        </div>
-        <nav class="navbar">
-            <ul id="pageNav">
-                <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
-                <li class="pageTraversal" id="search"><a href="recipe-overview.php">Search</a></li>
-            </ul>
-            <ul id="accountNav">
-                <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <?php include "includes/header.php";?>
     <div class="main-page">
         <div class="column1">
             <div class="back-title-grid">
