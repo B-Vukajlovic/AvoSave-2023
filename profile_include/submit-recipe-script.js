@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var ingredientItems = document.querySelectorAll('.ingredient-item');
 
     // Select ingredients
-    document.querySelectorAll('.ingredient-button').forEach(button => {
+    buttons.forEach(button => {
         button.addEventListener('click', function() {
             let ingredientDiv = this.nextElementSibling;
             let ingredientName = this.getAttribute('data-name');

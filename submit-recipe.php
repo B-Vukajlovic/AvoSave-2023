@@ -63,9 +63,9 @@ if(!$user['isAdmin']) {
                     <label for="steps">Steps for the recipe</label>
                     <input type="text" id="steps" name="steps" placeholder="1...  2...">
                     <label for="servings">Servings</label>
-                    <input type="text" id="servings" name="servings" placeholder="e.g. '3'">
+                    <input type="number" id="servings" name="servings" placeholder="e.g. '3'">
                     <label for="time">Time (minutes)</label>
-                    <input type="text" id="time" name="time" placeholder="e.g. '120'">
+                    <input type="number" id="time" name="time" placeholder="e.g. '120'">
                     <label for="author">Author</label>
                     <input type="text" id="author" name="author" placeholder = "e.g. 'John Doe'">
 
@@ -104,12 +104,12 @@ if(!$user['isAdmin']) {
                             </div>
                         </div>
                     </div>
-
                     <input type="submit" name="submit" value="Submit the recipe">
                 </div>
             </form>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="profile_include/submit-recipe-script.js"></script>
 </body>
 </html>
