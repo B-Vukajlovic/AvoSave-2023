@@ -18,7 +18,6 @@ if(!$user['isAdmin']) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
