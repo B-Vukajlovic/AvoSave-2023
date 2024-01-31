@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             // Display success/failure message
             alert(data);
+            console.log(data);
         })
         .catch(error => {
             console.error('Error:', error);
