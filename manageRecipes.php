@@ -25,6 +25,7 @@ if(!$user['isAdmin']) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin_include/manage_recipes_styles.css">
+    <link rel="stylesheet" href="includes/headerStyle.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src = "admin_include/recipe_deletion.js"></script>
 
@@ -32,21 +33,7 @@ if(!$user['isAdmin']) {
 </head>
 
 <body>
-    <div class="navbar1">
-        <div class="logoCombo">
-            <img src="includes/avosave_logo-removebg-preview.png" class="logo">
-            <img src="includes/Logo-PhotoRoom(3).png" class="logo">
-            <nav class="navbar">
-                <ul id="pageNav">
-                    <li class="pageTraversal" id="home"><a href="index.php">Home</a></li>
-                    <li class="pageTraversal" id="search"><a href="recipe-overview.php">Search</a></li>
-                </ul>
-                <ul id="accountNav">
-                    <li class="pageTraversal" id="login"><a href="ProfilePage.php">Profile</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    <?php include 'includes/header.php'; ?>
     <div class="wrapper">
         <div class="navbar2">
             <div class="topnav">
@@ -57,7 +44,7 @@ if(!$user['isAdmin']) {
             </div>
         </div>
         <div class="mainpage">
-            <h1 class = "Title-page">Manage adminstrators</h1>
+            <h1 class = "Title-page">Manage recipes</h1>
             <table>
                 <tr>
                     <th>RecipeID</th>

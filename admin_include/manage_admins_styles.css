@@ -10,6 +10,19 @@
     --high-light: hsl(117, 100%, 40%);
 }
 
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+tr, th, td{
+    border: var(--txt-clr) outset 2px;
+}
+
+.mainpage {
+    padding-top: 80px;
+}
+
 .logoCombo {
     display: flex;
     align-items: center;
@@ -68,6 +81,7 @@
 
 .navbar2 {
     height: 100%;
+    padding-top: 80px;
     width: 15vw;
     background-color: hsl(35, 49%, 12%);
     color: #fff;
@@ -138,4 +152,18 @@ table, th, td {
 .Title-page{
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    .table, tr, th, td{
+        padding: 5px 20px;
+    }
+
+    .mainpage{
+        padding-top: 100px;
+    }
+
+    .navbar2{
+        padding-top: 100px;
+    }
 }
