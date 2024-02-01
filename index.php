@@ -10,41 +10,80 @@
 </head>
 <body>
     <?php include "includes/header.php";?>
-    <section class="homePageContent">
-        <article class="homePageArticle">
-            <h1>Give Purpose To Waste.</h1>
-            <br>
-            <p>Say goodbye to food waste and hello to delicious, home-cooked meals that make the most of what you've got.</p>
-            <button onclick="window.location.href = 'IngredientPage.php';" id="button"> Get started </button>
-            <br>
+    <section class="homePageContainer">
+        <div class="homePageContent">
+            <article class="homePageArticle" id="article1">
+                <h1>Give Purpose To Waste.</h1>
+                <br>
+                <p>Say goodbye to food waste and hello to delicious, home-cooked meals that make the most of what you've got.</p>
+                <button onclick="window.location.href = 'IngredientPage.php';" id="button"> Get started </button>
+                <br>
+            </article>
+            <article class="homePageArticle" id="article2">
+                <h1>Or,</h1>
+                <p>Curious about what inspired AvoSave and our commitment to sustainability? Discover our story and vision.</p>
+                <button onclick="window.location.href = '#aboutUs';" id="button">Discover</button>
+                <br>
+            </article>
+        </div>
+        <div class="imgContainer">
+            <img src="homepage_include/pictures/colorfullFruit.png">
+        </div>
+    </section>
+    <section class="tooltipContainer" id="aboutUs">
+        <article class="tooltip">
+            <p>Did you know that globally, <b>millions</b> of avocados are wasted every year simply because they ripen faster than they can be consumed or sold?</p>
         </article>
     </section>
-    <section class="containerMainSection" id="aboutUs">
-        <div class="mainContent">
-            <div class="textContent">
-                <h1>Help Us Reduce Wasted Food</h1>
+    <section class="containerMainSection">
+        <div class="mainTitleContainer">
+            <div class="mainTitle">
+                <h1>Combatting Food Waste with Innovation</h1>
+            </div>
+        </div>
+        <div class="mainContent" id="mainContent1">
+            <div class="textContent" id="text1">
+                <h1>In a world where so much food goes to waste,</h1>
+                <br>
                 <p>
-                In a world brimming with culinary possibilities, AvoSave emerges as a beacon of
-                sustainability and convenience with its advanced recipe search tool. Designed
-                to cater to the needs of the environmentally conscious and the gastronomically adventurous,
-                AvoSave's platform empowers users to input their available ingredients and discover
-                a vast array of recipes tailored to their pantry. This innovative approach not only
-                sparks creativity in the kitchen but also significantly diminishes food waste,
-                ensuring that every herb, vegetable, and spice contributes to a delightful meal
-                rather than ending up in the trash.
+                AvoSave stands as a beacon
+                of change. Our journey began with a simple observation: too many good
+                avocados were being thrown away because they ripened quicker than people
+                could eat them. This isn't just about avocados, it's a small part of a
+                bigger problem; global food waste.
                 </p>
                 <br>
                 <p>
-                AvoSave takes the fight against food waste to the front lines, addressing the
-                issue where it often starts—at home. By leveraging AvoSave's smart technology,
-                households can effortlessly utilize their leftover ingredients to their full potential,
-                thereby reducing the environmental footprint one recipe at a time. In transforming the
-                way we think about and use our food, AvoSave is not just a tool for meal preparation;
-                it's a step towards a more sustainable and waste-conscious society.
+                Why does saving food matter? When we waste food, we also waste the water,
+                energy, and effort put into growing it. And when thrown away, this food
+                contributes to greenhouse gases in landfills. It's a cycle that affects
+                our planet.
+                </p>
+                <br>
+                <h1>That's where AvoSave steps in.</h1>
+                <br>
+                <p>
+                Our software is designed to be super
+                user-friendly, think of it as a helpful friend in the kitchen. You
+                tell AvoSave what ingredients you have, like those ripe avocados,
+                and it gives you recipe ideas. It's a fun, creative way to use what
+                you already have, reducing waste and helping the environment.
+                </p>
+                <br>
+                <p>
+                But AvoSave isn't just about recipes; it's about educating and
+                inspiring people to think differently about food. We're committed
+                to sustainability, which means we care deeply about the environment
+                and our impact on it. Our goal is to make reducing food waste easy
+                and enjoyable for everyone.
                 </p>
             </div>
         </div>
     </section>
+    <footer class="footer">
+        <p>&copy; 2024 AvoSave. All rights reserved.</p>
+        <p><a href="homepage_include/privacyPolicy.html">Privacy Policy</a> | <a href="homepage_include/terms.html">Terms of Use</a></p>
+    </footer>
     <div id="cookieConsentPopup" class="cookie-consent-popup">
         <p>This website uses cookies to ensure you get the best experience on our website. <a href="#">Learn more</a></p>
         <button id="acceptCookieConsent">Got it!</button>

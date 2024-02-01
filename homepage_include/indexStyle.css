@@ -14,27 +14,63 @@
     animation: fadeIn .5s;
 }
 
-.homePageContent {
+.homePageContainer {
     position: relative;
     width: 100vw;
     height: 100vh;
 }
 
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 50%;
+}
+
+.imgContainer img {
+    position: absolute;
+    height: 95%;
+    width: 95%;
+    bottom: 0;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.homePageContent {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: hsl(130, 45%, 75%);;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 20px;
+}
+
 .homePageArticle {
     width: fit-content;
     position: absolute;
-    width: 40%;
-    top: 50%;
-    left: 5%;
     transform: translateY(-50%);
     color: black;
     font-size: 20px;
     font-weight: 400;
     padding: 20px;
+    width: 80%;
     text-align: left;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f8f8f8;
+}
+
+#article1 {
+    top: 35%;
+    left: 5%;
+}
+
+#article2 {
+    top: 78%;
+    right: 5%;
 }
 
 .homePageArticle h1 {
@@ -42,7 +78,7 @@
     font-weight: 400;
 }
 
-.homePageContent #button {
+.homePageArticle #button {
     background-color: hsl(130, 45%, 75%);
     border-style: solid;
     border-width: 2px;
@@ -58,52 +94,106 @@
     transition: background-color 0.3s;
 }
 
-.homePageContent #button:hover {
+.homePageArticle #button:hover {
     background-color: hsl(130, 45%, 70%);
 }
 
-.scroll-down-arrow {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
+.tooltipContainer {
+    height: 75px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.homescreenImage {
-    width: 100%;
-    border-radius: 50%;
+.tooltip {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
+}
+
+.tooltip p {
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .containerMainSection {
     position: relative;
     width: 100vw;
-    height: 100vh;
-    background-color: #f8f8f8;
+    height: 90vh;
 }
 
 .mainContent {
+    position: absolute;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 15px;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    right: 0%;
+    border-top-left-radius: 20px;
+    background-color: hsl(130, 45%, 75%);;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.textContent {
-    width: 750px;
-    max-width: 100%;
-    font-size: 18px;
+.mainTitleContainer {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainTitle {
+    text-align: left;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
+    width: 800px;
+    height: fit-content;
+    padding: 20px;
+}
+
+.mainTitle h1 {
+    font-size: 95px;
     font-weight: 400;
-    line-height: 1.6;
-    color: black;
-    margin: auto;
+}
+
+.textContent {
+    width: 90%;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
 }
 
 .textContent h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
     text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+.footer a {
+    color: #f8f8f8;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.footer p {
+    margin: 0;
 }

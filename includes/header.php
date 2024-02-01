@@ -10,6 +10,7 @@
         </ul>
         <ul class="navSubsection" id="middleBar">
             <li class="navLink" id="home"><a href="index.php">Home</a></li>
+            <li class="navLink" id="#aboutUs"><a href="#aboutUs">Search</a></li>
             <li class="navLink" id="our goal"><a href="#aboutUs">Our goal</a></li>
         </ul>
         <ul class="navSubsection" id="rightBar">
