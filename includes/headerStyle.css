@@ -114,3 +114,13 @@ header {
 .navLink:hover::after {
     width: 100%;
 }
+
+@media screen and (max-width: 800px){
+    #home{
+        display: none;
+    }
+
+    #our_goal{
+        display: none;
+    }
+}

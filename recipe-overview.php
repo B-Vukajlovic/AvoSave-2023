@@ -18,6 +18,9 @@ require_once('includes/config_session.php');
 <body>
   <?php include "includes/header.php";?>
   <div class='body-container'>
+  <a id="back-button" href="IngredientPage.php">
+      <img class="button" src="recipe_include/pictures/back-arrow.png" alt="&lt back">
+  </a>
 
   <h1 class="title-page">Recipes</h1>
   <div class="main-page">

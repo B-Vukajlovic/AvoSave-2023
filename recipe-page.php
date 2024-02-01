@@ -88,8 +88,8 @@ if (isset($_GET["recipeID"])){
     <div class="main-page">
         <div class="column1">
             <div class="back-title-grid">
-                <a id="back-button" href="javascript:window. history. back();">
-                    <img class=button src="recipe_include/pictures/back-arrow.png" alt="&lt back">
+                <a id="back-button" href="recipe-overview.php">
+                    <img class="button" src="recipe_include/pictures/back-arrow.png" alt="&lt back">
                 </a>
                 <div class="title-bar"> <!--get title from database-->
                     <h1>
