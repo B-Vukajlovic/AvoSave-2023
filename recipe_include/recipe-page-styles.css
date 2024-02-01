@@ -3,6 +3,11 @@
     color: var(--txt-clr);
 }
 
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
 .body-container{
     background-image: url(../includes/background\(ingredients\).webp);
     background-repeat: no-repeat;
