@@ -23,7 +23,7 @@ require_once('includes/config_session.php');
   <div class="main-page">
     <div class="filters">
       <h1 class="left-page-title">Filter by</h1>
-
+      <br>
       <label for="filter1" class="title-filter"> Diet</label><br>
       <input type="checkbox" id="filter1" name="filter1" value="vegetarian">
       <label for="filter1"> Vegetarian</label><br>
@@ -49,7 +49,6 @@ require_once('includes/config_session.php');
       <label for="filter9"> 3 servings</label><br>
       <input type="checkbox" id="filter10" name="filter10" value="4moreservings">
       <label for="filter10"> 4+ servings</label><br><br>
-
     </div>
     <div class="recipes">
     </div>

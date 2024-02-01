@@ -48,6 +48,8 @@ function displayRecipes($rows, $preferedIngredientsArray){
             echo '<span class="label-unavailable">' . htmlspecialchars( $notSelectedIngredient ) . '</span>';
         }
         echo '</div>';
+        echo '<p> Servings:'. htmlspecialchars($row['Servings']).'<p>';
+        echo '<p> Time:'. htmlspecialchars($row['Time']).'<p>';
         echo '</div>';
         echo '</div>';
         echo '</a>';
@@ -58,7 +60,7 @@ function displayRecipes($rows, $preferedIngredientsArray){
 if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' ] ) ) {
     $filters = $_POST[ 'filtersApplied' ];
     // Retrieve the recipes
-    $sql = "SELECT R.RecipeID, R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients, ImageURL
+    $sql = "SELECT R.RecipeID, R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients, ImageURL, Servings, Time
                 FROM Recipe R
                 JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
                 JOIN Ingredient AS I ON RI.IngredientName = I.Name
@@ -146,7 +148,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
 
 //Default display without filters
 } else {
-    $sql = "SELECT R.RecipeID, R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients, ImageURL
+    $sql = "SELECT R.RecipeID, R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients, ImageURL, Servings, Time
   FROM Recipe R
   JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
   JOIN Ingredient AS I ON RI.IngredientName = I.Name
