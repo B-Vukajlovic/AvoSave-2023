@@ -1,4 +1,3 @@
 Redirectmatch 404 /.git.*
 Redirectmatch 404 /.htaccess
-Redirectmatch 404 /.pdo-connect.php
-
+Options -Indexes
