@@ -4,7 +4,7 @@ require_once("../includes/config_session.php");
 
 $RecipeID = filter_input(INPUT_GET, "RecipeID", FILTER_SANITIZE_SPECIAL_CHARS);
 if (!isset($_SESSION["userid"])) {
-    header("Location: localhost:8080/recipe-page.php?RecipeID=$RecipeID");
+    header("Location: in5.webtech-uva.nl/recipe-page.php?RecipeID=$RecipeID");
 }
 $UserID = $_SESSION["userid"];
 $time = date("Y-m-d H:i:s", time());
@@ -23,5 +23,5 @@ if (!empty($commentinput)) {
     }
 }
 
-header("Location: localhost:8080/recipe-page.php?RecipeID=$RecipeID");
+header("Location: in5.webtech-uva.nl/recipe-page.php?RecipeID=$RecipeID");
 ?>
