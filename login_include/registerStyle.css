@@ -92,3 +92,8 @@ label {
 #registerLink:hover {
     text-decoration: underline;
 }
+
+.succesmsg {
+    color: rgb(44, 94, 31);
+    margin: 4px;
+}
