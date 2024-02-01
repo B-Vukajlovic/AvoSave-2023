@@ -2,11 +2,15 @@
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
 
-$isAdmin = 0;
-
 if ($_SESSION['userid'] == null) {
     header('Location: login.php');
     die();
+}  else {
+    $query = "SELECT isAdmin FROM User WHERE UserID = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$_SESSION['userid']]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $isAdmin = $result['isAdmin'];
 }
 
 function logOut(){
