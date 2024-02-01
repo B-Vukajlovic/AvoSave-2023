@@ -6,8 +6,8 @@
 <header>
     <nav class="navBar">
         <ul class="navSubsection" id="leftBar">
-            <img id="logo" src="includes/avosave_logo-removebg-preview(1).png">
-            <li class="logoText">AvoSave</li>
+            <img onclick="window.location.href = 'index.php';" id="logo" src="includes/avosave_logo-removebg-preview(1).png">
+            <li onclick="window.location.href = 'index.php';" class="logoText">AvoSave</li>
         </ul>
         <ul class="navSubsection" id="middleBar">
             <li class="navLink" id="home"><a href="index.php">Home</a></li>
