@@ -5,7 +5,7 @@
 
     session_set_cookie_params([
         'lifetime' => 1800,
-        'domain' => 'localhost',
+        'domain' => 'in5.webtech-uva.nl',
         'path' => '/',
         'secure' => true,
         'httponly' => true
