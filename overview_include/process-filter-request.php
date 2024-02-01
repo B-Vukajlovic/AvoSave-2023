@@ -18,7 +18,7 @@ function displayRecipes($rows, $preferedIngredientsArray){
     $recipesDisplayed = 0;
     foreach ( $rows as $row ) {
         if (!empty($preferedIngredientsArray) && $row[ 'Priority' ] == 0) {
-            continue;
+            break;
         }
         $recipesDisplayed++;
         error_log($row['ImageURL']);
@@ -60,7 +60,7 @@ function displayRecipes($rows, $preferedIngredientsArray){
         echo '</a>';
     }
     if ($recipesDisplayed == 0) {
-        echo '<h2>No recipes have been found with your ingredients.</h2>';
+        echo '<h2>No recipes have been found with your ingredients/filters.</h2>';
     }
 }
 
