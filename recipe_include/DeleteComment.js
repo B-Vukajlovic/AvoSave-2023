@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $(document).on('click', '.delete', function() {
         $(this).parent().addClass('hidden');
-        var commentID = $(this).data('commentID');
+        var commentID = $(this).data('commentid');
         sendDeleteRequest(commentID)
     });
 });

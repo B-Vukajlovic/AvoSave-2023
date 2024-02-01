@@ -18,7 +18,8 @@ if (!empty($commentInput)) {
         die('Error in preparing statement.');
     }
 
-    $result = $stmt->execute([$commentinput, $time, $RecipeID, $UserID]);
+    $result = $stmt->execute([$commentinput, $time, $recipeID, $userID]);
+    $result = $stmt->execute([$commentinput, $time, $recipeID, $userID]);
     if ($result === false) {
         die('Error in executing statement.');
     }

@@ -18,7 +18,7 @@ function displayRecipes($rows, $preferedIngredientsArray){
     $recipesDisplayed = 0;
     foreach ( $rows as $row ) {
         if (!empty($preferedIngredientsArray) && $row[ 'Priority' ] == 0) {
-            continue;
+            break;
         }
         $recipesDisplayed++;
         error_log($row['ImageURL']);
@@ -50,7 +50,7 @@ function displayRecipes($rows, $preferedIngredientsArray){
             echo '<span class="label-available">' . htmlspecialchars( $selectedIngredient ) . '</span>';
         }
         foreach ( $ingredientsNotSelected as $notSelectedIngredient ) {
-            echo '<span class="label-unavailable">' . htmlspecialchars( $notSelectedIngredient ) . '</span>';
+            echo '<span class="labelUnavailable">' . htmlspecialchars( $notSelectedIngredient ) . '</span>';
         }
         echo '</div>';
         echo '<p class="info">Servings: '. htmlspecialchars($row['Servings']).'<p>';
@@ -60,7 +60,7 @@ function displayRecipes($rows, $preferedIngredientsArray){
         echo '</a>';
     }
     if ($recipesDisplayed == 0) {
-        echo '<h2>No recipes have been found with your ingredients.</h2>';
+        echo '<h2>No recipes have been found with your ingredients/filters.</h2>';
     }
 }
 
@@ -165,20 +165,23 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
     $rows = $result->fetchAll( PDO::FETCH_ASSOC );
 
     //Adds priority to the recipes based on preferences
-    foreach ($rows as $key => $row) {
-        $matches = 0;
-        $ingredients = explode( ',', $row[ 'Ingredients' ] );
-        foreach ( $ingredients as $ingredient ) {
-            foreach ( $preferedIngredientsArray as $preferedIngredient ) {
-                if ( $ingredient == $preferedIngredient ) {
-                    $matches++;
-                    break;
+    if ($preferedIngredientsArray != null) {
+        foreach ($rows as $key => $row) {
+            $matches = 0;
+            $ingredients = explode( ',', $row[ 'Ingredients' ] );
+            foreach ( $ingredients as $ingredient ) {
+                foreach ( $preferedIngredientsArray as $preferedIngredient ) {
+                    if ( $ingredient == $preferedIngredient ) {
+                        $matches++;
+                        break;
+                    }
                 }
             }
+            $rows[$key]['Priority'] = $matches;
         }
-        $rows[$key]['Priority'] = $matches;
+        usort($rows, 'arrayOrderDesc');
     }
-    usort($rows, 'arrayOrderDesc');
     displayRecipes($rows, $preferedIngredientsArray);
+
 }
 ?>

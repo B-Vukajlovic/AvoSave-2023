@@ -210,7 +210,7 @@ if (isset($_GET["recipeID"])){
                 echo "<div class='comment'>";
                 echo "<p><b>" . $commenter['Username']."</b></p>";
                 if ($userID !== null && ($commenterID == $userID || $isAdmin)){
-                    echo "<button class='delete' data-commentID='".$id['CommentID']."'>Delete comment</button>";
+                    echo "<button class='delete' data-commentid='".$id['CommentID']."'>Delete comment</button>";
                 }
                 echo "<p class='commentText'>".$id["CommentText"]."</p>";
                 echo "<p class='commentInfo'> commented on " . $id["CreatedAt"]."</p>";
