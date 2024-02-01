@@ -32,6 +32,10 @@ header {
     list-style: none;
 }
 
+#logo {
+    height: 30px;
+}
+
 #leftBar {
     width: 33%;
 }
@@ -50,7 +54,7 @@ header {
     color: black;
     display: inline-block;
     position: relative;
-    margin: 0px 20px;
+    margin: 0px 0px 0px 10px;
     cursor: pointer;
 }
 
