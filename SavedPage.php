@@ -45,31 +45,44 @@ if ($_SESSION['userid'] == null) {
         <div class="mainpage">
             <h1 class = "title-page">My Saved Recipes</h1>
             <?php
+            function displayRecipes($rows){
+                foreach ( $rows as $row ) {
+                    error_log($row['ImageURL']);
+                    echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
+                    echo '<div class="card-holder">';
+                    echo '<div class="column1">';
+                    echo '<img class="images" src="'.$row['ImageURL'].'" alt="Image '.$row['RecipeTitle'].'">';
+                    echo '</div>';
+                    echo '<div class="column2">';
+                    echo '<h2 class="title-card">' . htmlspecialchars($row['RecipeTitle']) . '</h2>';
+                    echo '<div class="labels">';
+                    $ingredients = explode( ',', $row[ 'Ingredients' ] );
+                    foreach ($ingredients as $ingredient) {
+                        echo '<span class="label-available">' . htmlspecialchars($ingredient) . '</span>';
+                    }
+                    echo '</div>';
+                    echo '<p class="info">Servings: '. htmlspecialchars($row['Servings']).'<p>';
+                    echo '<p class="info">Time: '. htmlspecialchars($row['Time']).'<p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</a>';
+                }
+            }
+
             $UserID = $_SESSION["userid"];
-            $query = "SELECT R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients, ImageURL
-                     FROM Recipe R, UserRecipe UR, Image as IG
-                     JOIN RecipeIngredient AS RI ON R.RecipeID = RI.RecipeID
-                     WHERE R.RecipeID = UR.RecipeID AND UR.SavedStatus = 1 AND UserID = ?
+            $query = "SELECT R.RecipeID, R.Title AS RecipeTitle, GROUP_CONCAT(RI.IngredientName) AS Ingredients, ImageURL, Servings, Time
+                        FROM UserRecipe UR
+                        JOIN Recipe AS R ON R.RecipeID = UR.RecipeID
+                        JOIN RecipeIngredient AS RI ON RI.RecipeID = R.RecipeID
+                        WHERE UR.SavedStatus = ? AND UR.UserID = ?
                      GROUP BY R.RecipeID";
             $stmt = $pdo->prepare($query);
-            $stmt = execute([$UserID]);
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div class="column1">
-                <img class="images" src="'.htmlspecialchars($row['ImageURL']).'" alt="Image '.htmlspecialchars($row['RecipeTitle']) .'">
-                </div>';
-                echo '<div class="column2">';
-                echo '<h2 class="title-card">' . htmlspecialchars($row['RecipeTitle']) . '</h2>';
-                echo '<div class="labels">';
-                $ingredients = explode(',', $row['Ingredients']);
-                foreach ($ingredients as $ingredient) {
-                    echo '<span class="label-available">' . htmlspecialchars($ingredient) . '</span>';
-                }
-                echo '</div>';
-                echo '</div>';
-            }
+            $stmt->execute([1, $UserID]);
+            $rows = $stmt->fetchAll( PDO::FETCH_ASSOC );
+            displayRecipes($rows);
             ?>
         </div>
-    </div>
+    </div>//9
 </body>
 
 </html>
