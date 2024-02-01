@@ -7,11 +7,11 @@
     <link rel='stylesheet' href='includes/headerStyle.css'>
     <style>
         body {
-            margin-top: 50px;
             font-family: Arial, sans-serif;
             line-height: 1.6;
         }
         .container {
+            margin-top: 50px;
             width: 80%;
             margin: auto;
             overflow: hidden;
