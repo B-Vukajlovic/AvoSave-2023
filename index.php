@@ -82,10 +82,10 @@
     </section>
     <footer class="footer">
         <p>&copy; 2024 AvoSave. All rights reserved.</p>
-        <p><a href="homepage_include/privacyPolicy.html">Privacy Policy</a> | <a href="homepage_include/terms.html">Terms of Use</a></p>
+        <p><a href="homepage_include/privacyPolicy.php">Privacy Policy</a> | <a href="homepage_include/terms.php">Terms of Use</a></p>
     </footer>
     <div id="cookieConsentPopup" class="cookie-consent-popup">
-        <p>This website uses cookies to ensure you get the best experience on our website. <a href="/homepage_include/privacyPolicy.html">Learn more</a></p>
+        <p>This website uses cookies to ensure you get the best experience on our website. <a href="/homepage_include/privacyPolicy.php">Learn more</a></p>
         <button id="acceptCookieConsent">Got it!</button>
     </div>
     <script src="homepage_include/cookieConsent.js"></script>

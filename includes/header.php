@@ -12,7 +12,7 @@
         <ul class="navSubsection" id="middleBar">
             <li class="navLink" id="home"><a href="index.php">Home</a></li>
             <li class="navLink" id="Search"><a href="IngredientPage.php">Search</a></li>
-            <li class="navLink" id="our goal"><a href="index.php#aboutUs">Our goal</a></li>
+            <li class="navLink" id="our_goal"><a href="index.php#aboutUs">Our goal</a></li>
         </ul>
         <ul class="navSubsection" id="rightBar">
             <?php if (isset($_SESSION["userid"])): ?>
