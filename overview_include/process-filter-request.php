@@ -5,8 +5,8 @@ require_once('../includes/config_session.php');
 global $preferedIngredientsString;
 global $preferedIngredientsArray;
 
-if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['selectedIngredients'] ) ) {
-    $preferedIngredientsString = $_POST['selectedIngredients'];
+if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_GET['selectedIngredients'] ) ) {
+    $preferedIngredientsString = $_GET['selectedIngredients'];
     $preferedIngredientsArray = json_decode($preferedIngredientsString);
 }
 
