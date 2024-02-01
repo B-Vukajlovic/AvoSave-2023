@@ -250,4 +250,12 @@ h1 {
     .navbar2{
         padding-top: 100px;
     }
+
+    .visuals{
+        grid-template-columns: auto;
+    }
+
+    .pick{
+        margin-left: 0;
+    }
 }
