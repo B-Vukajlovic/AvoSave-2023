@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $(".buttonPromote").click(function() {
-      var userID = $(this).data('userid');
+      var userID = $(this).data('userID');
       var changeRequest = 1;
       if (sessionUserID != userID) {
         changePermissionsUser(userID, changeRequest);
@@ -8,7 +8,7 @@ $(document).ready(function() {
   });
 
   $(".buttonDemote").click(function() {
-      var userID = $(this).data('userid');
+      var userID = $(this).data('userID');
       var changeRequest = 0;
       console.log(sessionUserID);
       console.log(userID);
@@ -30,7 +30,7 @@ function changePermissionsUser(userID, changeRequest ) {
   $.ajax({
         url: 'admin_include/process_permissions.php',
         type: 'POST',
-        data: { UserID: userID, AdminStatusRequest : changeRequest},
+        data: { userID: userID, adminStatusRequest : changeRequest},
         error: function(error) {
           console.error('Error:', error);
         }

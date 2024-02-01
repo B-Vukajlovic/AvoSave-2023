@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="homepage_include/indexStyle.css">
     <link rel="stylesheet" href="includes/headerStyle.css">
     <link rel="stylesheet" href="homepage_include/cookieStyle.css">
+    <link rel="stylesheet" href="includes/colors.css">
     <title>Home</title>
 </head>
 <body>
@@ -84,7 +85,7 @@
         <p>&copy; 2024 AvoSave. All rights reserved.</p>
         <p><a href="homepage_include/privacyPolicy.php">Privacy Policy</a> | <a href="homepage_include/terms.php">Terms of Use</a></p>
     </footer>
-    <div id="cookieConsentPopup" class="cookie-consent-popup">
+    <div id="cookieConsentPopup" class="cookieConsentPopup">
         <p>This website uses cookies to ensure you get the best experience on our website. <a href="/homepage_include/privacyPolicy.php">Learn more</a></p>
         <button id="acceptCookieConsent">Got it!</button>
     </div>

@@ -2,14 +2,6 @@
     margin: 0;
 }
 
-:root {
-    --background-clr: hsl(0, 100%, 100%);
-    --txt-clr: hsl(110, 45%, 12%);
-    --light-accent: hsl(130, 45%, 75%);
-    --dark-accent: hsl(35, 50%, 20%);
-    --high-light: hsl(117, 100%, 40%);
-}
-
 
 html, body{
     margin: 0;
@@ -21,7 +13,7 @@ html, body{
     display: flex;
     align-items: center;
     margin: 0px 20px 0px 0px;
-    background-color: var(--txt-clr);
+    background-color: var(--txtColor);
 }
 
 .logo {
@@ -85,13 +77,13 @@ html, body{
     color: #fff;
 }
 
-.topnav {
+.topNav {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.topnav a {
+.topNav a {
     text-decoration: none;
     padding: 15px;
     width: 100%;
@@ -99,7 +91,7 @@ html, body{
     color: #fff;
 }
 
-.topnav a:hover {
+.topNav a:hover {
     background-color: #555;
 }
 
@@ -129,7 +121,7 @@ input[type=submit] {
     font-size: 18px;
     width: 50%;
     padding: 15px 20px;
-    background-color: var(--light-accent);
+    background-color: var(--lightAccent);
     border: 2px solid #9d9d9d;
 }
 
@@ -155,8 +147,8 @@ input[type=submit]:hover {
     margin-top: 13px;
 }
 
-.ingredient-button {
-    border: 4px solid   var(--txt-clr);
+.ingredientButton {
+    border: 4px solid   var(--txtColor);
     padding: 4px 20px;
     border-radius: 20px;
     width: 240px;
@@ -169,21 +161,21 @@ input[type=submit]:hover {
     color: #143516;
 }
 
-.ingredient-button:hover {
+.ingredientButton:hover {
     background-color: #6ed472;
     color: #000;
 }
 
-.ingredient-button.selected {
+.ingredientButton.selected {
     background-color: #4CAF50;
     color: #000;
 }
 
-.ingredient-button[style="display: none;"] {
+.ingredientButton[style="display: none;"] {
     display: none;
 }
 
-.ingredients-container {
+.ingredientsContainer {
     max-height: 300px;
     max-width: 250px;
     display: grid;
@@ -193,12 +185,12 @@ input[type=submit]:hover {
     overflow-y: scroll;
 }
 
-.search-bar {
+.searchbar {
     width: 450px;
     height: 100px;
 }
 
-.input-search-bar {
+.inputSearchbar {
     top: 20px;
     box-sizing: border-box;
     padding: 0 20px;
@@ -220,7 +212,7 @@ h1 {
     max-width: 300px;
 }
 
-.select-img {
+.selectImg {
     max-height: 40px;
     margin-bottom: 10px;
 }

@@ -1,7 +1,7 @@
 :root{
-    --background-clr: hsl(0, 100%, 100%);
-    --txt-clr: hsl(110, 45%, 12%);
-    --light-accent: rgb(218, 235, 218);
-    --dark-accent: hsl(35, 50%, 20%);
-    --high-light: hsl(117, 100%, 40%);
+    --backgroundColor: hsl(0, 100%, 100%);
+    --txtColor: hsl(110, 45%, 12%);
+    --lightAccent: rgb(218, 235, 218);
+    --darkAccent: hsl(35, 50%, 20%);
+    --highlight: hsl(117, 100%, 40%);
 }

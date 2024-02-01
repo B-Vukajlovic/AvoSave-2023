@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var buttons = document.querySelectorAll('.ingredient-button');
+    var buttons = document.querySelectorAll('.ingredientButton');
     var selectedIngredients = [];
-    var searchInput = document.getElementById('ingredient-search');
+    var searchInput = document.getElementById('ingredientSearch');
     var image = document.getElementById('image');
-    var ingredientItems = document.querySelectorAll('.ingredient-item');
+    var ingredientItems = document.querySelectorAll('.ingredientItem');
 
     // Select ingredients
     buttons.forEach(button => {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var searchText = this.value.toLowerCase();
 
         ingredientItems.forEach(function(item) {
-            var ingredientButton = item.querySelector('.ingredient-button');
+            var ingredientButton = item.querySelector('.ingredientButton');
             var ingredientName = ingredientButton.getAttribute('data-name').toLowerCase();
 
             if (ingredientName.includes(searchText)) {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const link = data.data.link;
                 document.querySelector('.img').src = link;
                 console.log(link);
-                document.getElementById('imgur-url').value = link;
+                document.getElementById('imgurURL').value = link;
             }
         })
         .catch(error => console.error('Error:', error));
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Set the value of the hidden input field for selected ingredients
-        document.getElementById('selected-ingredients').value = JSON.stringify(selectedIngredients);
+        document.getElementById('selectedIngredients').value = JSON.stringify(selectedIngredients);
 
         // AJAX submission
         submitForm();
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function validateForm() {
         // Check if all text inputs are filled
-        const inputs = document.querySelectorAll('input[type=text]:not(#ingredient-search)');
+        const inputs = document.querySelectorAll('input[type=text]:not(#ingredientSearch)');
         for (let input of inputs) {
             if (input.value.trim() === '') {
                 return false;

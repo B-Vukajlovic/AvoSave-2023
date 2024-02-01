@@ -3,7 +3,7 @@
     require_once('includes/config_session.php');
     require "login_include/registerMainLogic.php";
 
-    if (isset($_SESSION['userid'])) {
+    if (isset($_SESSION['userID'])) {
         header('Location: index.php');
         die();
     }
@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login_include/registerStyle.css">
     <link rel="stylesheet" href="includes/headerStyle.css">
+    <link rel="stylesheet" href="includes/colors.css">
     <title>Register</title>
 </head>
 <body>
@@ -53,8 +54,8 @@
                         }
                     ?>
                 </div>
-                <input type="checkbox" name="remember_me" id="remember_me">
-                <label for="remember_me">Remember Me</label>
+                <input type="checkbox" name="rememberMe" id="rememberMe">
+                <label for="rememberMe">Remember Me</label>
             </div>
             <div class="buttonContainer">
                 <input type="submit" name="submit" value="Register">

@@ -13,14 +13,14 @@
 
     session_start();
 
-    if (!isset($_SESSION["last_regeneration"])) {
+    if (!isset($_SESSION["lastRegeneration"])) {
         session_regenerate_id();
-        $_SESSION["last_regeneration"] = time();
+        $_SESSION["lastRegeneration"] = time();
     } else {
         $interval = 60 * 30;
-        if (time() - $_SESSION["last_regeneration"] >= $interval) {
+        if (time() - $_SESSION["lastRegeneration"] >= $interval) {
             session_regenerate_id();
-            $_SESSION["last_regeneration"] = time();
+            $_SESSION["lastRegeneration"] = time();
         }
     }
 ?>

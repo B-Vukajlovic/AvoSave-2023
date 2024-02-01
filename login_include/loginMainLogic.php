@@ -23,7 +23,7 @@
 
             $user = userFetch($pdo, $username);
             if ($user && password_verify($password, $user['HashedPassword'])) {
-                if (isset($_POST['remember_me'])) {
+                if (isset($_POST['rememberMe'])) {
                     setcookie("username", $user["Username"], [
                         'expires' => time() + (86400 * 30),
                         'path' => '/',
@@ -33,7 +33,7 @@
                         'samesite' => 'Lax'
                     ]);
                 }
-                $_SESSION['userid'] = $user['UserID'];
+                $_SESSION['userID'] = $user['UserID'];
                 header("Location: ../index.php");
                 exit();
             } else {

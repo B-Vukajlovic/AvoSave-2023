@@ -3,14 +3,14 @@ require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
 
 
-if ($_SESSION['userid'] == null) {
+if (!isset($_SESSION['userID'])) {
     header('Location: login.php');
     die();
 }
 
-$userid = $_SESSION['userid'];
+$userID = $_SESSION['userID'];
 $stmt = $pdo->prepare("SELECT isAdmin FROM User WHERE UserID=?");
-$stmt->execute([$userid]);
+$stmt->execute([$userID]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if(!$user['isAdmin']) {
@@ -28,8 +28,9 @@ if(!$user['isAdmin']) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin_include/manage_admins_styles.css">
     <link rel="stylesheet" href="includes/headerStyle.css">
+    <link rel="stylesheet" href="includes/colors.css">
     <script>
-        var sessionUserID = <?php echo json_encode($userid); ?>;
+        var sessionUserID = <?php echo json_encode($userID); ?>;
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src = "admin_include/permissions_change.js"></script>
@@ -41,16 +42,16 @@ if(!$user['isAdmin']) {
     <?php include "includes/header.php";?>
     <div class="wrapper">
         <div class="navbar2">
-            <div class="topnav">
+            <div class="topNav">
                 <a class="myAccountNav" href="ProfilePage.php">My Account</a>
-                <a class="SavedNav" href="SavedPage.php">Saved</a>
-                <a class="ManAdminNav" href="manageAdmins.php">Manage admins</a>
-                <a class="ManRecipeNav" href="manageRecipes.php">Manage recipes</a>
-                <a class="SubmitNav" href="submit-recipe.php">Submit recipes</a>
+                <a class="savedNav" href="SavedPage.php">Saved</a>
+                <a class="manAdminNav" href="manageAdmins.php">Manage admins</a>
+                <a class="manRecipeNav" href="manageRecipes.php">Manage recipes</a>
+                <a class="submitNav" href="submit-recipe.php">Submit recipes</a>
             </div>
         </div>
         <div class="mainpage">
-            <h1 class = "Title-page">Manage adminstrators</h1>
+            <h1 class = "titlePage">Manage adminstrators</h1>
             <table>
                 <tr>
                     <th>UserID</th>

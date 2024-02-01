@@ -11,6 +11,7 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ingredient_include/ingredientpage-style.css">
     <link rel="stylesheet" href="includes/headerStyle.css">
+    <link rel="stylesheet" href="includes/colors.css">
     <title>Pick Ingredients</title>
 </head>
 <body>
@@ -21,11 +22,11 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
     </div>
 
     <section class="filter">
-        <div class="search-bar">
-            <input type="text" id="ingredient-search" placeholder="Search an ingredient..." class="input-search-bar">
+        <div class="searchbar">
+            <input type="text" id="ingredientSearch" placeholder="Search an ingredient..." class="inputSearchbar">
         </div>
         <div id="dropdown">
-            <select class="dropdown-menu" id="dropdown-content">
+            <select class="dropdownMenu" id="dropdownContent">
                 <option value="All">All</option>
                 <option value="Fruits">Fruits</option>
                 <option value="Vegetables">Vegetables</option>
@@ -38,17 +39,17 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
             </select>
         </div>
         <div>
-             <form id="ingredient-form" action="recipe-overview.php" method="post">
-                <input type="hidden" id="selected-ingredients" name="selectedIngredients">
+             <form id="ingredientForm" action="recipe-overview.php" method="post">
+                <input type="hidden" id="selectedIngredients" name="selectedIngredients">
                 <button type="submit" class="next">View Recipes</button>
             </form>
         </div>
     </section>
 
     <section class="tools">
-        <div class="ingredients-container">
+        <div class="ingredientsContainer">
             <?php while ($row = $ingredients->fetch()) {
-                echo "<button class='ingredient-button' data-type='{$row['Type']}'>{$row['Name']}</button>";}
+                echo "<button class='ingredientButton' data-type='{$row['Type']}'>{$row['Name']}</button>";}
             ?>
         </div>
 

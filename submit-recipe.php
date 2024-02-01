@@ -2,14 +2,14 @@
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
 
-if ($_SESSION['userid'] == null) {
+if ($_SESSION['userID'] == null) {
     header('Location: login.php');
     die();
 }
 
-$userid = $_SESSION['userid'];
+$userID = $_SESSION['userID'];
 $stmt = $pdo->prepare("SELECT isAdmin FROM User WHERE UserID=?");
-$stmt->execute([$userid]);
+$stmt->execute([$userID]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if(!$user['isAdmin']) {
@@ -26,6 +26,7 @@ if(!$user['isAdmin']) {
     <meta name="referrer" content="no-referrer">
     <link rel="stylesheet" href="profile_include/submit-recipe-styles.css">
     <link rel="stylesheet" href="includes/headerStyle.css">
+    <link rel="stylesheet" href="includes/colors.css">
     <title>Profile</title>
 </head>
 
@@ -33,18 +34,18 @@ if(!$user['isAdmin']) {
     <?php include "includes/header.php";?>
     <div class="wrapper">
         <div class="navbar2">
-            <div class="topnav">
+            <div class="topNav">
             <a class="myAccountNav" href="ProfilePage.php">My Account</a>
-                <a class="SavedNav" href="SavedPage.php">Saved</a>
-                <a class="ManAdminNav" href="manageAdmins.php">Manage admins</a>
-                <a class="ManRecipeNav" href="manageRecipes.php">Manage recipes</a>
-                <a class="SubmitNav" href="submit-recipe.php">Submit recipes</a>
+                <a class="savedNav" href="SavedPage.php">Saved</a>
+                <a class="manAdminNav" href="manageAdmins.php">Manage admins</a>
+                <a class="manRecipeNav" href="manageRecipes.php">Manage recipes</a>
+                <a class="submitNav" href="submit-recipe.php">Submit recipes</a>
             </div>
         </div>
         <div class="mainpage">
             <h1>Submit a Recipe!<h1>
             <form method="POST" enctype="multipart/form-data">
-                <div class="acc-info-input">
+                <div class="accInfoInput">
                     <label for="title">Title</label>
                     <input type="text" id="title" name="title" placeholder="e.g. 'My Recipe'">
                     <label for="description">Description</label>
@@ -61,24 +62,24 @@ if(!$user['isAdmin']) {
                     <div class="visuals">
                         <div class ="see">
                             <label for="image">Image</label>
-                            <input type="file" id="image" name="image" class="select-img">
+                            <input type="file" id="image" name="image" class="selectImg">
                             <img src="" class="img" alt="...">
-                            <input type="hidden" id="imgur-url" name="imgur-url">
+                            <input type="hidden" id="imgurURL" name="imgurURL">
                         </div>
 
                         <div class="pick">
                             <label for="ingredients">Ingredients</label>
-                            <input type="hidden" id="selected-ingredients" name="selectedIngredients">
-                            <div class="search-bar">
-                                <input type="text" id="ingredient-search" placeholder="Search an ingredient..." class="input-search-bar">
+                            <input type="hidden" id="selectedIngredients" name="selectedIngredients">
+                            <div class="searchbar">
+                                <input type="text" id="ingredientSearch" placeholder="Search an ingredient..." class="inputSearchbar">
                             </div>
 
-                            <div class="ingredients-container">
+                            <div class="ingredientsContainer">
                                 <?php
                                     $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
                                     while ($row = $ingredients->fetch()) {
-                                        echo "<div class='ingredient-item'>
-                                                <button class='ingredient-button' type='button' data-type='{$row['Type']}' data-name='{$row['Name']}'>{$row['Name']}</button>
+                                        echo "<div class='ingredientItem'>
+                                                <button class='ingredientButton' type='button' data-type='{$row['Type']}' data-name='{$row['Name']}'>{$row['Name']}</button>
                                                 <div class='ingredient' data-name='Ingredient Name'>
                                                     <input type='number' class='amount' placeholder='Amount'>
                                                     <select class='unit'>

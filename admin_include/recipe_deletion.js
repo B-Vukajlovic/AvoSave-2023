@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(".buttonDelete").click(function() {
-        var recipeID = $(this).data('recipeid');
+        var recipeID = $(this).data('recipeID');
         deleteRecipe(recipeID);
     });
 });
@@ -9,7 +9,7 @@ function deleteRecipe(recipeID) {
     $.ajax({
           url: 'admin_include/process_recipe_deletion.php',
           type: 'POST',
-          data: { RecipeID: recipeID},
+          data: { recipeID: recipeID},
           success: function(){
             hideColumn(recipeID);
           },

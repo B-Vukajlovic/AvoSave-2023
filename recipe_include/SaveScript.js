@@ -11,13 +11,13 @@ function click(){
         let btn = document.getElementById("favButton");
         let res = btn.value;
         let val = JSON.parse(res);
-        let SvSt = val[0];
-        let RID = val[1];
+        let savedStatus = val[0];
+        let recipeID = val[1];
 
         $.ajax({
             url: 'recipe_include/change-saved-status.php',
             type: 'POST',
-            data: { savedStatus: SvSt, RecipeID: RID },
+            data: { savedStatus: savedStatus, RecipeID: recipeID },
             success: function(response) {
                 document.getElementById("favButton").setAttribute("value", response);
                 sendSaveRequest()
@@ -34,12 +34,12 @@ function click(){
 }
 
 function sendSaveRequest(){
-    var SvSt;
+    var savedStatus;
     try {
         let btn = document.getElementById("favButton");
         let res = btn.value;
         let val = JSON.parse(res);
-        SvSt = val[0];
+        savedStatus = val[0];
     } catch (error) {
         console.error("Error parsing JSON:", error);
     }
@@ -47,7 +47,7 @@ function sendSaveRequest(){
     $.ajax({
         url: 'recipe_include/save-recipe.php',
         type: 'POST',
-        data: { savedStatus: SvSt },
+        data: { savedStatus: savedStatus },
         success: function(response) {
           $('.saveButton').html(response);
         },

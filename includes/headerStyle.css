@@ -17,7 +17,7 @@ header {
     border-bottom-right-radius: 20px;
 }
 
-.navBar {
+.navbar {
     display: flex;
     justify-content: space-evenly;
     align-items: center;

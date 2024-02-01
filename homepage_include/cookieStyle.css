@@ -1,4 +1,4 @@
-.cookie-consent-popup {
+.cookieConsentPopup {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -12,13 +12,13 @@
     z-index: 1001;
 }
 
-.cookie-consent-popup p {
+.cookieConsentPopup p {
     margin: 0;
     padding: 0;
     display: inline-block;
 }
 
-.cookie-consent-popup a {
+.cookieConsentPopup a {
     color: #fff;
 }
 

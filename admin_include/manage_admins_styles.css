@@ -2,21 +2,13 @@
     margin: 0;
 }
 
-:root {
-    --background-clr: hsl(0, 100%, 100%);
-    --txt-clr: hsl(110, 45%, 12%);
-    --light-accent: hsl(130, 45%, 75%);
-    --dark-accent: hsl(35, 50%, 20%);
-    --high-light: hsl(117, 100%, 40%);
-}
-
 html, body{
     margin: 0;
     height: 100%;
 }
 
 tr, th, td{
-    border: var(--txt-clr) outset 2px;
+    border: var(--txtColor) outset 2px;
 }
 
 .mainpage {
@@ -27,7 +19,7 @@ tr, th, td{
     display: flex;
     align-items: center;
     margin: 0px 20px 0px 0px;
-    background-color: var(--txt-clr);
+    background-color: var(--txtColor);
 }
 
 .logo {
@@ -87,13 +79,13 @@ tr, th, td{
     color: #fff;
 }
 
-.topnav {
+.topNav {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.topnav a {
+.topNav a {
     text-decoration: none;
     padding: 15px;
     width: 100%;
@@ -101,7 +93,7 @@ tr, th, td{
     color: #fff;
 }
 
-.topnav a:hover {
+.topNav a:hover {
     background-color: #555;
 }
 
@@ -149,7 +141,7 @@ table, th, td {
     transition: background-color 0.3s;
 }
 
-.Title-page{
+.titlePage{
     padding-top: 20px;
     padding-bottom: 20px;
 }

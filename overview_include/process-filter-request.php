@@ -10,7 +10,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['selectedIngredients
     $preferedIngredientsArray = json_decode($preferedIngredientsString);
 }
 
-function array_order_desc($a, $b) {
+function arrayOrderDesc($a, $b) {
     return $b['Priority'] - $a['Priority'];
 }
 
@@ -22,13 +22,13 @@ function displayRecipes($rows, $preferedIngredientsArray){
         }
         $recipesDisplayed++;
         error_log($row['ImageURL']);
-        echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
-        echo '<div class="card-holder">';
+        echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipeLink">';
+        echo '<div class="cardHolder">';
         echo '<div class="column1">';
         echo '<img class="images" src="'.$row['ImageURL'].'" alt="Image '.$row['RecipeTitle'].'">';
         echo '</div>';
         echo '<div class="column2">';
-        echo '<h2 class="title-card">' . htmlspecialchars($row['RecipeTitle']) . '</h2>';
+        echo '<h2 class="titleCard">' . htmlspecialchars($row['RecipeTitle']) . '</h2>';
         echo '<div class="labels">';
         $ingredients = explode( ',', $row[ 'Ingredients' ] );
         $ingredientsSelected = array();
@@ -151,7 +151,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
         }
         $rows[$key]['Priority'] = $matches;
     }
-    usort($rows, 'array_order_desc');
+    usort($rows, 'arrayOrderDesc');
     displayRecipes($rows, $preferedIngredientsArray);
 
 //Default display without filters
@@ -178,7 +178,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
         }
         $rows[$key]['Priority'] = $matches;
     }
-    usort($rows, 'array_order_desc');
+    usort($rows, 'arrayOrderDesc');
     displayRecipes($rows, $preferedIngredientsArray);
 }
 ?>

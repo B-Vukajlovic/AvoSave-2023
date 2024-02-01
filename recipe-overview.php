@@ -12,29 +12,30 @@ require_once('includes/config_session.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="overview_include/recipe-overview-styles.css">
   <link rel="stylesheet" href="includes/headerStyle.css">
+  <link rel="stylesheet" href="includes/colors.css">
   <title>Recipe overview</title>
 </head>
 
 <body>
   <?php include "includes/header.php";?>
-  <div class='body-container'>
-  <a id="back-button" href="IngredientPage.php">
+  <div class='bodyContainer'>
+  <a id="backButton" href="IngredientPage.php">
       <img class="button" src="recipe_include/pictures/back-arrow.png" alt="&lt back">
   </a>
 
-  <h1 class="title-page">Recipes</h1>
-  <div class="main-page">
+  <h1 class="titlePage">Recipes</h1>
+  <div class="mainpage">
     <div class='container'>
       <div class="filters">
-        <h1 class="left-page-title">Filter by</h1>
+        <h1 class="leftPageTitle">Filter by</h1>
 
-        <label for="filter1" class="title-filter"> Diet</label><br>
+        <label for="filter1" class="titleFilter"> Diet</label><br>
         <input type="checkbox" id="filter1" name="filter1" value="vegetarian">
         <label for="filter1"> Vegetarian</label><br>
         <input type="checkbox" id="filter2" name="filter2" value="vegan">
         <label for="filter2"> Vegan</label><br><br>
 
-        <label for="filter3" class="title-filter"> Time</label><br>
+        <label for="filter3" class="titleFilter"> Time</label><br>
         <input type="checkbox" id="filter3" name="filter3" value="less15">
         <label for="filter3"> &lt 15 min</label><br>
         <input type="checkbox" id="filter4" name="filter4" value="15to30">
@@ -44,7 +45,7 @@ require_once('includes/config_session.php');
         <input type="checkbox" id="filter6" name="filter6" value="60more">
         <label for="filter6"> 60+ min</label><br><br>
 
-        <label for="filter7" class="title-filter"> Servings</label><br>
+        <label for="filter7" class="titleFilter"> Servings</label><br>
         <input type="checkbox" id="filter7" name="filter7" value="1serving">
         <label for="filter7"> 1 serving</label><br>
         <input type="checkbox" id="filter8" name="filter8" value="2servings">

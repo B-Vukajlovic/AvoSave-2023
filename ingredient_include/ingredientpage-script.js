@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var dropdown = document.getElementById('dropdown-content');
+    var dropdown = document.getElementById('dropdownContent');
     dropdown.value = "All";
-    var buttons = document.querySelectorAll('.ingredient-button');
+    var buttons = document.querySelectorAll('.ingredientButton');
     var selectedIngredients = JSON.parse(sessionStorage.getItem('selectedIngredients') || '[]');
-    var searchInput = document.getElementById('ingredient-search');
+    var searchInput = document.getElementById('ingredientSearch');
 
     // Initialize button states based on session storage
     buttons.forEach(function(button) {

@@ -2,13 +2,13 @@
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
 
-if ($_SESSION['userid'] == null) {
+if (!isset($_SESSION['userID'])) {
     header('Location: login.php');
     die();
 }  else {
     $query = "SELECT isAdmin FROM User WHERE UserID = ?";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$_SESSION['userid']]);
+    $stmt->execute([$_SESSION['userID']]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $isAdmin = $result['isAdmin'];
 }
@@ -47,40 +47,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
     <?php include "includes/header.php";?>
     <div class="wrapper">
         <div class="navbar2">
-            <div class="topnav">
+            <div class="topNav">
                 <a class="myAccountNav" href="ProfilePage.php">My Account</a>
-                <a class="SavedNav" href="SavedPage.php">Saved</a>
+                <a class="savedNav" href="SavedPage.php">Saved</a>
                 <?php
                 if ($isAdmin) {
-                    echo '<a class="ManAdminNav" href="manageAdmins.php">Manage admins</a>';
-                    echo '<a class="ManRecipeNav" href="manageRecipes.php">Manage recipes</a>';
-                    echo '<a class="SubmitNav" href="submit-recipe.php">Submit recipes</a>';
+                    echo '<a class="manAdminNav" href="manageAdmins.php">Manage admins</a>';
+                    echo '<a class="manRecipeNav" href="manageRecipes.php">Manage recipes</a>';
+                    echo '<a class="submitNav" href="submit-recipe.php">Submit recipes</a>';
                 }
                 ?>
             </div>
         </div>
         <div class="mainpage">
             <h1>My Account</h1>
-            <h2 class="second-title">Account information</h2>
-                <div class="acc-info-input">
+            <h2 class="secondTitle">Account information</h2>
+                <div class="accInfoInput">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" readonly="readonly" value="<?php
-                    $userid = $_SESSION['userid'];
+                    $userID = $_SESSION['userID'];
                     $stmt = $pdo->prepare("SELECT Username FROM User WHERE UserID=?");
-                    $stmt->execute([$userid]);
+                    $stmt->execute([$userID]);
                     $result = $stmt->fetch(PDO::FETCH_ASSOC);
                     echo htmlspecialchars($result['Username'] ?? 'Username not found');
                     ?>">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" readonly="readonly" value="<?php
-                    $userid = $_SESSION['userid'];
+                    $userID = $_SESSION['userID'];
                     $stmt = $pdo->prepare("SELECT Email FROM User WHERE UserID=?");
-                    $stmt->execute([$userid]);
+                    $stmt->execute([$userID]);
                     $result = $stmt->fetch(PDO::FETCH_ASSOC);
                     echo htmlspecialchars($result['Email'] ?? 'Your email');
                     ?>">
                 </div>
-                <div class="acc-info-input">
+                <div class="accInfoInput">
                     <a class="" href="change-password.php">Change Password</a>
                     <form id="formHeader" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <input type="submit" id="logout" value="Log Out">

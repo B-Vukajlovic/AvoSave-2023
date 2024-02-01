@@ -4,8 +4,8 @@ require_once("../includes/config_session.php");
 
 $commentID = $_POST["commentID"];
 
-if (!isset($_SESSION["userid"])) {
-    header("Location: /recipe-page.php?RecipeID=$RecipeID");
+if (!isset($_SESSION["userID"])) {
+    header("Location: /recipe-page.php?RecipeID=$recipeID");
 }
 
 if (!empty($commentID)) {

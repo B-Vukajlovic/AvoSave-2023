@@ -5,8 +5,8 @@ global $pdo;
 
 if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST'){
     $savedStatus = $_POST[ 'savedStatus' ];
-    $RecipeID = intval($_POST['RecipeID']);
-    $UserID = intval($_SESSION["userid"]);
+    $recipeID = intval($_POST['recipeID']);
+    $userID = intval($_SESSION["userID"]);
 
     try{
         if ($pdo) {
@@ -27,16 +27,16 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST'){
             //update database to unsaved & response = 0
             $query = "UPDATE `UserRecipe` SET `SavedStatus` = 0 WHERE `UserID` = ? AND `RecipeID` = ?";
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$UserID, $RecipeID]);
-            $array = array(0, $RecipeID);
+            $stmt->execute([$userID, $recipeID]);
+            $array = array(0, $recipeID);
             $str = json_encode($array);
             echo $str;
         } else {
             //update database to save & response = 1
             $query = "UPDATE `UserRecipe` SET `SavedStatus` = 1 WHERE `UserID` = ? AND `RecipeID` = ?";
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$UserID, $RecipeID]);
-            $array = array(1, $RecipeID);
+            $stmt->execute([$userID, $recipeID]);
+            $array = array(1, $recipeID);
             $str = json_encode($array);
             echo $str;
         }
@@ -45,16 +45,16 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST'){
             //update database to unsaved & response = 0
             $query = "INSERT INTO `UserRecipe` (`UserID`, `RecipeID`, `SavedStatus`) VALUES (?, ?, 0)";
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$UserID, $RecipeID]);
-            $array = array(0, $RecipeID);
+            $stmt->execute([$userID, $recipeID]);
+            $array = array(0, $recipeID);
             $str = json_encode($array);
             echo $str;
         } else {
             //update database to save & response = 1
             $query = "INSERT INTO `UserRecipe` (`UserID`, `RecipeID`, `SavedStatus`) VALUES (?, ?, 1)";
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$UserID, $RecipeID]);
-            $array = array(1, $RecipeID);
+            $stmt->execute([$userID, $recipeID]);
+            $array = array(1, $recipeID);
             $str = json_encode($array);
             echo $str;
         }
