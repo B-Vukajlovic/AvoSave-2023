@@ -17,10 +17,9 @@ require_once('includes/config_session.php');
 
 <body>
   <?php include "includes/header.php";?>
-  <h1 class="title-page">Recipes</h1>
-  <div class="container">
+  <div class='body-container'>
 
-  </div>
+  <h1 class="title-page">Recipes</h1>
   <div class="main-page">
     <div class="filters">
       <h1 class="left-page-title">Filter by</h1>
@@ -58,6 +57,7 @@ require_once('includes/config_session.php');
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src = "overview_include/filter_handeling.js"></script>
+</div>
 </body>
 </html>
 
