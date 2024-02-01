@@ -165,20 +165,22 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
     $rows = $result->fetchAll( PDO::FETCH_ASSOC );
 
     //Adds priority to the recipes based on preferences
-    foreach ($rows as $key => $row) {
-        $matches = 0;
-        $ingredients = explode( ',', $row[ 'Ingredients' ] );
-        foreach ( $ingredients as $ingredient ) {
-            foreach ( $preferedIngredientsArray as $preferedIngredient ) {
-                if ( $ingredient == $preferedIngredient ) {
-                    $matches++;
-                    break;
+    if ($preferedIngredientsArray != null) {
+        foreach ($rows as $key => $row) {
+            $matches = 0;
+            $ingredients = explode( ',', $row[ 'Ingredients' ] );
+            foreach ( $ingredients as $ingredient ) {
+                foreach ( $preferedIngredientsArray as $preferedIngredient ) {
+                    if ( $ingredient == $preferedIngredient ) {
+                        $matches++;
+                        break;
+                    }
                 }
             }
+            $rows[$key]['Priority'] = $matches;
         }
-        $rows[$key]['Priority'] = $matches;
+        usort($rows, 'array_order_desc');
+        displayRecipes($rows, $preferedIngredientsArray);
     }
-    usort($rows, 'array_order_desc');
-    displayRecipes($rows, $preferedIngredientsArray);
 }
 ?>

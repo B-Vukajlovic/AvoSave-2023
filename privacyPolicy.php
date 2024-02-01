@@ -12,9 +12,10 @@
 
         }
         .container {
-            margin-top: 50px;
             width: 80%;
+            margin: auto;
             overflow: hidden;
+            padding-top: 80px;
         }
     </style>
 </head>

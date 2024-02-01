@@ -11,9 +11,10 @@
             line-height: 1.6;
         }
         .container {
-            margin-top: 50px;
             width: 80%;
+            margin: auto;
             overflow: hidden;
+            padding-top: 80px;
         }
         ol {
             padding-left: 20px;
