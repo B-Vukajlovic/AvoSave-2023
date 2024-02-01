@@ -10,6 +10,11 @@
     --high-light: hsl(117, 100%, 40%);
 }
 
+html, body{
+    margin: 0;
+    height: 100vh;
+}
+
 .logoCombo {
     display: flex;
     align-items: center;
@@ -26,6 +31,10 @@
     width: 100vw;
     display: flex;
     justify-content: space-between;
+}
+
+.mainpage{
+    padding-top: 80px;
 }
 
 .pageTraversal {
@@ -67,7 +76,8 @@
 }
 
 .navbar2 {
-    height: 60vw;
+    height: 100%;
+    padding-top: 80px;
     width: 15vw;
     background-color: hsl(35, 49%, 12%);
     color: #fff;
