@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - AvoSave</title>
-    <link rel='stylesheet' href='includes/headerStyle.css'>
+    <link rel='stylesheet' href='../includes/headerStyle.css'>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,13 +14,12 @@
         .container {
             margin-top: 50px;
             width: 80%;
-            margin: auto;
             overflow: hidden;
         }
     </style>
 </head>
 <body>
-    <?php include_once('includes/header.php')?>
+    <?php include_once('/includes/header.php')?>
     <div class="container">
         <h1>Privacy Policy for AvoSave</h1>
 

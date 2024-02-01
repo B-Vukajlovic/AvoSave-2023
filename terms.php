@@ -13,7 +13,6 @@
         .container {
             margin-top: 50px;
             width: 80%;
-            margin: auto;
             overflow: hidden;
         }
         ol {
