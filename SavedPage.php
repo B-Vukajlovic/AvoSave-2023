@@ -43,7 +43,7 @@ if ($_SESSION['userid'] == null) {
             $stmt = execute([$UserID]);
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<div class="column1">
-                <img class="images" src="'.htmlspecialchars($row['ImageURL']).'" alt="Afbeelding '.htmlspecialchars($row['RecipeTitle']) .'">
+                <img class="images" src="'.htmlspecialchars($row['ImageURL']).'" alt="Image '.htmlspecialchars($row['RecipeTitle']) .'">
                 </div>';
                 echo '<div class="column2">';
                 echo '<h2 class="title-card">' . htmlspecialchars($row['RecipeTitle']) . '</h2>';

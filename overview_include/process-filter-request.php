@@ -16,6 +16,7 @@ function array_order_desc($a, $b) {
 
 function displayRecipes($rows, $preferedIngredientsArray){
     foreach ( $rows as $row ) {
+        error_log($row['ImageURL']);
         echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
         echo '<div class="card-holder">';
         echo '<div class="column1">';
