@@ -51,6 +51,7 @@ html, body{
 .filters{
     margin: 20px;
     background-color: rgb(218, 235, 218);
+    width: 90%;
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -117,5 +118,16 @@ html, body{
 }
 
 @media screen and (max-width: 1200px) {
-    
+    .card-holder{
+        grid-template-columns: 100%;
+        width: 90%;
+    }
+
+    .main-page{
+        grid-template-columns: auto;
+    }
+
+    .title-page{
+        padding-top: 100px;
+    }
 }
