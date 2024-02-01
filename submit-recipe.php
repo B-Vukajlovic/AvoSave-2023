@@ -34,9 +34,11 @@ if(!$user['isAdmin']) {
     <div class="wrapper">
         <div class="navbar2">
             <div class="topnav">
-                <a class="myAccountNav" href="ProfilePage.php">My Account</a>
+            <a class="myAccountNav" href="ProfilePage.php">My Account</a>
                 <a class="SavedNav" href="SavedPage.php">Saved</a>
-                <a class="SavedNav" href="submit-recipe.php">Admin</a>
+                <a class="ManAdminNav" href="manageAdmins.php">Manage admins</a>
+                <a class="ManRecipeNav" href="manageRecipes.php">Manage recipes</a>
+                <a class="SubmitNav" href="submit-recipe.php">Submit recipes</a>
             </div>
         </div>
         <div class="mainpage">

@@ -16,7 +16,7 @@ $ingredients = $pdo->query("SELECT Name, Type FROM Ingredient");
 <body>
     <?php include "includes/header.php";?>
 
-    <div class="center">
+    <div class="center title">
         <h1>Choose ingredients to include</h1>
     </div>
 

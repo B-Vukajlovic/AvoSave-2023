@@ -10,6 +10,13 @@
     --high-light: hsl(117, 100%, 40%);
 }
 
+
+html, body{
+    margin: 0;
+    height: 100vh;
+}
+
+
 .logoCombo {
     display: flex;
     align-items: center;
@@ -66,8 +73,13 @@
     width: 100%;
 }
 
+.mainpage{
+    padding-top: 80px;
+}
+
 .navbar2 {
     height: 100%;
+    padding-top: 80px;
     width: 15vw;
     background-color: hsl(35, 49%, 12%);
     color: #fff;
@@ -228,4 +240,14 @@ h1 {
     grid-template-columns: auto;
     margin-top: 1%;
     max-width: 300px;
+}
+
+@media screen and (max-width: 1200px) {
+    .mainpage{
+        padding-top: 100px;
+    }
+
+    .navbar2{
+        padding-top: 100px;
+    }
 }
