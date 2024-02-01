@@ -37,6 +37,7 @@
     bottom: 0;
     border-radius: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
 }
 
 .homePageContent {
@@ -124,7 +125,7 @@
 .containerMainSection {
     position: relative;
     width: 100vw;
-    height: 90vh;
+    height: 60vh;
 }
 
 .mainContent {
@@ -132,7 +133,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
     height: 100%;
     right: 0%;
     border-top-left-radius: 20px;
@@ -140,43 +141,19 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.mainTitleContainer {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mainTitle {
-    text-align: left;
-    border-radius: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f8f8f8;
-    width: 800px;
-    height: fit-content;
-    padding: 20px;
-}
-
-.mainTitle h1 {
-    font-size: 95px;
-    font-weight: 400;
-}
-
 .textContent {
-    width: 90%;
+    width: 95%;
     font-size: 20px;
     font-weight: 400;
     text-align: left;
-    padding: 40px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f8f8f8;
 }
 
 .textContent h1 {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 400;
 }
 
@@ -196,4 +173,44 @@
 }
 .footer p {
     margin: 0;
+}
+
+@media screen and (max-width: 1550px) {
+    body, p, h1, h2, h3, h4, h5, h6, .tooltip p, .textContent, .homePageArticle {
+        font-size: 95%;
+    }
+
+    .homePageArticle h1, .textContent h1 {
+        font-size: 45px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    body, p, h1, h2, h3, h4, h5, h6, .tooltip p, .textContent, .homePageArticle {
+        font-size: 90%;
+    }
+
+    .homePageArticle h1, .textContent h1 {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-height: 850px) {
+    body, p, h1, h2, h3, h4, h5, h6, .tooltip p, .textContent, .homePageArticle {
+        font-size: 95%;
+    }
+
+    .homePageArticle h1, .textContent h1 {
+        font-size: 45px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    body, p, h1, h2, h3, h4, h5, h6, .tooltip p, .textContent, .homePageArticle {
+        font-size: 80%;
+    }
+
+    .homePageArticle h1, .textContent h1 {
+        font-size: 20px;
+    }
 }
