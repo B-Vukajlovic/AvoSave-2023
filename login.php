@@ -3,7 +3,7 @@
     require_once('includes/config_session.php');
     require "login_include/loginMainLogic.php";
 
-    if ($_SESSION['userid'] != null) {
+    if (isset($_SESSION['userid'])) {
         header('Location: index.php');
         die();
     }
