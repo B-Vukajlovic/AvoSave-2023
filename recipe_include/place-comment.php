@@ -24,6 +24,6 @@ if (!empty($commentinput)) {
     }
 }
 
-header("Location: /recipe-page.php?RecipeID=$RecipeID");
+header("Location: /recipe-page.php?recipeID=$RecipeID");
 die();
 ?>
