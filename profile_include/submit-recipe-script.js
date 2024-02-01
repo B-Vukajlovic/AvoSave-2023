@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if(data.success) {
                 const link = data.data.link;
                 document.querySelector('.img').src = link;
+                console.log(link);
                 document.getElementById('imgur-url').value = link;
             }
         })
