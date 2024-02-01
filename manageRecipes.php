@@ -53,7 +53,7 @@ if(!$user['isAdmin']) {
                 <a class="myAccountNav" href="ProfilePage.php">My Account</a>
                 <a class="SavedNav" href="SavedPage.php">Saved</a>
                 <a class="ManAdminNav" href="manageAdmins.php">Manage admins</a>
-                <a class="ManRecipeNav" href="manageAdmins.php">Manage recipes</a>
+                <a class="ManRecipeNav" href="manageRecipes.php">Manage recipes</a>
             </div>
         </div>
         <div class="mainpage">

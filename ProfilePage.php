@@ -1,28 +1,30 @@
 <?php
 require_once('includes/pdo-connect.php');
 require_once('includes/config_session.php');
+
 if ($_SESSION['userid'] == null) {
     header('Location: login.php');
     die();
 }
 
-/* function logOut(){
+function logOut(){
     session_unset();
 
-     if (ini_get("session.use_cookies")) {
-         $params = session_get_cookie_params();
-         setcookie(session_name(), '', time() - 42000,
-             $params["path"], $params["domain"],
-             $params["secure"], $params["httponly"]
-         );
-     }
-     session_destroy();
-     header('Location: index.php');
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+    session_destroy();
+    header('Location: index.php');
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logout"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
     logOut();
-}*/
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logout"])) {
                 <a class="myAccountNav" href="ProfilePage.php">My Account</a>
                 <a class="SavedNav" href="SavedPage.php">Saved</a>
                 <a class="ManAdminNav" href="manageAdmins.php">Manage admins</a>
-                <a class="ManRecipeNav" href="manageAdmins.php">Manage recipes</a>
+                <a class="ManRecipeNav" href="manageRecipes.php">Manage recipes</a>
             </div>
         </div>
         <div class="mainpage">
@@ -67,20 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logout"])) {
                     echo htmlspecialchars($result['Email'] ?? 'Your email');
                     ?>">
                 </div>
-            <h2 class="second-title">Change password</h2>
                 <div class="acc-info-input">
-                    <form method="post" id="passwordForm">
-                        <label>Current Password:</label>
-                        <div id="current_verify" class="passwordmsg"><?php if(!empty($current_verify)) echo htmlspecialchars($current_verify); ?></div>
-                        <input class="passinput" type="password" name="current_password"><br>
-                        <label>New Password:</label>
-                        <div id="new_verify" class="passwordmsg"><?php if(!empty($new_verify)) echo htmlspecialchars($new_verify); ?></div>
-                        <input class="passinput" type="password" name="new_password"><br>
-                        <label>Repeat New Password:</label>
-                        <div id="repeat_verify" class="passwordmsg"><?php if(!empty($repeat_verify)) echo htmlspecialchars($repeat_verify); ?></div>
-                        <input class="passinput" type="password" name="repeat_password"><br>
-                        <div id="message" class="succesmsg"><?php if(!empty($message)) echo htmlspecialchars($message); ?></div>
-                        <input type="submit" name="submit" value="Change Password">
+                    <a class="" href="change-password.php">Change Password</a>
+                    <form id="formHeader" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                        <input type="submit" id="logout" value="Log Out">
                     </form>
                 </div>
         </div>
