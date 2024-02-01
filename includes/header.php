@@ -6,12 +6,13 @@
 <header>
     <nav class="navBar">
         <ul class="navSubsection" id="leftBar">
-            <li class="logoText">AvoSave</li>
+            <img onclick="window.location.href = 'index.php';" id="logo" src="includes/avosave_logo-removebg-preview(1).png">
+            <li onclick="window.location.href = 'index.php';" class="logoText">AvoSave</li>
         </ul>
         <ul class="navSubsection" id="middleBar">
             <li class="navLink" id="home"><a href="index.php">Home</a></li>
-            <li class="navLink" id="#aboutUs"><a href="#aboutUs">Search</a></li>
-            <li class="navLink" id="our goal"><a href="#aboutUs">Our goal</a></li>
+            <li class="navLink" id="Search"><a href="IngredientPage.php">Search</a></li>
+            <li class="navLink" id="our goal"><a href="index.php#aboutUs">Our goal</a></li>
         </ul>
         <ul class="navSubsection" id="rightBar">
             <?php if (isset($_SESSION["userid"])): ?>

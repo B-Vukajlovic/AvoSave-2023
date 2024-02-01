@@ -1,3 +1,8 @@
+<?php
+    require_once('includes/pdo-connect.php');
+    require_once('includes/config_session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,11 +41,6 @@
         </article>
     </section>
     <section class="containerMainSection">
-        <div class="mainTitleContainer">
-            <div class="mainTitle">
-                <h1>Combatting Food Waste with Innovation</h1>
-            </div>
-        </div>
         <div class="mainContent" id="mainContent1">
             <div class="textContent" id="text1">
                 <h1>In a world where so much food goes to waste,</h1>
@@ -91,5 +91,3 @@
     <script src="homepage_include/cookieConsent.js"></script>
 </body>
 </html>
-
-

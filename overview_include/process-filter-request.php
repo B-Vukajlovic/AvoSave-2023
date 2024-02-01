@@ -48,8 +48,8 @@ function displayRecipes($rows, $preferedIngredientsArray){
             echo '<span class="label-unavailable">' . htmlspecialchars( $notSelectedIngredient ) . '</span>';
         }
         echo '</div>';
-        echo '<p> Servings:'. htmlspecialchars($row['Servings']).'<p>';
-        echo '<p> Time:'. htmlspecialchars($row['Time']).'<p>';
+        echo '<p class="info">Servings: '. htmlspecialchars($row['Servings']).'<p>';
+        echo '<p class="info">Time: '. htmlspecialchars($row['Time']).'<p>';
         echo '</div>';
         echo '</div>';
         echo '</a>';
@@ -108,7 +108,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
                 $servings[] = 'R.Servings = 3';
                 break;
             case '4moreservings':
-                $servings[] = 'R.Servings > 4';
+                $servings[] = 'R.Servings >= 4';
                 break;
         }
     }

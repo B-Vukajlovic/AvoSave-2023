@@ -48,6 +48,18 @@ html, body{
     margin: 20px;
 }
 
+.info {
+    width: calc(50% - 5px);
+    max-width: 300px;
+    padding: 10px 20px;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    margin: 10px;
+}
+
 .filters{
     margin: 20px;
     background-color: rgb(218, 235, 218);
