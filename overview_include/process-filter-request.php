@@ -48,8 +48,8 @@ function displayRecipes($rows, $preferedIngredientsArray){
             echo '<span class="label-unavailable">' . htmlspecialchars( $notSelectedIngredient ) . '</span>';
         }
         echo '</div>';
-        echo '<p class="info"> Servings:'. htmlspecialchars($row['Servings']).'<p>';
-        echo '<p class="info"> Time:'. htmlspecialchars($row['Time']).'<p>';
+        echo '<p class="info">Servings: '. htmlspecialchars($row['Servings']).'<p>';
+        echo '<p class="info">Time: '. htmlspecialchars($row['Time']).'<p>';
         echo '</div>';
         echo '</div>';
         echo '</a>';
