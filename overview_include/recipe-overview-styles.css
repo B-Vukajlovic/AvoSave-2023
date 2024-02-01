@@ -8,11 +8,30 @@ html, body{
     background-position: center;
 }
 
+.body-container{
+    padding-top: 80px;
+}
+
 /* Search bar */
 
 .search-bar {
     padding-left: 30%;
     height: 100px;
+}
+
+#back-button{
+    margin: 10px;
+}
+
+
+.button{
+    text-decoration: underline;
+    color: var(--high-light);
+    background-color: hsla(0,0,0,100);
+    padding: 5px;
+    margin: 10px;
+    width: 3%;
+    max-width: 100%;
 }
 
 .input-search-bar {
@@ -102,7 +121,6 @@ html, body{
 
 .title-page{
     text-align: center;
-    padding-top: 80px;
 }
 
 .main-page{
@@ -139,7 +157,7 @@ html, body{
         grid-template-columns: auto;
     }
 
-    .title-page{
+    .body-container{
         padding-top: 100px;
     }
 }
