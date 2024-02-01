@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Use - AvoSave</title>
-    <link rel='stylesheet' href='../includes/headerStyle.css'>
+    <link rel='stylesheet' href='includes/headerStyle.css'>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-    <?php include_once('../includes/header.php')?>
+    <?php include_once('includes/header.php')?>
     <div class="container">
         <h1>Terms of Use for AvoSave</h1>
         <p><strong>Last Updated:</strong> [01-02-2024]</p>
