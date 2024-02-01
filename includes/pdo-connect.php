@@ -3,7 +3,7 @@
 $dbname = "AvoSave";
 $dbuser = "ismailo";
 $dbpass = "WiqpHSufEYXwkVFHEFloAPEYEJcycUyC";
-$dbhost = "in5.webtech-uva.nl";
+$dbhost = "localhost";
 
 try{
     $pdo = new PDO("mysql:host =" . $dbhost . ";dbname=" . $dbname, $dbuser, $dbpass);
