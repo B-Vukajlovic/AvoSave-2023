@@ -37,6 +37,7 @@ if ($_SESSION['userid'] == null) {
                 if ($isAdmin) {
                     echo '<a class="ManAdminNav" href="manageAdmins.php">Manage admins</a>';
                     echo '<a class="ManRecipeNav" href="manageRecipes.php">Manage recipes</a>';
+                    echo '<a class="SubmitNav" href="submit-recipe.php">Submit recipes</a>';
                 }
                 ?>
             </div>

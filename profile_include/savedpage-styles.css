@@ -10,6 +10,7 @@
     --high-light: hsl(117, 100%, 40%);
 }
 
+
 html, body{
     margin: 0;
     height: 100vh;
@@ -166,4 +167,14 @@ label{
 
 .title-page{
     padding-top: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    .mainpage{
+        padding-top: 100px;
+    }
+
+    .navbar2{
+        padding-top: 100px;
+    }
 }
