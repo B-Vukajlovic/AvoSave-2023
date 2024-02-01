@@ -179,8 +179,9 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
             }
             $rows[$key]['Priority'] = $matches;
         }
-        usort($rows, 'array_order_desc');
-        displayRecipes($rows, $preferedIngredientsArray);
     }
+    usort($rows, 'array_order_desc');
+    displayRecipes($rows, $preferedIngredientsArray);
+
 }
 ?>
