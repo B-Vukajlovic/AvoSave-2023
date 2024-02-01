@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 <body>
     <?php include "includes/header.php";?>
     <div class="registerContainer">
-        <form method="post" id="passwordForm">
+        <form method="post" id="form">
             <div class="tekstContainer">
                 <h1>Change Password.</h1>
             </div>
