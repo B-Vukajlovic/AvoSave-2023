@@ -108,7 +108,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_POST[ 'filtersApplied' 
                 $servings[] = 'R.Servings = 3';
                 break;
             case '4moreservings':
-                $servings[] = 'R.Servings > 4';
+                $servings[] = 'R.Servings >= 4';
                 break;
         }
     }
