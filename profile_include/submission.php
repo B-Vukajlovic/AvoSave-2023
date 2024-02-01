@@ -16,20 +16,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Recipe insertion
-    $insertRecipe = $pdo->prepare("INSERT INTO Recipe (Title, Description, StepsRecipe, Servings, Time, Author) VALUES (?, ?, ?, ?, ?, ?)");
-    $insertRecipe->execute([$title, $description, $steps, $servings, $time, $author]);
-    $recipeId = $pdo->lastInsertId();
-
     // Image insertion
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $imageUrl = filter_input(INPUT_POST, 'imgur-url', FILTER_SANITIZE_URL);
-        $insertImage = $pdo->prepare("INSERT INTO Image (ImageURL, RecipeID) VALUES (?, ?)");
-        $insertImage->execute([$imageUrl, $recipeId]);
     } else {
         echo "Image error.";
         exit;
     }
+    // Recipe insertion
+    $insertRecipe = $pdo->prepare("INSERT INTO Recipe (Title, Description, StepsRecipe, Servings, Time, Author, ImageURL) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $insertRecipe->execute([$title, $description, $steps, $servings, $time, $author, $imageUrl]);
+    $recipeId = $pdo->lastInsertId();
 
     // Insert selected ingredients
     $selectedIngredients = json_decode($_POST['selectedIngredients'], true);

@@ -2,6 +2,11 @@
     require_once('includes/pdo-connect.php');
     require_once('includes/config_session.php');
     require "login_include/registerMainLogic.php";
+
+    if ($_SESSION['userid'] != null) {
+        header('Location: index.php');
+        die();
+    }
 ?>
 
 <!DOCTYPE html>

@@ -57,6 +57,7 @@ if (isset($_GET["recipeID"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="recipe_include/recipe-page-styles.css">
     <link rel="stylesheet" href="includes/colors.css">
+    <link rel="stylesheet" href="includes/headerStyle.css">
     <title>Recipe</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -67,7 +68,7 @@ if (isset($_GET["recipeID"])){
 
 <body>
     <div class="body-container">
-    <header>
+    <!-- <header>
         <div class="logoCombo">
             <img src="includes/avosave_logo-removebg-preview.png" class="logo">
             <img src="includes/Logo-PhotoRoom(3).png" class="logo">
@@ -81,7 +82,8 @@ if (isset($_GET["recipeID"])){
                 <li class="pageTraversal" id="login"><a href="login.php">Login</a></li>
             </ul>
         </nav>
-    </header>
+    </header> -->
+    <?php include_once 'includes/header.php'; ?>
 
     <div class="main-page">
         <div class="column1">
@@ -115,7 +117,7 @@ if (isset($_GET["recipeID"])){
                 <!-- get pictureURL from database, alt=title-->
                 <?php
                     global $pdo, $RecipeID;
-                    $query = "SELECT I.ImageURL FROM Image I WHERE I.RecipeID = ?";
+                    $query = "SELECT R.ImageURL FROM Recipe R WHERE R.RecipeID = ?";
                     $stmt = $pdo->prepare($query);
                     $stmt->execute([$RecipeID]);
                     $image = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -128,7 +130,7 @@ if (isset($_GET["recipeID"])){
                     <!-- <img class="title-image" src='/pictures/ApplePie.jpg' alt='Apple pie'> -->
             </div>
             <div class="recipe-card recipe-grid">
-                <div class="column1">
+                <div class="recipe-column1">
                     <h2>Recipe card</h2>
                     <div class="recipe-section">
                     <!--get prep time and servings from database-->
@@ -177,7 +179,7 @@ if (isset($_GET["recipeID"])){
                     echo "</ol></div>";
                     ?>
                 </div>
-                <div class="column2">
+                <div class="recipe-column2">
                 <?php
                     global $pdo, $RecipeID, $UserID;
                     $savedStatus = 0;
