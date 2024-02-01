@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-    <?php include_once('/includes/header.php')?>
+    <?php include_once('includes/header.php')?>
     <div class="container">
         <h1>Privacy Policy for AvoSave</h1>
 
