@@ -51,7 +51,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST'){
             echo $str;
         } else {
             //update database to save & response = 1
-            $query = "INSERT INTO `UserRecipe` (`UserID`, `RecipeID`, `SavedStatus`, `Rating`) VALUES (?, ?, 1, 1)";
+            $query = "INSERT INTO `UserRecipe` (`UserID`, `RecipeID`, `SavedStatus`) VALUES (?, ?, 1)";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$UserID, $RecipeID]);
             $array = array(1, $RecipeID);

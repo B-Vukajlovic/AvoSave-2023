@@ -15,7 +15,12 @@ function array_order_desc($a, $b) {
 }
 
 function displayRecipes($rows, $preferedIngredientsArray){
+    $recipesDisplayed = 0;
     foreach ( $rows as $row ) {
+        if (!empty($preferedIngredientsArray) && $row[ 'Priority' ] == 0) {
+            continue;
+        }
+        $recipesDisplayed++;
         error_log($row['ImageURL']);
         echo '<a href="recipe-page.php?recipeID=' . $row[ 'RecipeID' ] . '" class="recipe-link">';
         echo '<div class="card-holder">';
@@ -53,6 +58,9 @@ function displayRecipes($rows, $preferedIngredientsArray){
         echo '</div>';
         echo '</div>';
         echo '</a>';
+    }
+    if ($recipesDisplayed == 0) {
+        echo '<h2>No recipes have been found with your ingredients.</h2>';
     }
 }
 
